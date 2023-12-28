@@ -1,30 +1,30 @@
 module.exports = {
-    // [env] 프로젝트 환경 설정, 브라우저 환경과 ES2021 문법 사용
-    env: {
-      browser: true,
-      es2021: true,
-    },
-    // [parser] typescript를 parser로 사용하도록 함
-    parser: '@typescript-eslint/parser',
-    // [plugins] 사용할 eslint 플러그인 설정
-    plugins: ['@typescript-eslint', 'prettier'],
-    // [extends] 프로젝트에 적용할 eslit 규칙셋
-    extends: [
-      'airbnb',
-      'airbnb/hooks',
-      'plugin:import/errors',
-      'plugin:import/warnings',
-      'plugin:prettier/recommended',
-      'plugin:@typescript-eslint/recommended',
-      'prettier',
-    ],
-    // [rules] 상세 규칙
-    rules: {
-      // var 금지
-      'no-var': 'warn',
-      // 일치 연산자 사용 필수
-      eqeqeq: 'warn',
-      // 컴포넌트의 props 검사 비활성화, propstype 사용하지 않아도 경고 띄우지 않음
+  // [env] 프로젝트 환경 설정, 브라우저 환경과 ES2021 문법 사용
+  env: {
+    browser: true,
+    es2021: true,
+  },
+  // [parser] typescript를 parser로 사용하도록 함
+  parser: '@typescript-eslint/parser',
+  // [plugins] 사용할 eslint 플러그인 설정
+  plugins: ['@typescript-eslint', 'prettier'],
+  // [extends] 프로젝트에 적용할 eslit 규칙셋
+  extends: [
+    'airbnb',
+    'airbnb/hooks',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:prettier/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
+  ],
+  // [rules] 상세 규칙
+  rules: {
+    // var 금지
+    'no-var': 'warn',
+    // 일치 연산자 사용 필수
+    eqeqeq: 'warn',
+    // 컴포넌트의 props 검사 비활성화, propstype 사용하지 않아도 경고 띄우지 않음
     'react/prop-types': 0,
     // 불필요한 세미콜론 사용 시 에러 표시
     'no-extra-semi': 'error',
@@ -77,18 +77,11 @@ module.exports = {
   },
   root: true,
   env: { browser: true, es2020: true },
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react-hooks/recommended',
-  ],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:react-hooks/recommended'],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh'],
   rules: {
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
+    'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
   },
 }
