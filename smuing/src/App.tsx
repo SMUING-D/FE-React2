@@ -1,4 +1,5 @@
 import './App.css'
+import ProjectsPage from './pages/ProjectsPage'
 
 // import { Route, Routes } from 'react-router-dom'
 
@@ -29,6 +30,9 @@ function App() {
           </div>
         </div>
       </nav>
+      <div>
+        <ProjectsPage />
+      </div>
     </div>
   )
 }
