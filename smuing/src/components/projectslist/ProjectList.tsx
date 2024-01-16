@@ -4,7 +4,7 @@ import { useState } from 'react'
 import PROJECTSDATA from '../../constants/PROJECTSDATA'
 import ProjectCard from '../projectcard/ProjectCard'
 
-interface Project {
+type Project = {
   id: number
   name: string
   description: string

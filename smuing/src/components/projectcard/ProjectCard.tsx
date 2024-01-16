@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-interface Project {
+type Project = {
   id: number
   name: string
   description: string
