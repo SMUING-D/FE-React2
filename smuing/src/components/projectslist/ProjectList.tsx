@@ -33,7 +33,7 @@ const ProjectsList: React.FC = () => {
       <div className="flex flex-wrap justify-center items-center gap-2">
         {yearArray.map((year, idx) => (
           <button
-            className="w-[100] h-[50] text-white border-4 rounded-2xl border-green-600 py-3 px-8 hover:scale-110"
+            className="w-[100] h-[50] text-white border-4 rounded-2xl border-orange-300 py-3 px-8 hover:scale-110 mx-2.5"
             key={idx}
             onClick={() => handleYear(year)}
           >
