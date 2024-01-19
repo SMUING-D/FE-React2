@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { CgWebsite } from 'react-icons/cg'
+import { IoLogoGithub } from 'react-icons/io'
 
 type Project = {
   id: number
@@ -51,23 +53,25 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
           <div className="whitespace-pre-line flex flex-wrap justify-center items-center gap-3">
             {project.member.map((member, index) => (
               <div
-                className="text-sm whitespace-pre-wrap border-2 border-solid rounded-[5px] border-rose-600"
+                className="text-sm whitespace-pre-wrap border-2 border-solid rounded-[5px] border-orange-300"
                 key={index}
               >
                 {member}
               </div>
             ))}
           </div>
-          {project.github && (
-            <a href={project.github} className="">
-              깃허브 주소
-            </a>
-          )}
-          {project.release && (
-            <a href={project.release} className="">
-              배포 주소
-            </a>
-          )}
+          <div className="flex justify-center ">
+            {project.github && (
+              <a href={project.github} className="">
+                <IoLogoGithub size={40}></IoLogoGithub>
+              </a>
+            )}
+            {project.release && (
+              <a href={project.release} className="">
+                <CgWebsite size={40}></CgWebsite>
+              </a>
+            )}
+          </div>
         </div>
       )}
     </div>
