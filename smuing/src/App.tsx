@@ -1,4 +1,5 @@
 import './App.css'
+import Footer from './components/footer/Footer'
 import Navbar from './components/navbar/Navbar'
 import ProjectsPage from './pages/ProjectsPage'
 
@@ -12,9 +13,10 @@ function App() {
     //   <Route path="/likelion" element={<Layout />} />
     //   <Route path="/iniro" element={<Layout />} />
     // </Routes>
-    <div className="flex">
+    <div className="">
       <Navbar />
       <ProjectsPage />
+      <Footer />
     </div>
   )
 }
