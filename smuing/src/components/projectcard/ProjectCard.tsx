@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { CgWebsite } from 'react-icons/cg'
 import { IoLogoGithub } from 'react-icons/io'
@@ -32,15 +33,27 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
     >
-      <div className="p-[10px]">
+      <motion.div
+        className="p-[10px]"
+        animate={{
+          scale: [0.3, 1.03, 0.95],
+          borderRadius: ['20%', '30%', '40%', '30%', '20%'],
+        }}
+      >
         <img
           className=" w-[360px] h-[360px] object-cover rounded-[3rem] border-[10px] border-indigo-200 "
           src={project.img}
           alt={project.name}
         />
-      </div>
+      </motion.div>
       {isHovering && (
-        <div className=" absolute bg-stone-800 rounded-[3rem] opacity-100 z-10 w-[360px] h-[360px] flex flex-col justify-center items-center text-white gap-2.5">
+        <motion.div
+          className=" absolute bg-stone-800 rounded-[3rem] opacity-100 z-10 w-[360px] h-[360px] flex flex-col justify-center items-center text-white gap-2.5"
+          animate={{
+            scale: [0.3, 1.03, 0.95],
+            borderRadius: ['20%', '30%', '40%', '30%', '20%'],
+          }}
+        >
           <p className="text-3xl">{project.name}</p>
           <p className="text-sm">{project.description}</p>
           <div className="flex gap-2.5">
@@ -72,7 +85,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
               </a>
             )}
           </div>
-        </div>
+        </motion.div>
       )}
     </div>
   )
