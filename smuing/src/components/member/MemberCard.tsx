@@ -15,7 +15,7 @@ type Membercardprops = {
 const MemberCard: React.FC<{ member: Membercardprops }> = ({ member }) => {
   return (
     <motion.div
-      className="w-[260px] h-[278px] bg-color:white border-[1px] rounded-[3rem] text-center"
+      className="w-[260px] h-[278px] bg-color:white border-[1px] rounded-[3rem] text-center bg-white"
       onClick={member.onClick}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}

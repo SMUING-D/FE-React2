@@ -13,7 +13,7 @@ const MemberActive = () => {
 
   console.log(active)
   return (
-    <>
+    <div className="bg-rgb-35-39-49">
       <div className="flex flex-wrap justify-center gap-8 p-8">
         {activeLeader.map((member) => (
           <MemberCard
@@ -25,15 +25,15 @@ const MemberActive = () => {
               part: member.part,
               position: member.position,
               onClick: () => {
-                navigate(`members/${member.id}`)
+                navigate(`/members/${member.id}`)
                 console.log('찍함')
               },
             }}
           />
         ))}
       </div>
-      <div className="flex items-center justify-center">
-        <hr className="w-4/5" />
+      <div className="flex items-center justify-center mt-[100px] mb-[100px]">
+        <hr className="w-4/5 border-t-4" />
       </div>
       <div className="flex flex-wrap justify-center gap-8 p-8">
         {activeChallenger.map((member) => (
@@ -46,14 +46,14 @@ const MemberActive = () => {
               part: member.part,
               position: member.position,
               onClick: () => {
-                navigate(`members/${member.id}`)
+                navigate(`/members/${member.id}`)
                 console.log('찍함')
               },
             }}
           />
         ))}
       </div>
-    </>
+    </div>
   )
 }
 
