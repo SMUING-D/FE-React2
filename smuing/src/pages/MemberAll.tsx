@@ -1,5 +1,4 @@
-import MenuItem from '@mui/material/MenuItem'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import MemberCard from '../components/member/MemberCard'
