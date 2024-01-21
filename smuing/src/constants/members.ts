@@ -1,4 +1,17 @@
-const MEMBERS = [
+type Member = {
+  id: number
+  year: number
+  nickname: string
+  name: string
+  part: string
+  position: string
+  github: string | null
+  sex: 'm' | 'w'
+  project: string | null
+  skill: string[]
+}
+
+const MEMBERS: Member[] = [
   {
     id: 1,
     year: 4,
@@ -1729,4 +1742,4 @@ const MEMBERS = [
   },
 ]
 
-export { MEMBERS }
+export default MEMBERS
