@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import MemberCard from '../components/member/MemberCard'
-import MEMBERS from '../constants/members'
+import MEMBERS from '../constants/MEMBERS'
 
 const MemberAll = () => {
   //   const [year, setYear] = useState(0)

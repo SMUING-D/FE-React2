@@ -15,16 +15,18 @@ function App() {
     //   <Route path="/likelion" element={<Layout />} />
     //   <Route path="/iniro" element={<Layout />} />
     // </Routes>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/members/active" element={<MemberActive />} />
+        <Route path="/members/all" element={<MemberAll />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+      </Routes>
+      <Footer />
+    </>
     // <div className="">
-    //   <Navbar />
     //   <ProjectsPage />
-    //   <Footer />
     // </div>
-
-    <Routes>
-      <Route path="/members/active" element={<MemberActive />} />
-      <Route path="/members/all" element={<MemberAll />} />
-    </Routes>
   )
 }
 
