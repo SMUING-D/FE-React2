@@ -9,22 +9,20 @@ import ProjectsPage from './pages/ProjectsPage'
 
 function App() {
   return (
-    // <Routes>
-    //   <Route path="/umc" element={<Layout />} />
-    //   <Route path="/rookie" element={<Layout />} />
-    //   <Route path="/likelion" element={<Layout />} />
-    //   <Route path="/iniro" element={<Layout />} />
-    // </Routes>
+    <Routes>
+      {/* <Route path="/umc" element={<Layout />} />
+      <Route path="/rookie" element={<Layout />} />
+      <Route path="/likelion" element={<Layout />} />
+      <Route path="/iniro" element={<Layout />} /> */}
+      <Route path="/members/active" element={<MemberActive />} />
+      <Route path="/members/all" element={<MemberAll />} />
+      <Route path="/project" element={<ProjectsPage />} />
+    </Routes>
     // <div className="">
     //   <Navbar />
     //   <ProjectsPage />
     //   <Footer />
     // </div>
-
-    <Routes>
-      <Route path="/members/active" element={<MemberActive />} />
-      <Route path="/members/all" element={<MemberAll />} />
-    </Routes>
   )
 }
 
