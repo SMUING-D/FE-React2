@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { partIntroData } from '../../types/types'
 
 const PartIntro: React.FC = () => {
+  // useSelector로 수정해야한다.
   const partArr: partIntroData[] = [
     {
       tech: '기획',

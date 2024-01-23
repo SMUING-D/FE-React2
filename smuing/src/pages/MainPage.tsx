@@ -1,6 +1,7 @@
 import CountUpCard from '../components/countupcard/CountUpCard'
 import HeroBox from '../components/herobox/HeroBox'
 import IntroduceBox from '../components/introducebox/IntoroduceBox'
+import NewsBox from '../components/newsbox/NewsBox'
 import PartIntro from '../components/partintro/PartIntro'
 import { countUpCardProps } from '../types/types'
 
@@ -35,7 +36,7 @@ const MainPage: React.FC = () => {
         </div>
       </IntroduceBox>
 
-      <IntroduceBox title="6개의 파트로 구성" content="2023 하반기 기준">
+      <IntroduceBox title="총 6개의 파트로 구성" content="2023 하반기 기준">
         <PartIntro />
       </IntroduceBox>
 
@@ -44,7 +45,10 @@ const MainPage: React.FC = () => {
         content="University MakeUs Challenge(SMUMC) 데모데이"
         nextLineContent="실제로 상명대 학생이 참여한 데모데이 프로젝트입니다."
       >
-        ㅎㅇ
+        무한 슬라이더 언제 맨드냐
+      </IntroduceBox>
+      <IntroduceBox title="최신 소식" content="UMC 뉴스레터">
+        <NewsBox />
       </IntroduceBox>
     </div>
   )
