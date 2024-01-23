@@ -2,7 +2,7 @@ const HeroBox: React.FC = () => {
   const textArr: string[] = ['UNIVERSITY', 'MAKEUS', 'CHALLENGE']
   return (
     <div className="h-[900px] w-full bg-[url('./assets/img/coding.webp')] bg-cover text-white">
-      <div className="mt-6 text-7xl flex-col pt-40 pl-20 space-y-6 font-bold">
+      <div className=" text-7xl flex-col pt-40 pl-20 space-y-6 font-bold">
         {textArr.map((element, index) => (
           <p key={index}>{element}</p>
         ))}
