@@ -41,13 +41,13 @@ const PartIntro: React.FC = () => {
           <button
             key={element.tech}
             onClick={() => handleActiveButton(element)}
-            className="text-2xl text-white focus:text-amber-400 hover:text-amber-400 m-7"
+            className="text-2xl text-white focus:text-amber-400 hover:text-amber-400 lg:m-7 sm:m-4"
           >
             {element.tech}
           </button>
         ))}
       </div>
-      <div className="w-[1000px] h-[300px] rounded-3xl flex items-center text-black text-2xl bg-white">
+      <div className="h-[300px] lg:w-[1000px] md:w-4/5 sm:w-4/5 rounded-3xl flex items-center text-black text-2xl bg-white">
         <p className="p-[50px]">{partArr.find((element) => element.tech === selectedTech.tech)?.text}</p>
       </div>
     </div>

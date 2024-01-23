@@ -1,9 +1,4 @@
-type newsData = {
-  id: number
-  title: string
-  description: string
-  image: string
-}
+import { newsData } from '../../types/types'
 
 const NewsBox: React.FC = () => {
   const newsData: newsData[] = [
@@ -24,7 +19,7 @@ const NewsBox: React.FC = () => {
   ]
 
   return (
-    <div className="w-full flex justify-center gap-[50px]">
+    <div className="flex justify-center items-center flex-col lg:flex-row gap-[50px]">
       {newsData.map(({ id, title, description, image }) => (
         <div className="w-[600px] h-[600px] rounded-3xl" key={id}>
           <img className="rounded-tr-3xl rounded-tl-3xl w-full h-[300px] object-cover" src={image} alt={title} />

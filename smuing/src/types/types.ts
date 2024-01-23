@@ -15,3 +15,10 @@ export type partIntroData = {
   tech: string
   text: string
 }
+
+export type newsData = {
+  id: number
+  title: string
+  description: string
+  image: string
+}

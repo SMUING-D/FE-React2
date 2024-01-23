@@ -29,7 +29,7 @@ const MainPage: React.FC = () => {
         "
         nextLineContent="앱&웹 서비스 런칭에 도전하는 대학생 IT 연합동아리입니다"
       >
-        <div className="flex gap-20 align-center justify-center">
+        <div className="sm:flex sm:flex-col space-y-6 lg:space-y-0 lg:flex-row lg:gap-20 align-center justify-center ">
           {countUpTest.map((item, index) => (
             <CountUpCard key={index} boxTitle={item.boxTitle} numOfPeople={item.numOfPeople} lastUnit={item.lastUnit} />
           ))}
