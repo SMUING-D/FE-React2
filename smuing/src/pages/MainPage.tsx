@@ -1,9 +1,11 @@
 import CountUpCard from '../components/countupcard/CountUpCard'
 import HeroBox from '../components/herobox/HeroBox'
 import IntroduceBox from '../components/introducebox/IntoroduceBox'
+import PartIntro from '../components/partintro/PartIntro'
+import { countUpCardProps } from '../types/types'
 
 const MainPage: React.FC = () => {
-  const countUpTest = [
+  const countUpTest: countUpCardProps[] = [
     { boxTitle: '역대 SMUMC 멤버수', numOfPeople: 144, lastUnit: '명' },
     {
       boxTitle: '현재 회원 수',
@@ -16,6 +18,7 @@ const MainPage: React.FC = () => {
       lastUnit: '기',
     },
   ]
+
   return (
     <div>
       <HeroBox />
@@ -32,7 +35,17 @@ const MainPage: React.FC = () => {
         </div>
       </IntroduceBox>
 
-      <IntroduceBox title="6개의 파트로 구성" content="2023 하반기 기준"></IntroduceBox>
+      <IntroduceBox title="6개의 파트로 구성" content="2023 하반기 기준">
+        <PartIntro />
+      </IntroduceBox>
+
+      <IntroduceBox
+        title="Project"
+        content="University MakeUs Challenge(SMUMC) 데모데이"
+        nextLineContent="실제로 상명대 학생이 참여한 데모데이 프로젝트입니다."
+      >
+        ㅎㅇ
+      </IntroduceBox>
     </div>
   )
 }

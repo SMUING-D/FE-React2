@@ -4,8 +4,14 @@ export type introduceBoxProps = {
   nextLineContent?: string
   children: React.ReactNode
 }
+
 export type countUpCardProps = {
   boxTitle: string
   numOfPeople: number
   lastUnit: string
+}
+
+export type partIntroData = {
+  tech: string
+  text: string
 }
