@@ -66,21 +66,21 @@ const MemberAll = () => {
             />
           ))}
         </div>
-      </div>
 
-      {/* 페이지 네이션 부분 */}
-      <div className="flex justify-center mt-4">
-        {Array.from({ length: Math.ceil(filteredMembers.length / membersPerPage) }).map((_, index) => (
-          <button
-            key={index}
-            className={`px-4 py-2 mx-1 bg-blue-500 text-white rounded-md focus:outline-none ${
-              index + 1 === currentPage ? 'bg-blue-700' : ''
-            }`}
-            onClick={() => paginate(index + 1)}
-          >
-            {index + 1}
-          </button>
-        ))}
+        {/* 페이지 네이션 부분 */}
+        <div className="flex justify-center mt-4 pb-5">
+          {Array.from({ length: Math.ceil(filteredMembers.length / membersPerPage) }).map((_, index) => (
+            <button
+              key={index}
+              className={`px-4 py-2 mx-1 bg-blue-500 text-white rounded-md focus:outline-none ${
+                index + 1 === currentPage ? 'bg-blue-700' : ''
+              }`}
+              onClick={() => paginate(index + 1)}
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
       </div>
     </>
   )
