@@ -68,7 +68,7 @@ const MemberAll = () => {
         </div>
 
         {/* 페이지 네이션 부분 */}
-        <div className="flex justify-center mt-4 pb-8">
+        <div className="flex flex-wrap gap-1 justify-center mt-4 pb-8">
           {Array.from({ length: Math.ceil(filteredMembers.length / membersPerPage) }).map((_, index) => (
             <button
               key={index}
