@@ -1,5 +1,5 @@
+import useCountUp from '../../hooks/useCountUp'
 import { countUpCardProps } from '../../types/types'
-import useCountUp from '../hooks/useCountUp'
 
 const CountUpCard: React.FC<countUpCardProps> = ({ boxTitle, numOfPeople, lastUnit }: countUpCardProps) => {
   const displayNumber = useCountUp(numOfPeople)
