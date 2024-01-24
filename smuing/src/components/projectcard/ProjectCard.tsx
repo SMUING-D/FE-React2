@@ -3,20 +3,9 @@ import { useState } from 'react'
 import { CgWebsite } from 'react-icons/cg'
 import { IoLogoGithub } from 'react-icons/io'
 
-type Project = {
-  id: number
-  name: string
-  description: string
-  theme: string[]
-  github: string | null
-  year: number
-  member: string[]
-  stack: string[]
-  img: string
-  release: string | null
-}
+import { project } from '../../types/types'
 
-const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
+const ProjectCard: React.FC<{ project: project }> = ({ project }) => {
   const [isHovering, setIsHovering] = useState(false)
 
   const handleMouseOver = () => {

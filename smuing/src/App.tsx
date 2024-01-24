@@ -21,9 +21,7 @@ function App() {
       <Route path="/project" element={<ProjectsPage />} />
     </Routes>
     // <div className="">
-    //   <Navbar />
     //   <ProjectsPage />
-    //   <Footer />
     // </div>
   )
 }
