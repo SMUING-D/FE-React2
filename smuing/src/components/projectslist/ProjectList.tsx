@@ -1,31 +1,19 @@
 import React from 'react'
 import { useState } from 'react'
 
-import PROJECTSDATA from '../../constants/PROJECTSDATA'
+import PROJECTS_DATA from '../../constants/PROJECTS_DATA'
+import { project } from '../../types/types'
 import ProjectCard from '../projectcard/ProjectCard'
 
-type Project = {
-  id: number
-  name: string
-  description: string
-  theme: string[]
-  github: string | null
-  year: number
-  member: string[]
-  stack: string[]
-  img: string
-  release: string | null
-}
-
 const ProjectsList: React.FC = () => {
-  const yearArray: (string | number)[] = ['전체', ...new Set(PROJECTSDATA.map((project) => project.year))]
-  const [data, setData] = useState<Project[]>(PROJECTSDATA)
+  const yearArray: (string | number)[] = ['전체', ...new Set(PROJECTS_DATA.map((project) => project.year))]
+  const [data, setData] = useState<project[]>(PROJECTS_DATA)
   const handleYear = (year: string | number) => {
     if (year === '전체') {
-      setData(PROJECTSDATA)
+      setData(PROJECTS_DATA)
       return
     }
-    const filteredData = PROJECTSDATA.filter((project) => project.year === year)
+    const filteredData = PROJECTS_DATA.filter((project) => project.year === year)
     setData(filteredData)
   }
   return (
@@ -42,7 +30,7 @@ const ProjectsList: React.FC = () => {
         ))}
       </div>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
-        {data.map((project: Project) => (
+        {data.map((project: project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
       </div>
