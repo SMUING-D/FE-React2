@@ -4,11 +4,10 @@ const useCountUp = (numOfPeople: number) => {
   const [displayNumber, setDisplayNumber] = useState<string>('')
   const [currentNumber, setCurrentNumber] = useState<number>(1)
 
-  const updateCount = () => {
-    setCurrentNumber((prevNumber) => (prevNumber < numOfPeople ? prevNumber + 1 : prevNumber))
-  }
-
   useEffect(() => {
+    const updateCount = () => {
+      setCurrentNumber((prevNumber) => (prevNumber < numOfPeople ? prevNumber + 1 : prevNumber))
+    }
     const interval = setInterval(() => {
       updateCount()
       setDisplayNumber(`${currentNumber}`)
@@ -23,7 +22,7 @@ const useCountUp = (numOfPeople: number) => {
       clearInterval(interval)
       clearTimeout(timeout)
     }
-  }, [currentNumber, numOfPeople, updateCount])
+  }, [currentNumber, numOfPeople])
 
   return displayNumber
 }
