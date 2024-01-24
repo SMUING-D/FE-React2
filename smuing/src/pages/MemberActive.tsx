@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 
 import MemberCard from '../components/member/MemberCard'
-import MEMBERS from '../constants/members'
+import MEMBERS from '../constants/MEMBERS'
 
 const MemberActive = () => {
   const navigate = useNavigate()
