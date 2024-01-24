@@ -5,6 +5,7 @@ import Footer from './components/footer/Footer'
 import Navbar from './components/navbar/Navbar'
 import MemberActive from './pages/MemberActive'
 import MemberAll from './pages/MemberAll'
+import MemberDetail from './pages/MemberDetail'
 import ProjectsPage from './pages/ProjectsPage'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Route path="/iniro" element={<Layout />} /> */}
       <Route path="/members/active" element={<MemberActive />} />
       <Route path="/members/all" element={<MemberAll />} />
+      <Route path="/members/:id" element={<MemberDetail />} />
       <Route path="/project" element={<ProjectsPage />} />
     </Routes>
     // <div className="">
