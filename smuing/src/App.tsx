@@ -11,25 +11,24 @@ import MemberDetail from './pages/MemberDetail'
 import ProjectsPage from './pages/ProjectsPage'
 
 function App() {
+  const currentPath = window.location.pathname
+
   return (
-    // <div>
-    //   <Navbar />
-    <Routes>
-      {/* <Route path="/umc" element={<Layout />} />
-      <Route path="/rookie" element={<Layout />} />
-      <Route path="/likelion" element={<Layout />} />
-      <Route path="/iniro" element={<Layout />} /> */}
-      <Route path="/" element={<MainPage />} />
-      <Route path="/members/active" element={<MemberActive />} />
-      <Route path="/members/all" element={<MemberAll />} />
-      <Route path="/members/:id" element={<MemberDetail />} />
-      <Route path="/project" element={<ProjectsPage />} />
-      <Route path="/login" element={<LoginPage />} />
-    </Routes>
-    // </div>
+    <>
+      {/* 로그인 페이지에서는 Navbar를 렌더링하지 않음 */}
+      {currentPath !== '/login' && <Navbar />}
+
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/members/active" element={<MemberActive />} />
+        <Route path="/members/all" element={<MemberAll />} />
+        <Route path="/members/:id" element={<MemberDetail />} />
+        <Route path="/project" element={<ProjectsPage />} />
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
+    </>
     // <div className="">
     //   <ProjectsPage />
-    // </div>
   )
 }
 

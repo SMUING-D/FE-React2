@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 import Join from '../components/login/Join'
 import LoginBox from '../components/login/LoginBox'
+import LoginNav from '../components/login/LoginNav'
 
 const LoginPage = () => {
   const words: string[] = ['smumc', 'likelion', 'sk lookie', '이니로']
@@ -24,8 +25,9 @@ const LoginPage = () => {
   }
 
   return (
-    <div className="flex flex-wrap">
-      <div className="bg-black h-screen w-full sm:w-1/2 flex flex-wrap items-center">
+    <>
+      <LoginNav />
+      <div className="flex flex-wrap items-center h-screen w-full bg-black h-full justify-center gap-[150px]">
         <div className="text-white text-5xl sm:ml-10">
           smuing은 <br />
           smumc가 운영하며 <br />
@@ -40,11 +42,11 @@ const LoginPage = () => {
           ))}
           <br />
           <p className="mt-[10px]">와 함께합니다.</p>
+          <br />
+          <p className="text-sm">* smuing은 개발자들의 성장을 응원하는 비영리 단체입니다.</p>
         </div>
-      </div>
 
-      <div className="bg-black h-screen w-full sm:w-1/2 flex flex-wrap items-center">
-        <div className="w-full sm:w-3/4 md:w-1/2 lg:w-1/2 xl:w-1/2">
+        <div>
           <div className="pb-[10px]">
             <button
               onClick={showLoginBox}
@@ -62,7 +64,7 @@ const LoginPage = () => {
           <div>{loginShow ? <LoginBox /> : <Join />}</div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
