@@ -1,3 +1,5 @@
+import { ChangeEvent } from 'react'
+
 export type introduceBoxProps = {
   title: string
   content: string
@@ -64,8 +66,20 @@ export type Member = {
 
 export type FormData = {
   name: string
+  studentId: string
   nickname: string
   email: string
   password: string
   privacyPolicy: boolean
+}
+
+export type InputProps = {
+  id: string
+  name: string
+  type: string
+  placeholder: string
+  value?: string
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+  isValid?: boolean
+  errorMessage: string
 }

@@ -1,14 +1,17 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 
 import { FormData } from '../../types/types'
+import Input from '../input/Input'
 
 const Join: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
+    studentId: '',
     nickname: '',
     email: '',
     password: '',
     privacyPolicy: false,
+    // 전공아이디도 추가해야됌
   })
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -23,6 +26,7 @@ const Join: React.FC = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     console.log('폼:', formData)
+    // 회원가입 api 로직
   }
 
   return (
@@ -30,62 +34,92 @@ const Join: React.FC = () => {
       <div className="bg-white p-8 rounded shadow-md">
         <h2 className="text-2xl font-semibold mb-4">회원가입</h2>
         <form onSubmit={handleSubmit}>
+          {/* 이름 */}
           <div className="mb-4">
             <label htmlFor="name" className="block text-gray-600 text-sm font-medium mb-2">
               이름
             </label>
-            <input
-              type="text"
+            <Input
               id="name"
               name="name"
+              type="text"
+              placeholder="이름을 입력하세요"
               value={formData.name}
               onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-              placeholder="이름을 입력하세요"
+              isValid={true}
+              errorMessage="이름을 입력하세요"
             />
           </div>
+
+          {/* 학번 */}
+          <div className="mb-4">
+            <label htmlFor="name" className="block text-gray-600 text-sm font-medium mb-2">
+              학번
+            </label>
+            <Input
+              id="studentId"
+              name="studentId"
+              type="text"
+              placeholder="학번을 입력하세요"
+              value={formData.studentId}
+              onChange={handleChange}
+              isValid={true}
+              errorMessage="이름을 입력하세요"
+            />
+          </div>
+
+          {/* 닉네임 */}
           <div className="mb-4">
             <label htmlFor="nickname" className="block text-gray-600 text-sm font-medium mb-2">
               닉네임
             </label>
-            <input
-              type="text"
+            <Input
               id="nickname"
               name="nickname"
+              type="text"
+              placeholder="닉네임을 입력하세요"
               value={formData.nickname}
               onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-              placeholder="닉네임을 입력하세요"
+              isValid={true}
+              errorMessage="닉네임을 입력하세요"
             />
           </div>
+
+          {/* 이메일 */}
           <div className="mb-4">
             <label htmlFor="email" className="block text-gray-600 text-sm font-medium mb-2">
               이메일
             </label>
-            <input
-              type="email"
+            <Input
               id="email"
               name="email"
+              type="email"
+              placeholder="이메일을 입력하세요"
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-              placeholder="이메일을 입력하세요"
+              isValid={true}
+              errorMessage="이메일을 입력하세요"
             />
           </div>
+
+          {/* 비밀번호 */}
           <div className="mb-4">
             <label htmlFor="password" className="block text-gray-600 text-sm font-medium mb-2">
               비밀번호
             </label>
-            <input
-              type="password"
+            <Input
               id="password"
               name="password"
+              type="password"
+              placeholder="비밀번호를 입력하세요"
               value={formData.password}
               onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-              placeholder="비밀번호를 입력하세요"
+              isValid={true}
+              errorMessage="비밀번호를 입력하세요"
             />
           </div>
+
+          {/* 동의항목 */}
           <div className="mb-4">
             <label className="flex items-center">
               <input
