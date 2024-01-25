@@ -1,15 +1,4 @@
-type Member = {
-  id: number
-  year: number
-  nickname: string
-  name: string
-  part: string
-  position: string
-  github: string | null
-  sex: 'm' | 'w'
-  project: string | null
-  skill: string[]
-}
+import { Member } from '../types/types'
 
 const MEMBERS: Member[] = [
   {

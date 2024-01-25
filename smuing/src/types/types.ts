@@ -1,4 +1,3 @@
-
 export type introduceBoxProps = {
   title: string
   content: string
@@ -39,5 +38,26 @@ export type project = {
 export type scroll = {
   x: number
   y: number
+}
 
+export type memberCardProps = {
+  name: string
+  year: number
+  sex: string
+  part: string
+  position: string
+  onClick?: () => void
+}
+
+export type Member = {
+  id: number
+  year: number
+  nickname: string
+  name: string
+  part: string
+  position: string
+  github: string | null
+  sex: 'm' | 'w'
+  project: string | null
+  skill: string[]
 }
