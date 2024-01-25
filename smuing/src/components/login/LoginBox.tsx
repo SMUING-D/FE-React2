@@ -8,7 +8,7 @@ const LoginBox = () => {
   const [isSchoolCodeValid, setIsSchoolCodeValid] = useState(true)
   const [passwordValid, setPasswordValid] = useState(true)
 
-  const handleUsernameChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleSchoolCodeChange = (event: ChangeEvent<HTMLInputElement>) => {
     const enterSchoolCode = event.target.value
     const isValid = enterSchoolCode.length >= 8
     setSchoolCode(enterSchoolCode)
@@ -43,7 +43,7 @@ const LoginBox = () => {
               type="text"
               placeholder="학번을 입력해주세요"
               value={schoolCode}
-              onChange={handleUsernameChange}
+              onChange={handleSchoolCodeChange}
               isValid={isSchoolCodeValid}
               errorMessage="올바른 학번 형식이 아닙니다"
             />
