@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Footer from './components/footer/Footer'
 import Navbar from './components/navbar/Navbar'
+import LoginPage from './pages/LoginPage'
 import MainPage from './pages/MainPage'
 import MemberActive from './pages/MemberActive'
 import MemberAll from './pages/MemberAll'
@@ -11,8 +12,8 @@ import ProjectsPage from './pages/ProjectsPage'
 
 function App() {
   return (
-        <div>
-      <Navbar />
+    // <div>
+    //   <Navbar />
     <Routes>
       {/* <Route path="/umc" element={<Layout />} />
       <Route path="/rookie" element={<Layout />} />
@@ -23,12 +24,12 @@ function App() {
       <Route path="/members/all" element={<MemberAll />} />
       <Route path="/members/:id" element={<MemberDetail />} />
       <Route path="/project" element={<ProjectsPage />} />
+      <Route path="/login" element={<LoginPage />} />
     </Routes>
-    </div>
+    // </div>
     // <div className="">
     //   <ProjectsPage />
     // </div>
-
   )
 }
 

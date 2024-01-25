@@ -61,3 +61,11 @@ export type Member = {
   project: string | null
   skill: string[]
 }
+
+export type FormData = {
+  name: string
+  nickname: string
+  email: string
+  password: string
+  privacyPolicy: boolean
+}
