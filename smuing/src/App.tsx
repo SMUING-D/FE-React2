@@ -9,23 +9,28 @@ import MemberActive from './pages/MemberActive'
 import MemberAll from './pages/MemberAll'
 import MemberDetail from './pages/MemberDetail'
 import ProjectsPage from './pages/ProjectsPage'
+import AddProject from './pages/project/AddProject'
 
 function App() {
   const currentPath = window.location.pathname
 
   return (
     <>
-      {/* 로그인 페이지에서는 Navbar를 렌더링하지 않음 */}
-      {currentPath !== '/login' && <Navbar />}
+      {/* 특정 경로에서는 Navbar를 렌더링하지 않음 */}
+      {currentPath !== '/login' && currentPath !== '/projects/add' ? <Navbar /> : null}
 
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/members/active" element={<MemberActive />} />
         <Route path="/members/all" element={<MemberAll />} />
         <Route path="/members/:id" element={<MemberDetail />} />
-        <Route path="/project" element={<ProjectsPage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/projects/add" element={<AddProject />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
+
+      {/* 이것도 마찬가지로 특정경로에서는 푸터 없음 */}
+      {currentPath !== '/login' && currentPath !== '/projects/add' ? <Footer /> : null}
     </>
     // <div className="">
     //   <ProjectsPage />
