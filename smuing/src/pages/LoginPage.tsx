@@ -27,8 +27,8 @@ const LoginPage = () => {
   return (
     <>
       <LoginNav />
-      <div className="flex flex-wrap items-center h-screen w-full bg-black h-full justify-center gap-[150px]">
-        <div className="text-white text-5xl sm:ml-10">
+      <div className="flex flex-wrap items-center min-h-screen bg-black justify-center gap-[150px] sm:bg-black">
+        <div className="text-white text-5xl sm:ml-10 sm:mt-0 mt-[100px]">
           smuing은 <br />
           smumc가 운영하며 <br />
           {words.map((word, index) => (
@@ -47,7 +47,7 @@ const LoginPage = () => {
         </div>
 
         <div>
-          <div className="pb-[10px]">
+          <div className="pb-[10px] sm: mt-[70px]">
             <button
               onClick={showLoginBox}
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2 transition-transform transform hover:scale-110"
@@ -61,7 +61,7 @@ const LoginPage = () => {
               회원가입
             </button>
           </div>
-          <div>{loginShow ? <LoginBox /> : <Join />}</div>
+          <div className="pb-[20px]">{loginShow ? <LoginBox /> : <Join />}</div>
         </div>
       </div>
     </>

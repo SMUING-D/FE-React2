@@ -70,6 +70,7 @@ export type FormData = {
   nickname: string
   email: string
   password: string
+  major: number
   privacyPolicy: boolean
 }
 

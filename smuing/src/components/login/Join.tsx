@@ -4,15 +4,24 @@ import { FormData } from '../../types/types'
 import Input from '../input/Input'
 
 const Join: React.FC = () => {
+  const [emailValid, setEmailValid] = useState(false)
+  const [verificationCode, setVerificationCode] = useState('')
   const [formData, setFormData] = useState<FormData>({
     name: '',
     studentId: '',
     nickname: '',
     email: '',
     password: '',
+    major: 0,
     privacyPolicy: false,
     // 전공아이디도 추가해야됌
   })
+
+  const majors = [
+    { id: 0, name: '전공을 선택해주세요' },
+    { id: 1, name: '컴공' },
+    { id: 2, name: '휴먼지능' },
+  ]
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target
@@ -21,12 +30,52 @@ const Join: React.FC = () => {
       ...prevData,
       [name]: type === 'checkbox' ? checked : value,
     }))
+
+    switch (name) {
+      case 'email':
+        setEmailValid(validEmail(value))
+        break
+      default:
+        break
+    }
   }
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log('폼:', formData)
-    // 회원가입 api 로직
+
+    if (emailValid) {
+      console.log('폼:', formData)
+      // 회원가입 api 로직
+    } else {
+      console.log('이메일 에러')
+    }
+  }
+
+  //   이메일 유효성 검사
+  const validEmail = (email: string) => {
+    const emailRegex = /\S+@sangmyung\.co\.kr$/
+    return emailRegex.test(email)
+  }
+
+  //이메일 인증코드 요청 보내기
+  const handleEmailSubmit = () => {
+    console.log('formdata.email 이메일 인증 api로 보내기')
+  }
+
+  //인증번호 상태변경
+  const handleVerificationCodeChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setVerificationCode(e.target.value)
+  }
+
+  const handleVerificationSubmit = async () => {
+    // try {
+
+    // }
+    // catch(error){
+
+    // }
+    console.log('formdata.email, verificationCode 인증요청 보내기')
+    //200뜨면 상태값 하나 변경해서 마지막 회원가입 버튼에 활성화 조건 추가하기
   }
 
   return (
@@ -94,16 +143,49 @@ const Join: React.FC = () => {
               id="email"
               name="email"
               type="email"
-              placeholder="이메일을 입력하세요"
+              placeholder="학교 이메일을 입력하세요"
               value={formData.email}
               onChange={handleChange}
-              isValid={true}
-              errorMessage="이메일을 입력하세요"
+              isValid={emailValid}
+              errorMessage="올바른 학교 이메일 형식이 아닙니다"
             />
           </div>
+          {emailValid && (
+            <>
+              <button
+                type="button"
+                onClick={handleEmailSubmit}
+                className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-700 focus:outline-none"
+              >
+                이메일 인증하기
+              </button>
+              <div className="mb-4 mt-2">
+                <label htmlFor="verificationCode" className="block text-gray-600 text-sm font-medium mb-2">
+                  인증번호
+                </label>
+                <Input
+                  id="verificationCode"
+                  name="verificationCode"
+                  type="text"
+                  placeholder="인증번호를 입력하세요"
+                  value={verificationCode}
+                  onChange={handleVerificationCodeChange}
+                  isValid={true}
+                  errorMessage="인증번호를 입력하세요"
+                />
+              </div>
+              <button
+                type="button"
+                onClick={handleVerificationSubmit}
+                className="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-700 focus:outline-none"
+              >
+                인증번호 확인
+              </button>
+            </>
+          )}
 
           {/* 비밀번호 */}
-          <div className="mb-4">
+          <div className="mb-4 mt-2">
             <label htmlFor="password" className="block text-gray-600 text-sm font-medium mb-2">
               비밀번호
             </label>
@@ -117,6 +199,26 @@ const Join: React.FC = () => {
               isValid={true}
               errorMessage="비밀번호를 입력하세요"
             />
+          </div>
+
+          {/* 전공 선택 */}
+          <div className="mb-4">
+            <label htmlFor="major" className="block text-gray-600 text-sm font-medium mb-2">
+              전공
+            </label>
+            <select
+              id="major"
+              name="major"
+              value={formData.major}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+            >
+              {majors.map((major) => (
+                <option key={major.id} value={major.id}>
+                  {major.name}
+                </option>
+              ))}
+            </select>
           </div>
 
           {/* 동의항목 */}
