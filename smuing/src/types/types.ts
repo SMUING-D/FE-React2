@@ -84,3 +84,21 @@ export type InputProps = {
   isValid?: boolean
   errorMessage: string
 }
+
+export type ProjectFormData = {
+  title: string
+}
+
+export type NavTitle = {
+  title: string
+}
+
+export type TextAreaProps = {
+  value: string
+  onChange: (text: string) => void
+  placeholder?: string
+  maxChars?: number | string
+  width?: number | string
+  height?: number | string
+  textTitle?: string
+}

@@ -26,7 +26,7 @@ const LoginPage = () => {
 
   return (
     <>
-      <LoginNav />
+      <LoginNav title="SMUMC" />
       <div className="flex flex-wrap items-center min-h-screen bg-black justify-center gap-[150px] sm:bg-black">
         <div className="text-white text-5xl sm:ml-10 sm:mt-0 mt-[100px]">
           smuing은 <br />
