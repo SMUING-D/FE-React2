@@ -1,3 +1,4 @@
+import { ChangeEvent } from 'react'
 
 export type introduceBoxProps = {
   title: string
@@ -39,5 +40,47 @@ export type project = {
 export type scroll = {
   x: number
   y: number
+}
 
+export type memberCardProps = {
+  name: string
+  year: number
+  sex: string
+  part: string
+  position: string
+  onClick?: () => void
+}
+
+export type Member = {
+  id: number
+  year: number
+  nickname: string
+  name: string
+  part: string
+  position: string
+  github: string | null
+  sex: 'm' | 'w'
+  project: string | null
+  skill: string[]
+}
+
+export type FormData = {
+  name: string
+  studentId: string
+  nickname: string
+  email: string
+  password: string
+  major: number
+  privacyPolicy: boolean
+}
+
+export type InputProps = {
+  id: string
+  name: string
+  type: string
+  placeholder: string
+  value?: string
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+  isValid?: boolean
+  errorMessage: string
 }

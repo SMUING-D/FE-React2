@@ -1,18 +1,10 @@
 import { motion } from 'framer-motion'
 
-import femaleimg from '../../../public/memberimg/DEFAULT_FEMALE.webp'
-import maleimg from '../../../public/memberimg/DEFAULT_MALE.webp'
+import { memberCardProps } from '../../types/types'
+import femaleimg from '/public/memberimg/DEFAULT_FEMALE.webp'
+import maleimg from '/public/memberimg/DEFAULT_MALE.webp'
 
-type Membercardprops = {
-  name: string
-  year: number
-  sex: string
-  part: string
-  position: string
-  onClick?: () => void
-}
-
-const MemberCard: React.FC<{ member: Membercardprops }> = ({ member }) => {
+const MemberCard: React.FC<{ member: memberCardProps }> = ({ member }) => {
   return (
     <motion.div
       className="w-[260px] h-[278px] bg-color:white border-[1px] rounded-[3rem] text-center bg-white"
