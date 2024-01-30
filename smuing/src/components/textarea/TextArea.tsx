@@ -1,15 +1,16 @@
 import { ChangeEvent, useState } from 'react'
 
-type TextAreaProps = {
-  value: string
-  onChange: (text: string) => void
-  placeholder?: string
-  maxChars?: number
-  width?: number
-  height?: number
-}
+import { TextAreaProps } from '../../types/types'
 
-const TextArea: React.FC<TextAreaProps> = ({ value, onChange, placeholder = '', maxChars, width, height }) => {
+const TextArea: React.FC<TextAreaProps> = ({
+  value,
+  onChange,
+  placeholder = '',
+  maxChars,
+  width,
+  height,
+  textTitle,
+}) => {
   const [textAreaHeight, setTextAreaHeight] = useState<number>(height)
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = e.target.value
@@ -21,6 +22,7 @@ const TextArea: React.FC<TextAreaProps> = ({ value, onChange, placeholder = '', 
 
   return (
     <div className="relative">
+      <div className="text-white pb-[10px] pt-[10px]">{textTitle}</div>
       <textarea
         value={value}
         onChange={handleChange}
