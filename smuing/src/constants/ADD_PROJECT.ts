@@ -1,4 +1,4 @@
-export const titleText = [
+export const titleText: { text: string; height: string; max: string }[] = [
   {
     text: '프로젝트 이름',
     height: '35',

@@ -102,3 +102,11 @@ export type TextAreaProps = {
   height?: number | string
   textTitle?: string
 }
+
+export type AddProject = {
+  people: string[]
+  projectTitle: string
+  projectTechStack: string
+  projectContent: string
+  githubUrl: string
+}
