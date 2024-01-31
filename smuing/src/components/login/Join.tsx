@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 
+import { joinText } from '../../constants/JOIN'
 import { FormData } from '../../types/types'
 import Input from '../input/Input'
 
@@ -91,11 +92,25 @@ const Join: React.FC = () => {
       <div className="p-8">
         <h2 className="text-2xl font-semibold mb-4">회원가입</h2>
         <form onSubmit={handleSubmit}>
+          {joinText.map((join, index) => (
+            <div key={index} className="mb-4">
+              <label className="block text-gray-600 text-sm font-medium mb-2">{join.title}</label>
+              <Input
+                id={join.id}
+                name={join.name}
+                type={join.type}
+                placeholder={join.placeholder}
+                value={formData + '.' + `${join.value}`}
+                onChange={handleChange}
+                isValid={true}
+                errorMessage={join.errorMessage}
+              />
+            </div>
+          ))}
           {/* 이름 */}
+
           <div className="mb-4">
-            <label htmlFor="name" className="block text-gray-600 text-sm font-medium mb-2">
-              이름
-            </label>
+            <label className="block text-gray-600 text-sm font-medium mb-2">이름</label>
             <Input
               id="name"
               name="name"
@@ -110,9 +125,7 @@ const Join: React.FC = () => {
 
           {/* 학번 */}
           <div className="mb-4">
-            <label htmlFor="name" className="block text-gray-600 text-sm font-medium mb-2">
-              학번
-            </label>
+            <label className="block text-gray-600 text-sm font-medium mb-2">학번</label>
             <Input
               id="studentId"
               name="studentId"
@@ -127,9 +140,7 @@ const Join: React.FC = () => {
 
           {/* 닉네임 */}
           <div className="mb-4">
-            <label htmlFor="nickname" className="block text-gray-600 text-sm font-medium mb-2">
-              닉네임
-            </label>
+            <label className="block text-gray-600 text-sm font-medium mb-2">닉네임</label>
             <Input
               id="nickname"
               name="nickname"
@@ -144,9 +155,7 @@ const Join: React.FC = () => {
 
           {/* 이메일 */}
           <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-600 text-sm font-medium mb-2">
-              이메일
-            </label>
+            <label className="block text-gray-600 text-sm font-medium mb-2">이메일</label>
             <Input
               id="email"
               name="email"
@@ -194,9 +203,7 @@ const Join: React.FC = () => {
 
           {/* 비밀번호 */}
           <div className="mb-4 mt-2">
-            <label htmlFor="password" className="block text-gray-600 text-sm font-medium mb-2">
-              비밀번호
-            </label>
+            <label className="block text-gray-600 text-sm font-medium mb-2">비밀번호</label>
             <Input
               id="password"
               name="password"
@@ -211,9 +218,7 @@ const Join: React.FC = () => {
 
           {/* 전공 선택 */}
           <div className="mb-4">
-            <label htmlFor="major" className="block text-gray-600 text-sm font-medium mb-2">
-              전공
-            </label>
+            <label className="block text-gray-600 text-sm font-medium mb-2">전공</label>
             <select
               id="major"
               name="major"
@@ -231,9 +236,7 @@ const Join: React.FC = () => {
 
           {/* 성별 */}
           <div className="mb-4">
-            <label htmlFor="major" className="block text-gray-600 text-sm font-medium mb-2">
-              성별
-            </label>
+            <label className="block text-gray-600 text-sm font-medium mb-2">성별</label>
             <select
               id="major"
               name="major"
@@ -250,9 +253,7 @@ const Join: React.FC = () => {
           </div>
           {/* 깃허브 이메일 */}
           <div className="mb-4">
-            <label htmlFor="name" className="block text-gray-600 text-sm font-medium mb-2">
-              깃허브 주소
-            </label>
+            <label className="block text-gray-600 text-sm font-medium mb-2">깃허브 주소</label>
             <Input
               id="github"
               name="github"
