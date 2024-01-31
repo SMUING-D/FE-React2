@@ -27,7 +27,7 @@ const LoginPage = () => {
   return (
     <>
       <LoginNav title="SMUMC" />
-      <div className="flex flex-wrap items-center min-h-screen bg-white justify-center gap-[150px] sm:bg-white md: pt-[100px]">
+      <div className="flex flex-wrap items-center min-h-screen bg-white justify-center gap-[150px] sm:bg-white md: pt-[100px] sm: pl-[10px] sm:pr-[10px]">
         <div className="text-blue-500 text-5xl sm:ml-10 sm:mt-0 mt-[100px]">
           smuing은 <br />
           smumc가 운영하며 <br />
@@ -48,7 +48,7 @@ const LoginPage = () => {
         </div>
 
         <div>
-          <div className="pb-[10px] sm: mb-[10px]">
+          <div className="pb-[10px] sm: mb-[10px] sm: ml-[10px]">
             <button
               onClick={showLoginBox}
               className="border border-solid border-blue-500 bg-white hover:bg-blue-700 hover:text-white text-blue-500 font-bold py-2 px-4 rounded mr-2 transition-transform transform hover:scale-110"
