@@ -72,6 +72,8 @@ export type FormData = {
   password: string
   major: number
   privacyPolicy: boolean
+  sex: string
+  github: string
 }
 
 export type InputProps = {
