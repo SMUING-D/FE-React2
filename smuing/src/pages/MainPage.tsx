@@ -29,17 +29,15 @@ const MainPage: React.FC = () => {
         "
         nextLineContent="앱&웹 서비스 런칭에 도전하는 대학생 IT 연합동아리입니다"
       >
-        <div className="sm:flex sm:flex-col space-y-6 lg:space-y-0 lg:flex-row lg:gap-20 align-center justify-center ">
+        <div className="lg:flex lg:flex-row lg:gap-10 lg:space-y-0 md:flex-col md:space-y-9 md:pt-8 sm:space-y-3 ">
           {countUpTest.map((item, index) => (
             <CountUpCard key={index} boxTitle={item.boxTitle} numOfPeople={item.numOfPeople} lastUnit={item.lastUnit} />
           ))}
         </div>
       </IntroduceBox>
-
       <IntroduceBox title="총 6개의 파트로 구성" content="2023 하반기 기준">
         <PartIntro />
       </IntroduceBox>
-
       <IntroduceBox
         title="Project"
         content="University MakeUs Challenge(SMUMC) 데모데이"
