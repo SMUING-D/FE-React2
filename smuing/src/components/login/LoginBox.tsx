@@ -29,8 +29,8 @@ const LoginBox = () => {
   }
 
   return (
-    <div className="bg-gray-50 w-[400px]">
-      <div className="bg-white p-8 rounded shadow-md">
+    <div className="w-[400px] border border-solid border-blue-500 rounded-[20px] p-4">
+      <div className="p-8">
         <h2 className="text-2xl font-semibold mb-4">로그인</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-8">

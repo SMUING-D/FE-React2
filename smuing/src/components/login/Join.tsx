@@ -14,6 +14,8 @@ const Join: React.FC = () => {
     password: '',
     major: 0,
     privacyPolicy: false,
+    sex: '',
+    github: '',
     // 전공아이디도 추가해야됌
   })
 
@@ -21,6 +23,12 @@ const Join: React.FC = () => {
     { id: 0, name: '전공을 선택해주세요' },
     { id: 1, name: '컴공' },
     { id: 2, name: '휴먼지능' },
+  ]
+
+  const sex = [
+    { id: 0, name: '성별을 선택해주세요' },
+    { id: 1, name: '남자' },
+    { id: 2, name: '여자' },
   ]
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -79,8 +87,8 @@ const Join: React.FC = () => {
   }
 
   return (
-    <div className="bg-gray-50 w-[400px]">
-      <div className="bg-white p-8 rounded shadow-md">
+    <div className="border border-solid border-blue-500 rounded-[20px] p-4 w-[400px]">
+      <div className="p-8">
         <h2 className="text-2xl font-semibold mb-4">회원가입</h2>
         <form onSubmit={handleSubmit}>
           {/* 이름 */}
@@ -155,7 +163,7 @@ const Join: React.FC = () => {
               <button
                 type="button"
                 onClick={handleEmailSubmit}
-                className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-700 focus:outline-none"
+                className="w-full bg-white text-blue-500 py-2 rounded-md hover:bg-blue-700 hover:text-white border border-solid border-blue-500 focus:outline-none"
               >
                 이메일 인증하기
               </button>
@@ -177,7 +185,7 @@ const Join: React.FC = () => {
               <button
                 type="button"
                 onClick={handleVerificationSubmit}
-                className="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-700 focus:outline-none"
+                className="w-full bg-white text-blue-500 py-2 rounded-md hover:bg-blue-500 hover:text-white border border-solid border-blue-500 focus:outline-none"
               >
                 인증번호 확인
               </button>
@@ -221,6 +229,42 @@ const Join: React.FC = () => {
             </select>
           </div>
 
+          {/* 성별 */}
+          <div className="mb-4">
+            <label htmlFor="major" className="block text-gray-600 text-sm font-medium mb-2">
+              성별
+            </label>
+            <select
+              id="major"
+              name="major"
+              value={formData.sex}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+            >
+              {sex.map((sex) => (
+                <option key={sex.id} value={sex.id}>
+                  {sex.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          {/* 깃허브 이메일 */}
+          <div className="mb-4">
+            <label htmlFor="name" className="block text-gray-600 text-sm font-medium mb-2">
+              깃허브 주소
+            </label>
+            <Input
+              id="github"
+              name="github"
+              type="text"
+              placeholder="깃허브 주소를 입력해주세요"
+              value={formData.github}
+              onChange={handleChange}
+              isValid={true}
+              errorMessage=""
+            />
+          </div>
+
           {/* 동의항목 */}
           <div className="mb-4">
             <label className="flex items-center">
@@ -238,7 +282,7 @@ const Join: React.FC = () => {
           <button
             type="submit"
             disabled={!formData.privacyPolicy}
-            className={`w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-700 focus:outline-none ${
+            className={`w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-700 focus:outline-none ${
               !formData.privacyPolicy ? 'opacity-50 cursor-not-allowed' : ''
             }`}
           >

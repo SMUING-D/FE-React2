@@ -5,7 +5,7 @@ import LoginBox from '../components/login/LoginBox'
 import LoginNav from '../components/login/LoginNav'
 
 const LoginPage = () => {
-  const words: string[] = ['smumc', 'likelion', 'sk lookie', '이니로']
+  const words: string[] = ['Front-End', 'Back-End', 'Plan', 'Design']
   const [currentWordIndex, setCurrentWordIndex] = useState<number>(0)
   const [loginShow, setLoginShow] = useState(true)
 
@@ -27,10 +27,11 @@ const LoginPage = () => {
   return (
     <>
       <LoginNav title="SMUMC" />
-      <div className="flex flex-wrap items-center min-h-screen bg-black justify-center gap-[150px] sm:bg-black">
-        <div className="text-white text-5xl sm:ml-10 sm:mt-0 mt-[100px]">
+      <div className="flex flex-wrap items-center min-h-screen bg-white justify-center gap-[150px] sm:bg-white md: pt-[100px]">
+        <div className="text-blue-500 text-5xl sm:ml-10 sm:mt-0 mt-[100px]">
           smuing은 <br />
           smumc가 운영하며 <br />
+          함께 할<br />
           {words.map((word, index) => (
             <span
               key={index}
@@ -41,22 +42,22 @@ const LoginPage = () => {
             </span>
           ))}
           <br />
-          <p className="mt-[10px]">와 함께합니다.</p>
+          <p className="mt-[10px]">크루를 찾고있습니다.</p>
           <br />
           <p className="text-sm">* smuing은 개발자들의 성장을 응원하는 비영리 단체입니다.</p>
         </div>
 
         <div>
-          <div className="pb-[10px] sm: mt-[70px]">
+          <div className="pb-[10px] sm: mb-[10px]">
             <button
               onClick={showLoginBox}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2 transition-transform transform hover:scale-110"
+              className="border border-solid border-blue-500 bg-white hover:bg-blue-700 hover:text-white text-blue-500 font-bold py-2 px-4 rounded mr-2 transition-transform transform hover:scale-110"
             >
               로그인
             </button>
             <button
               onClick={showJoin}
-              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition-transform transform hover:scale-110"
+              className="border border-solid border-blue-500 bg-white hover:bg-blue-700 hover:text-white text-blue-500 font-bold py-2 px-4 rounded transition-transform transform hover:scale-110"
             >
               회원가입
             </button>
