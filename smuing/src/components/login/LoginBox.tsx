@@ -29,7 +29,7 @@ const LoginBox = () => {
   }
 
   return (
-    <div className="w-[400px] border border-solid border-blue-500 rounded-[20px] p-4">
+    <div className="w-[400px] border border-solid border-blue-500 rounded-[20px] p-4 sm:w-[300px]">
       <div className="p-8">
         <h2 className="text-2xl font-semibold mb-4">로그인</h2>
         <form onSubmit={handleSubmit}>

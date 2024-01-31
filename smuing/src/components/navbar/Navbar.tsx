@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
       <div className="gap-8 flex content-center cursor-pointer lg:flex sm:hidden">
         <MdOutlineDarkMode size={40} />
         <NavLink to="/projects">PROJECTS</NavLink>
-        <NavLink to="/members">MEMBERS</NavLink>
+        <NavLink to="/members/all">MEMBERS</NavLink>
         <NavLink to="/notices">NOTICES</NavLink>
       </div>
       <div className="lg:hidden sm:gap-3 flex items-center">
