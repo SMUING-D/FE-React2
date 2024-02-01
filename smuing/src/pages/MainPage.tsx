@@ -21,15 +21,14 @@ const MainPage: React.FC = () => {
   ]
 
   return (
-    <div>
+    <div className="bg-black flex flex-col items-center justify-center gap-[150px]">
       <HeroBox />
       <IntroduceBox
         title="About us"
-        content="University MakeUs Challendge(UMC-SMU)는
-        "
+        content="University MakeUs Challenge(UMC-SMU)는"
         nextLineContent="앱&웹 서비스 런칭에 도전하는 대학생 IT 연합동아리입니다"
       >
-        <div className="lg:flex lg:flex-row lg:gap-10 lg:space-y-0 md:flex-col md:space-y-9 md:pt-8 sm:space-y-3 ">
+        <div className="mt-10 flex flex-col sm:flex-row gap-5">
           {countUpTest.map((item, index) => (
             <CountUpCard key={index} boxTitle={item.boxTitle} numOfPeople={item.numOfPeople} lastUnit={item.lastUnit} />
           ))}
@@ -43,7 +42,7 @@ const MainPage: React.FC = () => {
         content="University MakeUs Challenge(SMUMC) 데모데이"
         nextLineContent="실제로 상명대 학생이 참여한 데모데이 프로젝트입니다."
       >
-        무한 슬라이더 언제 맨드냐
+        무한 슬라이더 (금요일까지만들어...)
       </IntroduceBox>
       <IntroduceBox title="최신 소식" content="UMC 뉴스레터">
         <NewsBox />
