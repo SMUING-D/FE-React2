@@ -71,7 +71,7 @@ const AddProjectPage = () => {
           <p className="text-white text-sm">*운영진들만 접근 가능한 프로젝트 등록 페이지입니다.</p>
         </div>
 
-        <div className="mx-4 sm:mx-[30%]">
+        <div className="text-center">
           <div className="w-full sm:w-[200px]">
             <button
               type="button"
@@ -97,7 +97,7 @@ const AddProjectPage = () => {
               </div>
             )}
           </div>
-          <div className="text-white mt-4">
+          <div className="text-white ml-[-25%] mt-4">
             <p>프로젝트 참여 인원:</p>
             <ul className="flex flex-wrap gap-2">
               {formData.people.map((id) => {
