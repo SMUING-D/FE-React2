@@ -17,16 +17,18 @@ const Navbar: React.FC = () => {
   }
   return (
     <nav
-      className={`transition ease-in duration-500 w-screen h-[100px] fixed text-3xl text-white flex items-center p-5 justify-between ${navBackground}`}
+      className={`transition ease-in duration-500 h-[100px] w-full fixed text-3xl text-white flex items-center p-5 justify-between px-8 ${navBackground}`}
     >
       <NavLink to="/">SMUMC</NavLink>
-      <div className="flex content-center gap-8 cursor-pointer lg:flex sm:hidden">
-        {/* <MdOutlineDarkMode size={40} /> */}
-        <NavLink to="/projects">PROJECTS</NavLink>
-        <NavLink to="/members/all">MEMBERS</NavLink>
-        <NavLink to="/notices">NOTICES</NavLink>
+      <div className="cursor-pointer hidden lg:block">
+        <div className="flex gap-4">
+          {/* <MdOutlineDarkMode size={40} /> */}
+          <NavLink to="/projects">PROJECTS</NavLink>
+          <NavLink to="/members/all">MEMBERS</NavLink>
+          <NavLink to="/notices">NOTICES</NavLink>
+        </div>
       </div>
-      <div className="flex items-center lg:hidden">
+      <div className="items-center block lg:hidden">
         {/* 햄버거 wrapper */}
         {/* <MdOutlineDarkMode size={40} /> */}
         <button onClick={handleSidebar}>
