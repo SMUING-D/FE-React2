@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Footer from './components/footer/Footer'
 import Navbar from './components/navbar/Navbar'
+import FormPage from './pages/FormPage'
 import LoginPage from './pages/LoginPage'
 import MainPage from './pages/MainPage'
 import MemberActive from './pages/MemberActive'
@@ -27,6 +28,7 @@ function App() {
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/projects/add" element={<AddProject />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/Form" element={<FormPage />} />
       </Routes>
 
       {/* 이것도 마찬가지로 특정경로에서는 푸터 없음 */}

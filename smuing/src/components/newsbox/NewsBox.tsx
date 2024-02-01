@@ -19,13 +19,15 @@ const NewsBox: React.FC = () => {
   ]
 
   return (
-    <div className="flex justify-center items-center flex-col lg:flex-row gap-[50px]">
+    <div className="flex flex-col lg:flex-row items-center justify-center gap-10 px-7 rounded-t-3xl mb-10">
       {newsData.map(({ id, title, description, image }) => (
-        <div className="w-[600px] h-[600px] rounded-3xl" key={id}>
-          <img className="rounded-tr-3xl rounded-tl-3xl w-full h-[300px] object-cover" src={image} alt={title} />
-          <div className="flex flex-col h-[200px] justify-center items-center bg-slate-800 rounded-br-3xl rounded-bl-3xl">
-            <h1 className="text-4xl">{title}</h1>
-            <p className="w-4/5 border-t-2 px-9">{description}</p>
+        <div className="w-full h-[800px]" key={id}>
+          <div className="mt-5 h-full w-full flex flex-col justify-center items-center gap-4  bg-slate-800 rounded-b-3xl">
+            <img className="rounded-t-3xl w-full h-3/5" src={image} alt={title} />
+            <div className="p-4 flex flex-col items-center justify-center gap-10 h-2/5">
+              <h1 className="text-2xl md:text-4xl">{title}</h1>
+              <p className="text-sm md:text-xl lg:text-2xl">{description}</p>
+            </div>
           </div>
         </div>
       ))}

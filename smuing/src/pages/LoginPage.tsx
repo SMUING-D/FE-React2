@@ -51,13 +51,13 @@ const LoginPage = () => {
           <div className="pb-[10px] sm: mb-[10px] sm: ml-[10px]">
             <button
               onClick={showLoginBox}
-              className="border border-solid border-blue-500 bg-white hover:bg-blue-700 hover:text-white text-blue-500 font-bold py-2 px-4 rounded mr-2 transition-transform transform hover:scale-110"
+              className="px-4 py-2 mr-2 font-bold text-blue-500 transition-transform transform bg-white border border-blue-500 border-solid rounded hover:bg-blue-700 hover:text-white hover:scale-110"
             >
               로그인
             </button>
             <button
               onClick={showJoin}
-              className="border border-solid border-blue-500 bg-white hover:bg-blue-700 hover:text-white text-blue-500 font-bold py-2 px-4 rounded transition-transform transform hover:scale-110"
+              className="px-4 py-2 font-bold text-blue-500 transition-transform transform bg-white border border-blue-500 border-solid rounded hover:bg-blue-700 hover:text-white hover:scale-110"
             >
               회원가입
             </button>

@@ -35,20 +35,22 @@ const PartIntro: React.FC = () => {
     setSelectedTech(tech)
   }
   return (
-    <div className="flex flex-col items-center w-full">
-      <div>
+    <div className="flex flex-col items-center gap-2 w-full">
+      <div className="mt-5 flex items-center justify-center gap-4 lg:gap-20">
         {partArr.map((element) => (
           <button
             key={element.tech}
             onClick={() => handleActiveButton(element)}
-            className="text-2xl text-white focus:text-amber-400 hover:text-amber-400 lg:m-7 sm:m-4"
+            className="focus:text-amber-400 hover:text-amber-400 text-[16px] sm:text-2xl lg:text-4xl"
           >
             {element.tech}
           </button>
         ))}
       </div>
-      <div className="h-[300px] lg:w-[1000px] md:w-4/5 sm:w-4/5 rounded-3xl flex items-center text-black text-2xl bg-white">
-        <p className="p-[50px]">{partArr.find((element) => element.tech === selectedTech.tech)?.text}</p>
+      <div className="mt-5 bg-white text-black rounded-2xl w-4/5 h-[150px] lg:h-[300px] flex flex-col items-center justify-center">
+        <p className="p-10 text-sm sm:text-xl lg:text-3xl">
+          {partArr.find((element) => element.tech === selectedTech.tech)?.text}
+        </p>
       </div>
     </div>
   )
