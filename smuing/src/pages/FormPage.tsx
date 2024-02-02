@@ -2,8 +2,6 @@ import { useState } from 'react'
 import { FaPlus, FaRegCopy } from 'react-icons/fa'
 import { IoCloseSharp } from 'react-icons/io5'
 
-import CheckBox from '../components/checkbox/checkBox'
-
 type FormContentItem = {
   id: number
   name: string
@@ -32,13 +30,13 @@ const FormPage: React.FC = () => {
     setIsButton(true)
   }
 
-  const addCheckBox = (fieldName: string): void => {
+  const addOption = (fieldName: string): void => {
     const formFields: FormContentItem[] = [...formContent]
     const fieldIndex: number = formFields.findIndex((field: FormContentItem) => field.name === fieldName)
 
     if (fieldIndex > -1) {
-      const newCheckBox: string = '' // 어떤 기본값으로 초기화해도 좋습니다
-      formFields[fieldIndex].list.push(newCheckBox)
+      const newOption: string = ''
+      formFields[fieldIndex].list.push(newOption)
       setFormContent(formFields)
     }
   }
@@ -75,18 +73,19 @@ const FormPage: React.FC = () => {
           return (
             <div key={index} className="flex w-full px-4 bg-white rounded-md">
               <div className="flex flex-col items-center w-full">
-                <div className="flex justify-between p-5">
+                <div className="flex justify-between w-full pt-5">
                   <input
-                    className="w-4/5 placeholder-black"
+                    className="w-full placeholder-black"
                     type="text"
                     placeholder={field.title}
                     onChange={(e) => editTitle(field.name, e.target.value)}
                   />
-                  <div className="flex gap-1 ">
+                  <div className="flex">
                     <select onChange={(e) => editFieldType(field.name, e.target.value)}>
-                      <option value="short_answer">짧은 질문</option>
+                      <option value="shortAnswer">짧은 질문</option>
                       <option value="paragraph">긴 질문</option>
-                      <option value="checkbox">체크 박스</option>
+                      <option value="multipleChoice">객관식 질문</option>
+                      <option value="checkbox">체크박스</option>
                     </select>
                     <button onClick={() => deleteQuestion(field.name)}>
                       <IoCloseSharp size={20} className="text-red-500 hover:text-red-900" />
@@ -94,12 +93,23 @@ const FormPage: React.FC = () => {
                   </div>
                 </div>
                 {field.question_type == 'checkbox' && (
-                  <button onClick={() => addCheckBox(field.name)} className="w-20 rounded-lg bg-slate-400">
+                  <button
+                    onClick={() => addOption(field.name)}
+                    className="w-20 sm:w-[100px] p-2 mt-4 text-[10px] sm:text-lg rounded-lg bg-slate-400"
+                  >
                     체크박스 추가
                   </button>
                 )}
+                {field.question_type == 'multipleChoice' && (
+                  <button
+                    onClick={() => addOption(field.name)}
+                    className="w-20 sm:w-[120px] p-2 mt-4 text-[10px] sm:text-lg rounded-lg bg-slate-400"
+                  >
+                    선택지 추가
+                  </button>
+                )}
                 <div className="w-full mt-8 mb-10 text-black">
-                  {field.question_type == 'short_answer' && (
+                  {field.question_type == 'shortAnswer' && (
                     <input type="text" className="block w-full h-10 px-5 rounded-md " placeholder={field.label} />
                   )}
                   {field.question_type == 'paragraph' && (
@@ -108,8 +118,18 @@ const FormPage: React.FC = () => {
                   {field.question_type == 'checkbox' && (
                     <div className="flex flex-col">
                       {field.list.map((checkBox, index) => (
-                        <div key={index} className="flex">
+                        <div key={index} className="flex p-3">
                           <input type="checkbox" />
+                          <input type="text" className="block w-full h-10 px-5 rounded-md" placeholder={field.label} />
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {field.question_type == 'multipleChoice' && (
+                    <div className="flex flex-col">
+                      {field.list.map((option, index) => (
+                        <div key={index} className="flex p-3">
+                          <input type="radio" name="option" />
                           <input type="text" className="block w-full h-10 px-5 rounded-md" placeholder={field.label} />
                         </div>
                       ))}
