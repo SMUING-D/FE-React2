@@ -1,30 +1,30 @@
 import { ChangeEvent } from 'react'
 
-export type introduceBoxProps = {
+export type IntroduceBoxProps = {
   title: string
   content: string
   nextLineContent?: string
   children: React.ReactNode
 }
 
-export type countUpCardProps = {
+export type CountUpCardProps = {
   boxTitle: string
   numOfPeople: number
   lastUnit: string
 }
 
-export type partIntroData = {
+export type PartIntroData = {
   tech: string
   text: string
 }
 
-export type newsData = {
+export type NewsData = {
   id: number
   title: string
   description: string
   image: string
 }
-export type project = {
+export type Project = {
   id: number
   name: string
   description: string
@@ -37,12 +37,12 @@ export type project = {
   release: string | null
 }
 
-export type scroll = {
+export type Scroll = {
   x: number
   y: number
 }
 
-export type memberCardProps = {
+export type MemberCardProps = {
   name: string
   year: number
   sex: string
