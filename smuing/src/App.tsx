@@ -1,8 +1,10 @@
+import { useSelector } from 'react-redux'
 import { Route, Routes } from 'react-router-dom'
 
 import './App.css'
 import Footer from './components/footer/Footer'
 import Navbar from './components/navbar/Navbar'
+import Sidebar from './components/sidebar/Sidebar'
 import AddProjectPage from './pages/AddProject'
 import FormPage from './pages/FormPage'
 import LoginPage from './pages/LoginPage'
@@ -14,6 +16,7 @@ import ProjectsPage from './pages/ProjectsPage'
 
 function App() {
   const currentPath = window.location.pathname
+  const { isOpen } = useSelector((state) => state.sidebar)
 
   return (
     <>
@@ -32,10 +35,9 @@ function App() {
       </Routes>
 
       {/* 이것도 마찬가지로 특정경로에서는 푸터 없음 */}
+      {isOpen && <Sidebar />}
       {currentPath !== '/login' && currentPath !== '/projects/add' ? <Footer /> : null}
     </>
-    // <div className="">
-    //   <ProjectsPage />
   )
 }
 

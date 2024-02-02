@@ -24,9 +24,10 @@ const Navbar: React.FC = () => {
           <NavLink to="/projects">PROJECTS</NavLink>
           <NavLink to="/members/all">MEMBERS</NavLink>
           <NavLink to="/notices">NOTICES</NavLink>
+          <NavLink to="/form">FORM</NavLink>
         </div>
       </div>
-      <div className="items-center block lg:hidden">
+      <div className="block text-lg scale-110 cursor-pointer sm:hidden hover:transform">
         <button onClick={handleSidebar}>
           <GiHamburgerMenu />
         </button>
