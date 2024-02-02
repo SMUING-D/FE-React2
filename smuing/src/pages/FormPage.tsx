@@ -1,90 +1,26 @@
-import { useState } from 'react'
 import { FaPlus } from 'react-icons/fa'
 
 import FormContents from '../components/formcontents/FormContents'
-import { FormContentItem } from '../types/types'
+import { useFormHandling } from '../hooks/useFormHandling'
 
 // 이미지 삽입 기능
 // 체크박스랑 객관식 질문 항목들 상태 관리
-// 모바일 화면 옵션 위치, 제출 기능 구현
+// 모바일 화면 옵션 태그들 위치
 
 const FormPage: React.FC = () => {
-  const [isButton, setIsButton] = useState<boolean>(false)
-  const [formContent, setFormContent] = useState<FormContentItem[]>([])
-
-  const updateFormContent = (fieldName: string, update: (field: FormContentItem) => void): void => {
-    const formFields: FormContentItem[] = [...formContent]
-    const fieldIndex: number = formFields.findIndex((field: FormContentItem) => field.name === fieldName)
-    console.log(formContent[fieldIndex])
-
-    if (fieldIndex > -1) {
-      update(formFields[fieldIndex])
-      setFormContent(formFields)
-    }
-  }
-
-  const addQuestion = (): void => {
-    const field: FormContentItem = {
-      id: 0,
-      name: `question_${formContent.length}`,
-      title: '제목을 입력해주세요',
-      label: '내용을 입력해주세요',
-      required: false,
-      question_type: 'shortAnswer',
-      list: [],
-    }
-    setFormContent([...formContent, field])
-    setIsButton(true)
-  }
-  const duplicateQuestion = (fieldName: string): void => {
-    const fieldToDuplicate = formContent.find((field) => field.name === fieldName)
-
-    if (fieldToDuplicate) {
-      const duplicatedField: FormContentItem = {
-        ...fieldToDuplicate,
-        id: formContent.length,
-        name: `question_${formContent.length}`,
-      }
-
-      setFormContent([...formContent, duplicatedField])
-      setIsButton(true)
-    }
-  }
-  const addOption = (fieldName: string): void => {
-    updateFormContent(fieldName, (field) => {
-      const newOption: string = ''
-      field.list.push(newOption)
-    })
-  }
-
-  const handleRequire = (fieldName: string): void => {
-    updateFormContent(fieldName, (field) => {
-      field.required = !field.required
-    })
-  }
-
-  const deleteQuestion = (fieldName: string): void => {
-    const newFormContent = formContent.filter((field) => field.name !== fieldName)
-    setFormContent(newFormContent)
-  }
-
-  const editTitle = (fieldName: string, fieldTitle: string): void => {
-    updateFormContent(fieldName, (field) => {
-      field.title = fieldTitle
-    })
-  }
-
-  const editLabel = (fieldName: string, fieldLabel: string): void => {
-    updateFormContent(fieldName, (field) => {
-      field.label = fieldLabel
-    })
-  }
-
-  const editFieldType = (fieldName: string, newFieldType: string): void => {
-    updateFormContent(fieldName, (field) => {
-      field.question_type = newFieldType
-    })
-  }
+  const {
+    isButton,
+    formContent,
+    addQuestion,
+    duplicateQuestion,
+    addOption,
+    handleRequire,
+    deleteQuestion,
+    editTitle,
+    editLabel,
+    editFieldType,
+    handleSubmit,
+  } = useFormHandling()
 
   return (
     <div className="flex flex-col items-center flex-1 gap-10 px-4 pt-32 bg-black">
@@ -106,7 +42,11 @@ const FormPage: React.FC = () => {
           />
         ))}
         {isButton ? (
-          <button className="flex justify-center items-center w-[100px] sm:w-[200px] text-sm sm:text-lg mb-6 p-3 rounded-lg bg-yellow-400">
+          <button
+            onClick={() => handleSubmit()}
+            type="submit"
+            className="flex justify-center items-center w-[100px] sm:w-[200px] text-sm sm:text-lg mb-6 p-3 rounded-lg bg-yellow-400"
+          >
             제출하기
           </button>
         ) : (

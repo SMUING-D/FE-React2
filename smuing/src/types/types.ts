@@ -145,3 +145,19 @@ export type FormContentsProps = {
   duplicateQuestion: (fieldName: string) => void
   editLabel: (fieldName: string, fieldLabel: string) => void
 }
+
+export type FormHandlingHook = {
+  isButton: boolean
+  formContent: FormContentItem[]
+  updateFormContent: (fieldName: string, update: (field: FormContentItem) => void) => void
+  resetFormContent: () => void
+  addQuestion: () => void
+  duplicateQuestion: (fieldName: string) => void
+  addOption: (fieldName: string) => void
+  handleRequire: (fieldName: string) => void
+  deleteQuestion: (fieldName: string) => void
+  editTitle: (fieldName: string, fieldTitle: string) => void
+  editLabel: (fieldName: string, fieldLabel: string) => void
+  editFieldType: (fieldName: string, newFieldType: string) => void
+  handleSubmit: () => Promise<void>
+}

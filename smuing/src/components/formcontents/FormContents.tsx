@@ -18,7 +18,6 @@ const FormContents: React.FC<FormContentsProps> = ({
     <div className="flex w-full px-4 bg-white rounded-md">
       <div className="flex flex-col items-center w-full">
         <FormBox field={field} editTitle={editTitle} editFieldType={editFieldType} deleteQuestion={deleteQuestion} />
-
         {field.question_type === 'checkbox' && (
           <button
             onClick={() => addOption(field.name)}
