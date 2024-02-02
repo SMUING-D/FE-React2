@@ -1,30 +1,30 @@
 import { ChangeEvent } from 'react'
 
-export type introduceBoxProps = {
+export type IntroduceBoxProps = {
   title: string
   content: string
   nextLineContent?: string
   children: React.ReactNode
 }
 
-export type countUpCardProps = {
+export type CountUpCardProps = {
   boxTitle: string
   numOfPeople: number
   lastUnit: string
 }
 
-export type partIntroData = {
+export type PartIntroData = {
   tech: string
   text: string
 }
 
-export type newsData = {
+export type NewsData = {
   id: number
   title: string
   description: string
   image: string
 }
-export type project = {
+export type Project = {
   id: number
   name: string
   description: string
@@ -37,12 +37,12 @@ export type project = {
   release: string | null
 }
 
-export type scroll = {
+export type Scroll = {
   x: number
   y: number
 }
 
-export type memberCardProps = {
+export type MemberCardProps = {
   name: string
   year: number
   sex: string
@@ -112,4 +112,53 @@ export type AddProject = {
 export type AddAnnounce = {
   announcetitle: string
   body: string
+}
+
+export type FormContentItem = {
+  id: number
+  name: string
+  title: string
+  label: string
+  required: boolean
+  question_type: string
+  list: string[]
+}
+
+export type FormOptionProps = {
+  field: FormContentItem
+  editLabel: (fieldName: string, fieldLabel: string) => void
+}
+
+export type FormTitleBoxProps = {
+  field: FormContentItem
+  editTitle: (fieldName: string, fieldTitle: string) => void
+  editFieldType: (fieldName: string, newFieldType: string) => void
+  deleteQuestion: (fieldName: string) => void
+}
+
+export type FormContentsProps = {
+  field: FormContentItem
+  editTitle: (fieldName: string, fieldTitle: string) => void
+  editFieldType: (fieldName: string, newFieldType: string) => void
+  deleteQuestion: (fieldName: string) => void
+  addOption: (fieldName: string) => void
+  handleRequire: (fieldName: string) => void
+  duplicateQuestion: (fieldName: string) => void
+  editLabel: (fieldName: string, fieldLabel: string) => void
+}
+
+export type FormHandlingHook = {
+  isButton: boolean
+  formContent: FormContentItem[]
+  updateFormContent: (fieldName: string, update: (field: FormContentItem) => void) => void
+  resetFormContent: () => void
+  addQuestion: () => void
+  duplicateQuestion: (fieldName: string) => void
+  addOption: (fieldName: string) => void
+  handleRequire: (fieldName: string) => void
+  deleteQuestion: (fieldName: string) => void
+  editTitle: (fieldName: string, fieldTitle: string) => void
+  editLabel: (fieldName: string, fieldLabel: string) => void
+  editFieldType: (fieldName: string, newFieldType: string) => void
+  handleSubmit: () => Promise<void>
 }
