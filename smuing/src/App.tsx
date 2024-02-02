@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Footer from './components/footer/Footer'
 import Navbar from './components/navbar/Navbar'
+import AddAnnounce from './pages/AddAnnounce'
 import AddProjectPage from './pages/AddProject'
 import FormPage from './pages/FormPage'
 import LoginPage from './pages/LoginPage'
@@ -18,7 +19,9 @@ function App() {
   return (
     <>
       {/* 특정 경로에서는 Navbar를 렌더링하지 않음 */}
-      {currentPath !== '/login' && currentPath !== '/projects/add' ? <Navbar /> : null}
+      {currentPath !== '/login' && currentPath !== '/projects/add' && currentPath !== '/announce/add' ? (
+        <Navbar />
+      ) : null}
 
       <Routes>
         <Route path="/" element={<MainPage />} />
@@ -27,12 +30,15 @@ function App() {
         <Route path="/members/:id" element={<MemberDetail />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/projects/add" element={<AddProjectPage />} />
+        <Route path="/announce/add" element={<AddAnnounce />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/Form" element={<FormPage />} />
       </Routes>
 
       {/* 이것도 마찬가지로 특정경로에서는 푸터 없음 */}
-      {currentPath !== '/login' && currentPath !== '/projects/add' ? <Footer /> : null}
+      {currentPath !== '/login' && currentPath !== '/projects/add' && currentPath !== '/announce/add' ? (
+        <Footer />
+      ) : null}
     </>
     // <div className="">
     //   <ProjectsPage />

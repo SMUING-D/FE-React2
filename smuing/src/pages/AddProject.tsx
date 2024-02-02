@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 
 import LoginNav from '../components/login/LoginNav'
 import TextArea from '../components/textarea/TextArea'
@@ -9,17 +9,10 @@ const AddProjectPage = () => {
   const [text, setText] = useState('')
   const [formData, setFormData] = useState<AddProject>({
     people: [],
-    projectTitle: '',
-    projectTechStack: '',
-    projectContent: '',
-    githubUrl: '',
   })
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
   const colaboratorData = [
-    { id: 1, part: 'web', name: '김태영' },
-    { id: 2, part: 'server', name: '임재영' },
-    { id: 3, part: 'design', name: '디자이너' },
     { id: 1, part: 'web', name: '김태영' },
     { id: 2, part: 'server', name: '임재영' },
     { id: 3, part: 'design', name: '디자이너' },
@@ -63,15 +56,15 @@ const AddProjectPage = () => {
   const getWindowWidth = () => window.innerWidth
 
   return (
-    <>
-      <LoginNav title="SMUMC for management team" />
-      <div className="bg-rgb-35-39-49 h-full w-full">
+    <div className="bg-rgb-35-39-49">
+      <LoginNav title="SMUMC for management team (add project)" />
+      <div className="h-full w-full min-h-screen">
         <div className="text-center pt-[80px]">
           <p className="text-white text-4xl pb-[10px]">프로젝트 등록</p>
           <p className="text-white text-sm">*운영진들만 접근 가능한 프로젝트 등록 페이지입니다.</p>
         </div>
 
-        <div className="mx-4 sm:mx-[30%]">
+        <div className="flex flex-col items-center mt-[20px]">
           <div className="w-full sm:w-[200px]">
             <button
               type="button"
@@ -81,7 +74,7 @@ const AddProjectPage = () => {
               인원 선택하기
             </button>
             {isDropdownOpen && (
-              <div className="fixed">
+              <div className="">
                 <select
                   value={formData.people}
                   onChange={handleColaborator}
@@ -115,12 +108,13 @@ const AddProjectPage = () => {
             </ul>
           </div>
         </div>
+
         <div className="text-center pt-4 sm:pt-[10px]">
           {titleText.map((title, index) => (
             <TextArea
               key={index}
-              value={text}
-              onChange={(newValue) => handleTextChange(newValue, title.text)}
+              value={formData[title.value] || ''}
+              onChange={(newValue) => handleTextChange(newValue, title.value)}
               placeholder={`프로젝트 ${title.text}을(를) 입력해주세요`}
               width={getWindowWidth() < 768 ? 'auto' : '700'}
               height={title.height}
@@ -129,15 +123,17 @@ const AddProjectPage = () => {
             />
           ))}
         </div>
-        <button
-          type="button"
-          className="w-full sm:w-[200px] mt-4 sm:mt-[10px] ml-4 sm:ml-[57%] py-2 border rounded-md focus:outline-none focus:border-blue-500 text-white"
-          onClick={handleProjectAdd}
-        >
-          프로젝트 등록하기
-        </button>
+        <div className="text-center pb-[20px]">
+          <button
+            type="button"
+            className="sm:w-[200px] mt-4 sm:mt-[10px] py-2 border rounded-md focus:outline-none focus:border-blue-500 text-white"
+            onClick={handleProjectAdd}
+          >
+            프로젝트 등록하기
+          </button>
+        </div>
       </div>
-    </>
+    </div>
   )
 }
 
