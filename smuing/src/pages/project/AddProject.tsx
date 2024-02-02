@@ -3,16 +3,11 @@ import React, { ChangeEvent, useState } from 'react'
 import LoginNav from '../../components/login/LoginNav'
 import TextArea from '../../components/textarea/TextArea'
 import { titleText } from '../../constants/ADD_PROJECT'
-import { AddProject } from '../../types/types'
 
 const AddProjectPage = () => {
   const [text, setText] = useState('')
   const [formData, setFormData] = useState<AddProject>({
     people: [],
-    projectTitle: '',
-    projectTechStack: '',
-    projectContent: '',
-    githubUrl: '',
   })
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
@@ -117,8 +112,8 @@ const AddProjectPage = () => {
           {titleText.map((title, index) => (
             <TextArea
               key={index}
-              value={text}
-              onChange={(newValue) => handleTextChange(newValue, title.text)}
+              value={formData[title.value] || ''}
+              onChange={(newValue) => handleTextChange(newValue, title.value)}
               placeholder={`프로젝트 ${title.text}을(를) 입력해주세요`}
               width={getWindowWidth() < 768 ? 'auto' : '700'}
               height={title.height}
