@@ -9,7 +9,6 @@ const FormBox: React.FC<FormBoxProps> = ({ field, editTitle, editFieldType, dele
         className="w-full placeholder-black"
         type="text"
         placeholder={field.title}
-        value={field.title}
         onChange={(e) => editTitle(field.name, e.target.value)}
       />
       <div className="flex items-center">

@@ -82,6 +82,7 @@ const FormPage: React.FC = () => {
       field.question_type = newFieldType
     })
   }
+  console.log(formContent)
 
   return (
     <div className="flex flex-col items-center flex-1 gap-10 px-4 pt-32 bg-black">
