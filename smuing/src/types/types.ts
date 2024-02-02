@@ -112,3 +112,8 @@ export type AddProject = {
   projectContent: string
   githubUrl: string
 }
+
+export type AddAnnounce = {
+  announcetitle: string
+  body: string
+}
