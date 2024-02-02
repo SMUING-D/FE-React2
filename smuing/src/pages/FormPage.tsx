@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { FaPlus } from 'react-icons/fa'
 
-import FormBox from '../components/formBox/formBox'
-import FormOption from '../components/formoption/formOption'
+import FormContents from '../components/formcontents/FormContents'
 import { FormContentItem } from '../types/types'
 
 // 이미지 삽입 기능
@@ -13,12 +12,13 @@ const FormPage: React.FC = () => {
   const [isButton, setIsButton] = useState<boolean>(false)
   const [formContent, setFormContent] = useState<FormContentItem[]>([])
 
-  const updateFormContent = (fieldName: string, updateFn: (field: FormContentItem) => void): void => {
+  const updateFormContent = (fieldName: string, update: (field: FormContentItem) => void): void => {
     const formFields: FormContentItem[] = [...formContent]
     const fieldIndex: number = formFields.findIndex((field: FormContentItem) => field.name === fieldName)
+    console.log(formContent[fieldIndex])
 
     if (fieldIndex > -1) {
-      updateFn(formFields[fieldIndex])
+      update(formFields[fieldIndex])
       setFormContent(formFields)
     }
   }
@@ -57,7 +57,7 @@ const FormPage: React.FC = () => {
     })
   }
 
-  const handleEssential = (fieldName: string): void => {
+  const handleRequire = (fieldName: string): void => {
     updateFormContent(fieldName, (field) => {
       field.required = !field.required
     })
@@ -85,7 +85,6 @@ const FormPage: React.FC = () => {
       field.question_type = newFieldType
     })
   }
-  console.log(formContent)
 
   return (
     <div className="flex flex-col items-center flex-1 gap-10 px-4 pt-32 bg-black">
@@ -94,57 +93,17 @@ const FormPage: React.FC = () => {
       </div>
       <div className="flex flex-col items-center w-full gap-4 px-4 pt-10 bg-indigo-400 rounded-lg ">
         {formContent.map((field, index) => (
-          <div key={index} className="flex w-full px-4 bg-white rounded-md">
-            <div className="flex flex-col items-center w-full">
-              <FormBox
-                field={field}
-                editTitle={editTitle}
-                editFieldType={editFieldType}
-                deleteQuestion={deleteQuestion}
-              />
-
-              {field.question_type === 'checkbox' && (
-                <button
-                  onClick={() => addOption(field.name)}
-                  className="w-20 sm:w-[100px] p-2 mt-4 text-[10px] sm:text-lg rounded-lg bg-slate-400"
-                >
-                  체크박스 추가
-                </button>
-              )}
-              {field.question_type === 'multipleChoice' && (
-                <button
-                  onClick={() => addOption(field.name)}
-                  className="w-20 sm:w-[120px] p-2 mt-4 text-[10px] sm:text-lg rounded-lg bg-slate-400"
-                >
-                  선택지 추가
-                </button>
-              )}
-              <FormOption field={field} editLabel={editLabel} />
-              <div className="flex gap-5 mb-4">
-                {field.required ? (
-                  <button
-                    className="sm:w-[100px] p-3 bg-red-500 rounded-md"
-                    onClick={() => handleEssential(field.name)}
-                  >
-                    필수
-                  </button>
-                ) : (
-                  <button
-                    className="sm:w-[100px] p-3 bg-gray-500 rounded-md"
-                    onClick={() => handleEssential(field.name)}
-                  >
-                    필수
-                  </button>
-                )}
-                <button
-                  className="sm:w-[100px] p-3 bg-orange-500 rounded-md sm:text-lg"
-                  onClick={() => duplicateQuestion(field.name)}
-                >
-                  복사
-                </button>
-              </div>
-            </div>
-          </div>
+          <FormContents
+            key={index}
+            field={field}
+            editTitle={editTitle}
+            editFieldType={editFieldType}
+            deleteQuestion={deleteQuestion}
+            addOption={() => addOption(field.name)}
+            handleRequire={() => handleRequire(field.name)}
+            duplicateQuestion={() => duplicateQuestion(field.name)}
+            editLabel={(fieldLabel: string) => editLabel(field.name, fieldLabel)}
+          />
         ))}
         {isButton ? (
           <button className="flex justify-center items-center w-[100px] sm:w-[200px] text-sm sm:text-lg mb-6 p-3 rounded-lg bg-yellow-400">

@@ -134,3 +134,14 @@ export type FormBoxProps = {
   editFieldType: (fieldName: string, newFieldType: string) => void
   deleteQuestion: (fieldName: string) => void
 }
+
+export type FormContentsProps = {
+  field: FormContentItem
+  editTitle: (fieldName: string, fieldTitle: string) => void
+  editFieldType: (fieldName: string, newFieldType: string) => void
+  deleteQuestion: (fieldName: string) => void
+  addOption: (fieldName: string) => void
+  handleRequire: (fieldName: string) => void
+  duplicateQuestion: (fieldName: string) => void
+  editLabel: (fieldName: string, fieldLabel: string) => void
+}
