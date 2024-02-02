@@ -1,8 +1,8 @@
 import { IoCloseSharp } from 'react-icons/io5'
 
-import { FormBoxProps } from '../../types/types'
+import { FormTitleBoxProps } from '../../types/types'
 
-const FormBox: React.FC<FormBoxProps> = ({ field, editTitle, editFieldType, deleteQuestion }) => {
+const FormTitleBox: React.FC<FormTitleBoxProps> = ({ field, editTitle, editFieldType, deleteQuestion }) => {
   const { name, title, question_type } = field
   return (
     <div className="flex justify-between w-full pt-5">
@@ -28,4 +28,4 @@ const FormBox: React.FC<FormBoxProps> = ({ field, editTitle, editFieldType, dele
   )
 }
 
-export default FormBox
+export default FormTitleBox

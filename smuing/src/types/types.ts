@@ -128,7 +128,7 @@ export type FormOptionProps = {
   editLabel: (fieldName: string, fieldLabel: string) => void
 }
 
-export type FormBoxProps = {
+export type FormTitleBoxProps = {
   field: FormContentItem
   editTitle: (fieldName: string, fieldTitle: string) => void
   editFieldType: (fieldName: string, newFieldType: string) => void

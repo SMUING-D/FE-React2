@@ -1,8 +1,8 @@
 import { FaCopy } from 'react-icons/fa'
 
 import { FormContentsProps } from '../../types/types'
-import FormBox from '../formbox/FormBox'
 import FormOption from '../formoption/FormOption'
+import FormTitleBox from '../formtitlebox/FormTitleBox'
 
 const FormContents: React.FC<FormContentsProps> = ({
   field,
@@ -18,7 +18,12 @@ const FormContents: React.FC<FormContentsProps> = ({
   return (
     <div className="flex w-full px-4 bg-white rounded-md">
       <div className="flex flex-col items-center w-full">
-        <FormBox field={field} editTitle={editTitle} editFieldType={editFieldType} deleteQuestion={deleteQuestion} />
+        <FormTitleBox
+          field={field}
+          editTitle={editTitle}
+          editFieldType={editFieldType}
+          deleteQuestion={deleteQuestion}
+        />
         {question_type === 'checkbox' && (
           <button
             onClick={() => addOption(name)}

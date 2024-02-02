@@ -38,7 +38,7 @@ const FormPage: React.FC = () => {
             addOption={() => addOption(field.name)}
             handleRequire={() => handleRequire(field.name)}
             duplicateQuestion={() => duplicateQuestion(field.name)}
-            editLabel={(fieldLabel: string) => editLabel(field.name, fieldLabel)}
+            editLabel={editLabel}
           />
         ))}
         {isButton ? (

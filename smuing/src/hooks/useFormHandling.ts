@@ -10,11 +10,11 @@ export const useFormHandling = (): FormHandlingHook => {
   const updateFormContent = (fieldName: string, update: (field: FormContentItem) => void): void => {
     const formFields: FormContentItem[] = [...formContent]
     const fieldIndex: number = formFields.findIndex((field: FormContentItem) => field.name === fieldName)
-    console.log(formContent)
     if (fieldIndex > -1) {
       update(formFields[fieldIndex])
       setFormContent(formFields)
     }
+    console.log(formFields[fieldIndex])
   }
 
   const resetFormContent = (): void => {
