@@ -1,10 +1,13 @@
-// FormPage.tsx
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { FaPlus } from 'react-icons/fa'
 
 import FormBox from '../components/formBox/formBox'
 import FormOption from '../components/formoption/formOption'
 import { FormContentItem } from '../types/types'
+
+// 이미지 삽입 기능
+// 체크박스랑 객관식 질문 항목들 상태 관리
+// 모바일 화면 옵션 위치, 제출 기능 구현
 
 const FormPage: React.FC = () => {
   const [isButton, setIsButton] = useState<boolean>(false)
