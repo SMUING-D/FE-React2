@@ -33,7 +33,20 @@ const FormPage: React.FC = () => {
     setFormContent([...formContent, field])
     setIsButton(true)
   }
+  const duplicateQuestion = (fieldName: string): void => {
+    const fieldToDuplicate = formContent.find((field) => field.name === fieldName)
 
+    if (fieldToDuplicate) {
+      const duplicatedField: FormContentItem = {
+        ...fieldToDuplicate,
+        id: formContent.length,
+        name: `question_${formContent.length}`,
+      }
+
+      setFormContent([...formContent, duplicatedField])
+      setIsButton(true)
+    }
+  }
   const addOption = (fieldName: string): void => {
     updateFormContent(fieldName, (field) => {
       const newOption: string = ''
@@ -85,6 +98,7 @@ const FormPage: React.FC = () => {
                 editFieldType={editFieldType}
                 deleteQuestion={deleteQuestion}
               />
+
               {field.question_type === 'checkbox' && (
                 <button
                   onClick={() => addOption(field.name)}
@@ -102,15 +116,29 @@ const FormPage: React.FC = () => {
                 </button>
               )}
               <FormOption field={field} editLabel={editLabel} />
-              {field.required ? (
-                <button className="p-3 mb-3 bg-red-500 rounded-md" onClick={() => handleEssential(field.name)}>
-                  필수
+              <div className="flex gap-5 mb-4">
+                {field.required ? (
+                  <button
+                    className="sm:w-[100px] p-3 bg-red-500 rounded-md"
+                    onClick={() => handleEssential(field.name)}
+                  >
+                    필수
+                  </button>
+                ) : (
+                  <button
+                    className="sm:w-[100px] p-3 bg-gray-500 rounded-md"
+                    onClick={() => handleEssential(field.name)}
+                  >
+                    필수
+                  </button>
+                )}
+                <button
+                  className="sm:w-[100px] p-3 bg-orange-500 rounded-md sm:text-lg"
+                  onClick={() => duplicateQuestion(field.name)}
+                >
+                  복사
                 </button>
-              ) : (
-                <button className="p-3 mb-3 bg-gray-500 rounded-md" onClick={() => handleEssential(field.name)}>
-                  필수
-                </button>
-              )}
+              </div>
             </div>
           </div>
         ))}
