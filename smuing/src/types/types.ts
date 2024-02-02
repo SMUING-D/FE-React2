@@ -112,3 +112,25 @@ export type AddProject = {
   projectContent: string
   githubUrl: string
 }
+
+export type FormContentItem = {
+  id: number
+  name: string
+  title: string
+  label: string
+  required: boolean
+  question_type: string
+  list: string[]
+}
+
+export type FormOptionProps = {
+  field: FormContentItem
+  editLabel: (fieldName: string, fieldLabel: string) => void
+}
+
+export type FormBoxProps = {
+  field: FormContentItem
+  editTitle: (fieldName: string, fieldTitle: string) => void
+  editFieldType: (fieldName: string, newFieldType: string) => void
+  deleteQuestion: (fieldName: string) => void
+}
