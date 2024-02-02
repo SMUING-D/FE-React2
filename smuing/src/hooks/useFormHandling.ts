@@ -10,7 +10,7 @@ export const useFormHandling = (): FormHandlingHook => {
   const updateFormContent = (fieldName: string, update: (field: FormContentItem) => void): void => {
     const formFields: FormContentItem[] = [...formContent]
     const fieldIndex: number = formFields.findIndex((field: FormContentItem) => field.name === fieldName)
-
+    console.log(formContent)
     if (fieldIndex > -1) {
       update(formFields[fieldIndex])
       setFormContent(formFields)
@@ -88,6 +88,7 @@ export const useFormHandling = (): FormHandlingHook => {
 
   const handleSubmit = async (): Promise<void> => {
     const submitData = formContent
+
     try {
       const response = await fetch('/api/submitForm', {
         method: 'POST',

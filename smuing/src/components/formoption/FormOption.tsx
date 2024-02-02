@@ -51,7 +51,17 @@ const FormOption: React.FC<FormOptionProps> = ({ field, editLabel }) => {
           ))}
         </div>
       )}
-      {question_type}
+      {question_type === 'imageBox' && (
+        <div>
+          <input type="file" accept="image/*" />
+          <input
+            onChange={(e) => editLabel(name, e.target.value)}
+            type="text"
+            className="block w-full h-10 px-5 rounded-md "
+            placeholder={label}
+          />
+        </div>
+      )}
     </div>
   )
 }

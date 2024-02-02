@@ -18,6 +18,7 @@ const FormBox: React.FC<FormBoxProps> = ({ field, editTitle, editFieldType, dele
           <option value="paragraph">긴 질문</option>
           <option value="multipleChoice">객관식 질문</option>
           <option value="checkbox">체크박스</option>
+          <option value="imageBox">이미지박스</option>
         </select>
         <button className="ml-2" onClick={() => deleteQuestion(name)}>
           <IoCloseSharp size={20} className="text-red-500 hover:text-red-900" />
