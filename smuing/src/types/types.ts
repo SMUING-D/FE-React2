@@ -107,10 +107,11 @@ export type TextAreaProps = {
 
 export type AddProject = {
   people: string[]
-  projectTitle: string
-  projectTechStack: string
-  projectContent: string
-  githubUrl: string
+}
+
+export type AddAnnounce = {
+  announcetitle: string
+  body: string
 }
 
 export type FormContentItem = {
