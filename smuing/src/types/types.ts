@@ -162,3 +162,12 @@ export type FormHandlingHook = {
   editFieldType: (fieldName: string, newFieldType: string) => void
   handleSubmit: () => Promise<void>
 }
+
+export type InfiniteCardProps = {
+  id: number
+  img: string
+  year: number
+  description: string
+  name: string
+  member: string[]
+}
