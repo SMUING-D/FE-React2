@@ -13,7 +13,7 @@ const FormTitleBox: React.FC<FormTitleBoxProps> = ({ field, editTitle, editField
         onChange={(e) => editTitle(name, e.target.value)}
       />
       <div className="flex items-center">
-        <select className="ml-2" onChange={(e) => editFieldType(name, e.target.value)} value={question_type}>
+        <select className="" onChange={(e) => editFieldType(name, e.target.value)} value={question_type}>
           <option value="shortAnswer">짧은 질문</option>
           <option value="paragraph">긴 질문</option>
           <option value="multipleChoice">객관식 질문</option>
