@@ -7,6 +7,7 @@ import { FormContentItem } from '../types/types'
 export const useFormHandling = (): FormHandlingHook => {
   const [isButton, setIsButton] = useState<boolean>(false)
   const [formContent, setFormContent] = useState<FormContentItem[]>([])
+
   const updateFormContent = (fieldName: string, update: (field: FormContentItem) => void): void => {
     const formFields: FormContentItem[] = [...formContent]
     const fieldIndex: number = formFields.findIndex((field: FormContentItem) => field.name === fieldName)
