@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { FormHandlingHook } from '../types/types'
 import { FormContentItem } from '../types/types'
 
-export const useFormHandling = (): FormHandlingHook => {
+const useFormHandling = (): FormHandlingHook => {
   const [isButton, setIsButton] = useState<boolean>(false)
   const [formContent, setFormContent] = useState<FormContentItem[]>([])
 
@@ -118,3 +118,5 @@ export const useFormHandling = (): FormHandlingHook => {
     handleSubmit,
   }
 }
+
+export default useFormHandling

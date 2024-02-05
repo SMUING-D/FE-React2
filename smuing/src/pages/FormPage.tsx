@@ -1,7 +1,7 @@
 import { FaPlus } from 'react-icons/fa'
 
 import FormContents from '../components/formcontents/FormContents'
-import { useFormHandling } from '../hooks/useFormHandling'
+import useFormHandling from '../hooks/useFormHandling'
 
 const FormPage: React.FC = () => {
   const {
@@ -24,6 +24,7 @@ const FormPage: React.FC = () => {
         <h1 className="text-3xl font-semibold">폼 생성 페이지</h1>
       </div>
       <form
+        method="post"
         onSubmit={(event) => {
           event.preventDefault()
           handleSubmit()

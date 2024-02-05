@@ -8,7 +8,6 @@ import { sidebarOpen } from '../../redux/slices/sidebarSlice'
 const Navbar: React.FC = () => {
   const { y } = useScroll()
   const navBackground = y < 100 ? 'bg-slate-900' : 'bg-transparent'
-  // 햄버거 버튼 기능 아직 구현못함
   const dispatch = useDispatch()
 
   const handleSidebar = () => {

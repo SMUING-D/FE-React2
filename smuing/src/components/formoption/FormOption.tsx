@@ -1,8 +1,9 @@
+import useOnUpload from '../../hooks/useOnUpload'
 import { FormOptionProps } from '../../types/types'
 
 const FormOption: React.FC<FormOptionProps> = ({ field, editLabel }) => {
   const { name, question_type, label, list } = field
-
+  const { imageSrc, onUpload } = useOnUpload()
   return (
     <div className="w-full mt-8 mb-10 text-black">
       {question_type === 'shortAnswer' && (
@@ -53,7 +54,11 @@ const FormOption: React.FC<FormOptionProps> = ({ field, editLabel }) => {
       )}
       {question_type === 'imageBox' && (
         <div>
-          <input type="file" accept="image/*" />
+          <label className="p-3 bg-red-300 rounded-lg cursor-pointer" htmlFor="Img">
+            이미지 추가
+          </label>
+          {imageSrc && <img className="w-1/2 mt-3" src={imageSrc} />}
+          <input className="hidden" id="Img" type="file" accept="image/*" onChange={(event) => onUpload(event)} />
           <input
             onChange={(e) => editLabel(name, e.target.value)}
             type="text"
