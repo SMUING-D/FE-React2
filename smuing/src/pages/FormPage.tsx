@@ -3,10 +3,6 @@ import { FaPlus } from 'react-icons/fa'
 import FormContents from '../components/formcontents/FormContents'
 import { useFormHandling } from '../hooks/useFormHandling'
 
-// 이미지 삽입 기능
-// 체크박스랑 객관식 질문 항목들 상태 관리
-// 모바일 화면 옵션 태그들 위치
-
 const FormPage: React.FC = () => {
   const {
     isButton,

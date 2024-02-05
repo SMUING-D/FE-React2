@@ -14,10 +14,11 @@ import MemberActive from './pages/MemberActive'
 import MemberAll from './pages/MemberAll'
 import MemberDetail from './pages/MemberDetail'
 import ProjectsPage from './pages/ProjectsPage'
+import { RootState } from './redux/store/store'
 
 function App() {
   const currentPath = window.location.pathname
-  const { isOpen } = useSelector((state) => state.sidebar)
+  const { isOpen } = useSelector((state: RootState) => state.sidebar)
 
   return (
     <>

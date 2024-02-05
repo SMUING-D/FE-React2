@@ -170,3 +170,6 @@ export type InfiniteCardProps = {
   name: string
   member: string[]
 }
+export type SidebarState = {
+  isOpen: boolean
+}
