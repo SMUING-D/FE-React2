@@ -162,3 +162,10 @@ export type FormHandlingHook = {
   editFieldType: (fieldName: string, newFieldType: string) => void
   handleSubmit: () => Promise<void>
 }
+
+export type textboxprops = {
+  title: string
+  writer: string
+  date: string
+  bodyText: string
+}

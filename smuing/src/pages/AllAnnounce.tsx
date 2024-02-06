@@ -1,4 +1,7 @@
+import { Link } from 'react-router-dom'
+
 import TextBox from '../components/announce/TextBox'
+import { textData } from '../constants/ANNOUNCE_DATA'
 
 const AllAnnounce = () => {
   return (
@@ -11,9 +14,11 @@ const AllAnnounce = () => {
 
       {/* 바디 부분 */}
       <div className="flex flex-col items-center mt-[50px]">
-        <TextBox />
-        <TextBox />
-        <TextBox />
+        {textData.map((text, index) => (
+          <Link key={index} to={`announce/1`} className="no-underline">
+            <TextBox key={index} title={text.title} writer={text.writer} date={text.date} bodyText={text.bodyText} />
+          </Link>
+        ))}
       </div>
     </div>
   )
