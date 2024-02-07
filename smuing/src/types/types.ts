@@ -163,6 +163,20 @@ export type FormHandlingHook = {
   handleSubmit: () => Promise<void>
 }
 
+
+export type textboxprops = {
+  title: string
+  writer: string
+  date: string
+  bodyText: string
+}
+
+export type detailAnnounce = {
+  title: string
+  writer: string
+  date: string
+  bodyText: string
+}
 export type InfiniteCardProps = {
   id: number
   img: string

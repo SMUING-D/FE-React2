@@ -7,6 +7,8 @@ import Navbar from './components/navbar/Navbar'
 import Sidebar from './components/sidebar/Sidebar'
 import AddAnnounce from './pages/AddAnnounce'
 import AddProjectPage from './pages/AddProject'
+import AllAnnounce from './pages/AllAnnounce'
+import DetailAnnounce from './pages/DetailAnnounce'
 import FormPage from './pages/FormPage'
 import LoginPage from './pages/LoginPage'
 import MainPage from './pages/MainPage'
@@ -36,6 +38,8 @@ function App() {
         <Route path="/announce/add" element={<AddAnnounce />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/Form" element={<FormPage />} />
+        <Route path="/announce" element={<AllAnnounce />} />
+        <Route path="/announce/:id" element={<DetailAnnounce />} />
       </Routes>
 
       {/* 이것도 마찬가지로 특정경로에서는 푸터 없음 */}
