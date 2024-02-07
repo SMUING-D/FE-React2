@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 
+import { postEmail } from '../../api/email'
 import { postJoin } from '../../api/join'
 import { joinText } from '../../constants/JOIN'
 import { selectType } from '../../constants/JOIN'
@@ -112,6 +113,8 @@ const Join: React.FC = () => {
   //이메일 인증코드 요청 보내기
   const handleEmailSubmit = () => {
     console.log('formdata.email 이메일 인증 api로 보내기')
+    const response = postEmail(formData.studentId)
+    console.log(response)
   }
 
   //인증번호 상태변경
