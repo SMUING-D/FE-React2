@@ -15,7 +15,7 @@ const AllAnnounce = () => {
       {/* 바디 부분 */}
       <div className="flex flex-col items-center mt-[50px]">
         {textData.map((text, index) => (
-          <Link key={index} to={`announce/1`} className="no-underline">
+          <Link key={index} to={`/announce/1`} className="no-underline">
             <TextBox key={index} title={text.title} writer={text.writer} date={text.date} bodyText={text.bodyText} />
           </Link>
         ))}

@@ -169,3 +169,10 @@ export type textboxprops = {
   date: string
   bodyText: string
 }
+
+export type detailAnnounce = {
+  title: string
+  writer: string
+  date: string
+  bodyText: string
+}
