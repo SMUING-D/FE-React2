@@ -1,12 +1,12 @@
 import useCountUp from '../../hooks/useCountUp'
-import { countUpCardProps } from '../../types/types'
+import { CountUpCardProps } from '../../types/types'
 
-const CountUpCard: React.FC<countUpCardProps> = ({ boxTitle, numOfPeople, lastUnit }: countUpCardProps) => {
+const CountUpCard: React.FC<CountUpCardProps> = ({ boxTitle, numOfPeople, lastUnit }: CountUpCardProps) => {
   const displayNumber = useCountUp(numOfPeople)
   return (
-    <div className="flex flex-col justify-center items-center bg-white text-black rounded-[15%] lg:w-[380px] lg:h-[300px] sm:w-[280px] sm:h-[250px]">
-      <p className="lg:text-4xl mb-7 sm:text-3xl">{boxTitle}</p>
-      <p className="text-6xl sm:text-7xl">
+    <div className="bg-white text-black w-[200px] h-[200px] lg:w-[400px] lg:h-[400px] rounded-2xl flex flex-col items-center justify-center">
+      <p className="text-xl lg:text-4xl">{boxTitle}</p>
+      <p className="mt-3 text-5xl lg:text-8xl lg:mt-8">
         {displayNumber}
         {lastUnit}
       </p>

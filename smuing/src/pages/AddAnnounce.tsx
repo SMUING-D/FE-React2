@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
-import LoginNav from '../../components/login/LoginNav'
-import TextArea from '../../components/textarea/TextArea'
-import { titleText } from '../../constants/ADD_ANNOUNCE'
+import LoginNav from '../components/login/LoginNav'
+import TextArea from '../components/textarea/TextArea'
+import { titleText } from '../constants/ADD_ANNOUNCE'
 
 // import { AddAnnounce } from '../../types/types'
 

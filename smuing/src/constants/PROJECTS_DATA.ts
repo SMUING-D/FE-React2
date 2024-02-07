@@ -1,4 +1,4 @@
-const PROJECTSDATA = [
+const PROJECTS_DATA = [
   {
     id: 1,
     name: '가치더치(TogeDutch)',
@@ -165,4 +165,4 @@ const PROJECTSDATA = [
   },
 ]
 
-export default PROJECTSDATA
+export default PROJECTS_DATA

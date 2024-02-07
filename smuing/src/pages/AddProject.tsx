@@ -1,9 +1,9 @@
 import React, { ChangeEvent, useState } from 'react'
 
-import LoginNav from '../../components/login/LoginNav'
-import TextArea from '../../components/textarea/TextArea'
-import { titleText } from '../../constants/ADD_PROJECT'
-import { AddProject } from '../../types/types'
+import LoginNav from '../components/login/LoginNav'
+import TextArea from '../components/textarea/TextArea'
+import { titleText } from '../constants/ADD_PROJECT'
+import { AddProject } from '../types/types'
 
 const AddProjectPage = () => {
   const [text, setText] = useState('')
