@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 
+import { postJoin } from '../../api/join'
 import { joinText } from '../../constants/JOIN'
 import { selectType } from '../../constants/JOIN'
 import { FormData } from '../../types/types'
@@ -10,21 +11,51 @@ const Join: React.FC = () => {
   const [verificationCode, setVerificationCode] = useState('')
   const [formData, setFormData] = useState<FormData>({
     name: '',
-    studentId: '',
+    studentId: undefined,
     nickname: '',
     email: '',
     password: '',
-    major: 0,
+    major: '',
     privacyPolicy: false,
-    sex: '',
+    sex: 0,
     github: '',
-    // 전공아이디도 추가해야됌
   })
 
   const majors = [
     { id: 0, name: '전공을 선택해주세요' },
-    { id: 1, name: '컴공' },
-    { id: 2, name: '휴먼지능' },
+    { id: 1, name: '컴퓨터과학과' },
+    { id: 2, name: '휴먼지능정보공학전공' },
+    { id: 3, name: '경제금융학부' },
+    { id: 4, name: '역사콘텐츠전공' },
+    { id: 5, name: '지적재산권전공' },
+    { id: 6, name: '문헌정보학전공' },
+    { id: 7, name: '공간환경학부' },
+    { id: 8, name: '행정학부' },
+    { id: 9, name: '가족복지학과' },
+    { id: 10, name: '국가안보학과' },
+    { id: 11, name: '국어교육과' },
+    { id: 12, name: '영어교육과' },
+    { id: 13, name: '교육학과' },
+    { id: 14, name: '수학교육과' },
+    { id: 15, name: '경영학부' },
+    { id: 16, name: '글로벌경영학과' },
+    { id: 17, name: '융합경영학과' },
+    { id: 18, name: '핀테크·빅데이터융합·스마트생산 전공' },
+    { id: 19, name: '전기공학전공' },
+    { id: 20, name: '지능IOT융합전공' },
+    { id: 21, name: '게임전공' },
+    { id: 22, name: '애니메이션전공' },
+    { id: 23, name: '한일문화콘텐츠전공' },
+    { id: 24, name: '생명공학전공' },
+    { id: 25, name: '화학에너지공학전공' },
+    { id: 26, name: '화공신소재전공' },
+    { id: 27, name: '식품영양학전공' },
+    { id: 28, name: '의류학전공' },
+    { id: 29, name: '스포츠건강관리전공' },
+    { id: 30, name: '무용예술전공' },
+    { id: 31, name: '조형예술전공' },
+    { id: 32, name: '생활예술전공' },
+    { id: 33, name: '음악학부' },
   ]
 
   const sex = [
@@ -40,6 +71,7 @@ const Join: React.FC = () => {
       ...prevData,
       [name]: type === 'checkbox' ? checked : value,
     }))
+    console.log(formData)
 
     switch (name) {
       case 'email':
@@ -55,7 +87,17 @@ const Join: React.FC = () => {
 
     if (emailValid) {
       console.log('폼:', formData)
-      // 회원가입 api 로직
+      const response = postJoin(
+        formData.studentId,
+        formData.name,
+        formData.password,
+        formData.email,
+        formData.nickname,
+        formData.major,
+        formData.github,
+        formData.sex - 1,
+      )
+      console.log(response)
     } else {
       console.log('이메일 에러')
     }
@@ -185,7 +227,7 @@ const Join: React.FC = () => {
               >
                 {select.type === 'major'
                   ? majors.map((item) => (
-                      <option key={item.id} value={item.id}>
+                      <option key={item.id} value={item.name}>
                         {item.name}
                       </option>
                     ))
