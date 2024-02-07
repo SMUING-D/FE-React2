@@ -44,8 +44,8 @@ function App() {
 
       {/* 이것도 마찬가지로 특정경로에서는 푸터 없음 */}
 
-      {isOpen && <Sidebar />}
-      {currentPath !== '/login' && currentPath !== '/projects/add' ? <Footer /> : null}
+      {/* {isOpen && <Sidebar />} */}
+      {/* {currentPath !== '/login' && currentPath !== '/projects/add' ? <Footer /> : null} */}
 
       {currentPath !== '/login' && currentPath !== '/projects/add' && currentPath !== '/announce/add' ? (
         <Footer />
