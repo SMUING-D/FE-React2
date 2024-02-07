@@ -163,7 +163,6 @@ export type FormHandlingHook = {
   handleSubmit: () => Promise<void>
 }
 
-
 export type textboxprops = {
   title: string
   writer: string

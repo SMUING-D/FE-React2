@@ -1,6 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 
 import { joinText } from '../../constants/JOIN'
+import { selectType } from '../../constants/JOIN'
 import { FormData } from '../../types/types'
 import Input from '../input/Input'
 
@@ -100,60 +101,15 @@ const Join: React.FC = () => {
                 name={join.name}
                 type={join.type}
                 placeholder={join.placeholder}
-                value={formData + '.' + `${join.value}`}
+                value={formData[join.value]}
                 onChange={handleChange}
                 isValid={true}
                 errorMessage={join.errorMessage}
               />
             </div>
           ))}
-          {/* 이름 */}
 
-          <div className="mb-4">
-            <label className="block text-gray-600 text-sm font-medium mb-2">이름</label>
-            <Input
-              id="name"
-              name="name"
-              type="text"
-              placeholder="이름을 입력하세요"
-              value={formData.name}
-              onChange={handleChange}
-              isValid={true}
-              errorMessage="이름을 입력하세요"
-            />
-          </div>
-
-          {/* 학번 */}
-          <div className="mb-4">
-            <label className="block text-gray-600 text-sm font-medium mb-2">학번</label>
-            <Input
-              id="studentId"
-              name="studentId"
-              type="text"
-              placeholder="학번을 입력하세요"
-              value={formData.studentId}
-              onChange={handleChange}
-              isValid={true}
-              errorMessage="이름을 입력하세요"
-            />
-          </div>
-
-          {/* 닉네임 */}
-          <div className="mb-4">
-            <label className="block text-gray-600 text-sm font-medium mb-2">닉네임</label>
-            <Input
-              id="nickname"
-              name="nickname"
-              type="text"
-              placeholder="닉네임을 입력하세요"
-              value={formData.nickname}
-              onChange={handleChange}
-              isValid={true}
-              errorMessage="닉네임을 입력하세요"
-            />
-          </div>
-
-          {/* 이메일 */}
+          {/* 이메일 작성 및 인증 */}
           <div className="mb-4">
             <label className="block text-gray-600 text-sm font-medium mb-2">이메일</label>
             <Input
@@ -216,55 +172,33 @@ const Join: React.FC = () => {
             />
           </div>
 
-          {/* 전공 선택 */}
-          <div className="mb-4">
-            <label className="block text-gray-600 text-sm font-medium mb-2">전공</label>
-            <select
-              id="major"
-              name="major"
-              value={formData.major}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-            >
-              {majors.map((major) => (
-                <option key={major.id} value={major.id}>
-                  {major.name}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* 성별 */}
-          <div className="mb-4">
-            <label className="block text-gray-600 text-sm font-medium mb-2">성별</label>
-            <select
-              id="major"
-              name="major"
-              value={formData.sex}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-            >
-              {sex.map((sex) => (
-                <option key={sex.id} value={sex.id}>
-                  {sex.name}
-                </option>
-              ))}
-            </select>
-          </div>
-          {/* 깃허브 이메일 */}
-          <div className="mb-4">
-            <label className="block text-gray-600 text-sm font-medium mb-2">깃허브 주소</label>
-            <Input
-              id="github"
-              name="github"
-              type="text"
-              placeholder="깃허브 주소를 입력해주세요"
-              value={formData.github}
-              onChange={handleChange}
-              isValid={true}
-              errorMessage=""
-            />
-          </div>
+          {/* 전공 및 성별 선택 */}
+          {selectType.map((select, index) => (
+            <div className="mb-4" key={index}>
+              <label className="block text-gray-600 text-sm font-medium mb-2">{select.title}</label>
+              <select
+                id={select.id}
+                name={select.name}
+                value={formData[select.value]}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+              >
+                {select.type === 'major'
+                  ? majors.map((item) => (
+                      <option key={item.id} value={item.id}>
+                        {item.name}
+                      </option>
+                    ))
+                  : select.type === 'sex'
+                    ? sex.map((item) => (
+                        <option key={item.id} value={item.id}>
+                          {item.name}
+                        </option>
+                      ))
+                    : null}
+              </select>
+            </div>
+          ))}
 
           {/* 동의항목 */}
           <div className="mb-4">
