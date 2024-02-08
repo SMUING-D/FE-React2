@@ -17,7 +17,7 @@ const MemberCard: React.FC<{ member: memberCardProps }> = ({ member }) => {
     >
       {/* 카드 커버 */}
       {member.position !== '챌린저' && (
-        <div className="w-[50px] h-[32px] rounded-[0.5rem] bg-gray-300 text-center pt-1 ml-[52px] mb-[-60px] mt-11 relative z-10 text-base">
+        <div className="w-[60px] text-2 h-[32px] rounded-[0.5rem] bg-gray-300 text-center pt-1 ml-[52px] mb-[-60px] mt-11 relative z-10 text-base p-[2px]">
           {member.position}
         </div>
       )}
