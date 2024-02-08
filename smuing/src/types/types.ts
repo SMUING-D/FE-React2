@@ -66,13 +66,13 @@ export type Member = {
 
 export type FormData = {
   name: string
-  studentId: string
+  studentId: number | undefined
   nickname: string
   email: string
   password: string
-  major: number
+  major: string
   privacyPolicy: boolean
-  sex: string
+  sex: number
   github: string
 }
 
@@ -81,7 +81,7 @@ export type InputProps = {
   name: string
   type: string
   placeholder: string
-  value?: string
+  value?: string | number
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
   isValid?: boolean
   errorMessage: string
