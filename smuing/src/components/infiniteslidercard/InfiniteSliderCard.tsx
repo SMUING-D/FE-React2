@@ -16,8 +16,8 @@ const InfiniteSliderCard: React.FC<InfiniteCardProps> = ({ id, img, year, descri
             <h3 className="mt-5 mb-5 text-sm">{description}</h3>
             <span className="">참가자</span>
             <div className="w-full text-center">
-              {member.map((data) => (
-                <div key={id} className="mb-1 text-xs border-2 border-yellow-300 border-solid rounded-md">
+              {member.map((data, index) => (
+                <div key={index} className="mb-1 text-xs border-2 border-yellow-300 border-solid rounded-md">
                   {data}
                 </div>
               ))}

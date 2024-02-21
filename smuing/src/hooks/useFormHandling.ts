@@ -1,9 +1,10 @@
+import axios from 'axios'
 import { useState } from 'react'
 
 import { FormHandlingHook } from '../types/types'
 import { FormContentItem } from '../types/types'
 
-export const useFormHandling = (): FormHandlingHook => {
+const useFormHandling = (): FormHandlingHook => {
   const [isButton, setIsButton] = useState<boolean>(false)
   const [formContent, setFormContent] = useState<FormContentItem[]>([])
 
@@ -15,10 +16,6 @@ export const useFormHandling = (): FormHandlingHook => {
       setFormContent(formFields)
     }
     console.log(formFields[fieldIndex])
-  }
-
-  const resetFormContent = (): void => {
-    setFormContent([])
   }
 
   const addQuestion = (): void => {
@@ -89,15 +86,15 @@ export const useFormHandling = (): FormHandlingHook => {
   const handleSubmit = async (): Promise<void> => {
     const submitData = formContent
 
+    console.log('제출 data:', submitData)
     try {
-      const response = await fetch('/api/submitForm', {
-        method: 'POST',
+      const response = await axios.post('/api/submitForm', submitData, {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(submitData),
       })
-      if (response.ok) {
+
+      if (response.status === 200) {
         setFormContent([])
         console.log('제출 성공적으로 됐다.')
       }
@@ -110,7 +107,6 @@ export const useFormHandling = (): FormHandlingHook => {
     isButton,
     formContent,
     updateFormContent,
-    resetFormContent,
     addQuestion,
     duplicateQuestion,
     addOption,
@@ -122,3 +118,5 @@ export const useFormHandling = (): FormHandlingHook => {
     handleSubmit,
   }
 }
+
+export default useFormHandling

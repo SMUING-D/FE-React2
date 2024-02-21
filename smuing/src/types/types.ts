@@ -151,7 +151,6 @@ export type FormHandlingHook = {
   isButton: boolean
   formContent: FormContentItem[]
   updateFormContent: (fieldName: string, update: (field: FormContentItem) => void) => void
-  resetFormContent: () => void
   addQuestion: () => void
   duplicateQuestion: (fieldName: string) => void
   addOption: (fieldName: string) => void
@@ -183,4 +182,7 @@ export type InfiniteCardProps = {
   description: string
   name: string
   member: string[]
+}
+export type SidebarState = {
+  isOpen: boolean
 }
