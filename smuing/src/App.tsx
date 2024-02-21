@@ -24,7 +24,7 @@ function App() {
 
   return (
     <>
-      {/* 특정 경로에서는 Navbar를 렌더링하지 않음 /}
+      {/* 특정 경로에서는 Navbar를 렌더링하지 않음 */}
       {currentPath !== '/login' && currentPath !== '/projects/add' && currentPath !== '/announce/add' ? (
         <Navbar />
       ) : null}
@@ -43,10 +43,10 @@ function App() {
         <Route path="/announce/:id" element={<DetailAnnounce />} />
       </Routes>
 
-      {/ 이것도 마찬가지로 특정경로에서는 푸터 없음 /}
+      {/* 이것도 마찬가지로 특정경로에서는 푸터 없음  */}
 
       {isOpen && <Sidebar />}
-      {/ {currentPath !== '/login' && currentPath !== '/projects/add' ? <Footer /> : null} */}
+      {currentPath !== '/login' && currentPath !== '/projects/add' ? <Footer /> : null}
 
       {currentPath !== '/login' && currentPath !== '/projects/add' && currentPath !== '/announce/add' ? (
         <Footer />
