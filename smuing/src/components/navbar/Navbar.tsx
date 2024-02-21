@@ -2,7 +2,7 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
-import useScroll from '../../hooks/useScroll'
+import { useScroll } from '../../hooks/useScroll'
 import { sidebarOpen } from '../../redux/slices/sidebarSlice'
 
 const Navbar: React.FC = () => {
