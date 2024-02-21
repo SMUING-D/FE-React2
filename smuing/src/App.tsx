@@ -16,14 +16,15 @@ import MemberActive from './pages/MemberActive'
 import MemberAll from './pages/MemberAll'
 import MemberDetail from './pages/MemberDetail'
 import ProjectsPage from './pages/ProjectsPage'
+import { RootState } from './redux/store/store'
 
 function App() {
   const currentPath = window.location.pathname
-  const { isOpen } = useSelector((state) => state.sidebar)
+  const { isOpen } = useSelector((state: RootState) => state.sidebar)
 
   return (
     <>
-      {/* 특정 경로에서는 Navbar를 렌더링하지 않음 */}
+      {/* 특정 경로에서는 Navbar를 렌더링하지 않음 /}
       {currentPath !== '/login' && currentPath !== '/projects/add' && currentPath !== '/announce/add' ? (
         <Navbar />
       ) : null}
@@ -42,10 +43,10 @@ function App() {
         <Route path="/announce/:id" element={<DetailAnnounce />} />
       </Routes>
 
-      {/* 이것도 마찬가지로 특정경로에서는 푸터 없음 */}
+      {/ 이것도 마찬가지로 특정경로에서는 푸터 없음 /}
 
-      {/* {isOpen && <Sidebar />} */}
-      {/* {currentPath !== '/login' && currentPath !== '/projects/add' ? <Footer /> : null} */}
+      {isOpen && <Sidebar />}
+      {/ {currentPath !== '/login' && currentPath !== '/projects/add' ? <Footer /> : null} */}
 
       {currentPath !== '/login' && currentPath !== '/projects/add' && currentPath !== '/announce/add' ? (
         <Footer />

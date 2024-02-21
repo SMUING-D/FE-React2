@@ -1,6 +1,6 @@
 import CountUpCard from '../components/countupcard/CountUpCard'
 import HeroBox from '../components/herobox/HeroBox'
-import InfiniteSlider from '../components/infiniteslider/InfiniteSlider'
+import InfiniteSlider from '../components/infiniteSlider.tsx/InfiniteSlider'
 import IntroduceBox from '../components/introducebox/IntoroduceBox'
 import NewsBox from '../components/newsbox/NewsBox'
 import PartIntro from '../components/partintro/PartIntro'
