@@ -7,7 +7,7 @@ import App from './App'
 import './index.css'
 import { store } from './redux/store/store.ts'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>
     <BrowserRouter>
       <React.StrictMode>

@@ -1,6 +1,8 @@
-import { detailAnnounce } from '../types/types'
-
-const DetailAnnounce: React.FC<detailAnnounce> = ({ title, writer, date, bodyText }) => {
+const DetailAnnounce: React.FC = () => {
+  const title = '여기는 프랍이 아닙니다.'
+  const writer = '김태영'
+  const date = '2월 22일'
+  const bodyText = '야호!'
   return (
     <div className="bg-rgb-35-39-49 h-full w-full min-h-screen">
       {/* 타이틀 부분 */}

@@ -1,21 +1,22 @@
 import { useSelector } from 'react-redux'
 import { Route, Routes } from 'react-router-dom'
 
-import './App.css'
 import Footer from './components/footer/Footer'
 import Navbar from './components/navbar/Navbar'
 import Sidebar from './components/sidebar/Sidebar'
-import AddAnnounce from './pages/AddAnnounce'
-import AddProjectPage from './pages/AddProject'
-import AllAnnounce from './pages/AllAnnounce'
-import DetailAnnounce from './pages/DetailAnnounce'
-import FormPage from './pages/FormPage'
-import LoginPage from './pages/LoginPage'
-import MainPage from './pages/MainPage'
-import MemberActive from './pages/MemberActive'
-import MemberAll from './pages/MemberAll'
-import MemberDetail from './pages/MemberDetail'
-import ProjectsPage from './pages/ProjectsPage'
+import {
+  AddAnnounce,
+  AddProjectPage,
+  AllAnnounce,
+  DetailAnnounce,
+  FormPage,
+  LoginPage,
+  MainPage,
+  MemberActive,
+  MemberAll,
+  MemberDetail,
+  ProjectsPage,
+} from './pages'
 import { RootState } from './redux/store/store'
 
 function App() {
