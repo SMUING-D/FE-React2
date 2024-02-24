@@ -127,6 +127,7 @@ export type FormContentItem = {
 export type FormOptionProps = {
   field: FormContentItem
   editLabel: (fieldName: string, fieldLabel: string) => void
+  editList: (fieldName: string, index: number, fieldList: string) => void
 }
 
 export type FormTitleBoxProps = {
@@ -145,6 +146,7 @@ export type FormContentsProps = {
   handleRequire: (fieldName: string) => void
   duplicateQuestion: (fieldName: string) => void
   editLabel: (fieldName: string, fieldLabel: string) => void
+  editList: (fieldName: string, fieldList: string[]) => void
 }
 
 export type FormHandlingHook = {
@@ -158,6 +160,7 @@ export type FormHandlingHook = {
   deleteQuestion: (fieldName: string) => void
   editTitle: (fieldName: string, fieldTitle: string) => void
   editLabel: (fieldName: string, fieldLabel: string) => void
+  editList: (fieldName: string, fieldList: string[]) => void
   editFieldType: (fieldName: string, newFieldType: string) => void
   handleSubmit: () => Promise<void>
 }

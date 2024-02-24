@@ -1,5 +1,3 @@
-import { FaPlus } from 'react-icons/fa'
-
 import FormContents from '../components/formcontents/FormContents'
 import useFormHandling from '../hooks/useFormHandling'
 
@@ -16,6 +14,7 @@ const FormPage: React.FC = () => {
     editLabel,
     editFieldType,
     handleSubmit,
+    editList,
   } = useFormHandling()
 
   return (
@@ -42,6 +41,7 @@ const FormPage: React.FC = () => {
             handleRequire={() => handleRequire(field.name)}
             duplicateQuestion={() => duplicateQuestion(field.name)}
             editLabel={editLabel}
+            editList={editList}
           />
         ))}
         {isButton && (
@@ -55,7 +55,9 @@ const FormPage: React.FC = () => {
       </form>
       <div className="fixed flex flex-col items-center bg-white rounded-md right-5 sm:right-20">
         <button onClick={() => addQuestion()}>
-          <FaPlus className="w-8 h-8 text-gray-700 hover:text-indigo-500" />
+          <div className="flex items-center justify-center h-10 p-5 text-gray-700 rounded-md hover:bg-indigo-500 hover:text-white">
+            질문 추가하기
+          </div>
         </button>
       </div>
     </div>

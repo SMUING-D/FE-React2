@@ -13,6 +13,7 @@ const FormContents: React.FC<FormContentsProps> = ({
   handleRequire,
   duplicateQuestion,
   editLabel,
+  editList,
 }) => {
   const { name, question_type } = field
   return (
@@ -27,7 +28,7 @@ const FormContents: React.FC<FormContentsProps> = ({
         {question_type === 'checkbox' && (
           <button
             onClick={() => addOption(name)}
-            className="w-20 sm:w-[100px] p-2 mt-4 text-[10px] sm:text-lg rounded-lg bg-slate-400"
+            className="w-20 sm:w-[170px] p-2 mt-4 text-[10px] sm:text-lg rounded-lg bg-slate-400"
           >
             체크박스 추가
           </button>
@@ -40,7 +41,7 @@ const FormContents: React.FC<FormContentsProps> = ({
             선택지 추가
           </button>
         )}
-        <FormOption field={field} editLabel={editLabel} />
+        <FormOption field={field} editLabel={editLabel} editList={editList} />
         <div className="flex gap-5 mb-4">
           <button
             className={`sm:w-[100px] p-3 rounded-md ${field.required ? 'bg-red-500' : 'bg-gray-500'}`}
