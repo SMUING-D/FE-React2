@@ -8,22 +8,23 @@ const useFormHandling = (): FormHandlingHook => {
   const [isButton, setIsButton] = useState<boolean>(false)
   const [formContent, setFormContent] = useState<FormContentItem[]>([])
 
-  const updateFormContent = (fieldName: string, update: (field: FormContentItem) => void): void => {
+  const updateFormContent = (fieldName: string, update: (field: FormContentItem) => FormContentItem): void => {
     const formFields: FormContentItem[] = [...formContent]
     const fieldIndex: number = formFields.findIndex((field: FormContentItem) => field.name === fieldName)
     if (fieldIndex > -1) {
-      update(formFields[fieldIndex])
+      const nextFormField = update(formFields[fieldIndex])
+      formFields[fieldIndex] = nextFormField
       setFormContent(formFields)
     }
-    console.log(formFields[fieldIndex])
+    // console.log(formFields[fieldIndex].list)
   }
 
   const addQuestion = (): void => {
     const field: FormContentItem = {
       id: 0,
       name: `question_${formContent.length}`,
-      title: '제목을 입력해주세요',
-      label: '내용을 입력해주세요',
+      title: '',
+      label: '',
       required: false,
       question_type: 'shortAnswer',
       list: [],
@@ -34,29 +35,36 @@ const useFormHandling = (): FormHandlingHook => {
 
   const duplicateQuestion = (fieldName: string): void => {
     const fieldToDuplicate = formContent.find((field) => field.name === fieldName)
-
+    console.log(fieldToDuplicate)
     if (fieldToDuplicate) {
       const duplicatedField: FormContentItem = {
         ...fieldToDuplicate,
         id: formContent.length,
         name: `question_${formContent.length}`,
       }
-
       setFormContent([...formContent, duplicatedField])
       setIsButton(true)
     }
   }
 
-  const addOption = (fieldName: string): void => {
+  const addOption = (fieldName: string) => {
     updateFormContent(fieldName, (field) => {
       const newOption: string = ''
-      field.list.push(newOption)
+      return { ...field, list: [...field.list, newOption] }
     })
   }
 
-  const handleRequire = (fieldName: string): void => {
+  const editList = (fieldName: string, index: number, fieldList: string) => {
     updateFormContent(fieldName, (field) => {
-      field.required = !field.required
+      const updatedList = [...field.list]
+      updatedList[index] = fieldList
+      return { ...field, list: updatedList }
+    })
+  }
+
+  const handleRequire = (fieldName: string) => {
+    updateFormContent(fieldName, (field) => {
+      return { ...field, required: !field.required }
     })
   }
 
@@ -65,21 +73,21 @@ const useFormHandling = (): FormHandlingHook => {
     setFormContent(newFormContent)
   }
 
-  const editTitle = (fieldName: string, fieldTitle: string): void => {
+  const editTitle = (fieldName: string, fieldTitle: string) => {
     updateFormContent(fieldName, (field) => {
-      field.title = fieldTitle
+      return { ...field, title: fieldTitle }
     })
   }
 
-  const editLabel = (fieldName: string, fieldLabel: string): void => {
+  const editLabel = (fieldName: string, fieldLabel: string) => {
     updateFormContent(fieldName, (field) => {
-      field.label = fieldLabel
+      return { ...field, label: fieldLabel, list: [] }
     })
   }
 
-  const editFieldType = (fieldName: string, newFieldType: string): void => {
+  const editFieldType = (fieldName: string, newFieldType: string) => {
     updateFormContent(fieldName, (field) => {
-      field.question_type = newFieldType
+      return { ...field, question_type: newFieldType }
     })
   }
 
@@ -114,6 +122,7 @@ const useFormHandling = (): FormHandlingHook => {
     deleteQuestion,
     editTitle,
     editLabel,
+    editList,
     editFieldType,
     handleSubmit,
   }

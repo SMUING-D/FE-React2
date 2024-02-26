@@ -136,11 +136,11 @@ const Join: React.FC = () => {
   return (
     <div className="border border-solid border-blue-500 rounded-[20px] p-4 w-[400px]">
       <div className="p-8">
-        <h2 className="text-2xl font-semibold mb-4">회원가입</h2>
+        <h2 className="mb-4 text-2xl font-semibold">회원가입</h2>
         <form onSubmit={handleSubmit}>
           {joinText.map((join, index) => (
             <div key={index} className="mb-4">
-              <label className="block text-gray-600 text-sm font-medium mb-2">{join.title}</label>
+              <label className="block mb-2 text-sm font-medium text-gray-600">{join.title}</label>
               <Input
                 id={join.id}
                 name={join.name}
@@ -156,7 +156,7 @@ const Join: React.FC = () => {
 
           {/* 이메일 작성 및 인증 */}
           <div className="mb-4">
-            <label className="block text-gray-600 text-sm font-medium mb-2">이메일</label>
+            <label className="block mb-2 text-sm font-medium text-gray-600">이메일</label>
             <Input
               id="email"
               name="email"
@@ -173,12 +173,12 @@ const Join: React.FC = () => {
               <button
                 type="button"
                 onClick={handleEmailSubmit}
-                className="w-full bg-white text-blue-500 py-2 rounded-md hover:bg-blue-700 hover:text-white border border-solid border-blue-500 focus:outline-none"
+                className="w-full py-2 text-blue-500 bg-white border border-blue-500 border-solid rounded-md hover:bg-blue-700 hover:text-white focus:outline-none"
               >
                 이메일 인증하기
               </button>
-              <div className="mb-4 mt-2">
-                <label htmlFor="verificationCode" className="block text-gray-600 text-sm font-medium mb-2">
+              <div className="mt-2 mb-4">
+                <label htmlFor="verificationCode" className="block mb-2 text-sm font-medium text-gray-600">
                   인증번호
                 </label>
                 <Input
@@ -195,7 +195,7 @@ const Join: React.FC = () => {
               <button
                 type="button"
                 onClick={handleVerificationSubmit}
-                className="w-full bg-white text-blue-500 py-2 rounded-md hover:bg-blue-500 hover:text-white border border-solid border-blue-500 focus:outline-none"
+                className="w-full py-2 text-blue-500 bg-white border border-blue-500 border-solid rounded-md hover:bg-blue-500 hover:text-white focus:outline-none"
               >
                 인증번호 확인
               </button>
@@ -203,8 +203,8 @@ const Join: React.FC = () => {
           )}
 
           {/* 비밀번호 */}
-          <div className="mb-4 mt-2">
-            <label className="block text-gray-600 text-sm font-medium mb-2">비밀번호</label>
+          <div className="mt-2 mb-4">
+            <label className="block mb-2 text-sm font-medium text-gray-600">비밀번호</label>
             <Input
               id="password"
               name="password"
@@ -220,7 +220,7 @@ const Join: React.FC = () => {
           {/* 전공 및 성별 선택 */}
           {selectType.map((select, index) => (
             <div className="mb-4" key={index}>
-              <label className="block text-gray-600 text-sm font-medium mb-2">{select.title}</label>
+              <label className="block mb-2 text-sm font-medium text-gray-600">{select.title}</label>
               <select
                 id={select.id}
                 name={select.name}
@@ -256,7 +256,7 @@ const Join: React.FC = () => {
                 onChange={handleChange}
                 className="mr-2"
               />
-              <span className="text-gray-600 text-sm font-medium">개인정보 처리방침에 동의합니다.</span>
+              <span className="text-sm font-medium text-gray-600">개인정보 처리방침에 동의합니다.</span>
             </label>
           </div>
           <button
