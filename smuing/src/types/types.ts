@@ -146,13 +146,13 @@ export type FormContentsProps = {
   handleRequire: (fieldName: string) => void
   duplicateQuestion: (fieldName: string) => void
   editLabel: (fieldName: string, fieldLabel: string) => void
-  editList: (fieldName: string, fieldList: string[]) => void
+  editList: (fieldName: string, index: number, fieldList: string) => void
 }
 
 export type FormHandlingHook = {
   isButton: boolean
   formContent: FormContentItem[]
-  updateFormContent: (fieldName: string, update: (field: FormContentItem) => void) => void
+  updateFormContent: (fieldName: string, update: (field: FormContentItem) => FormContentItem) => void
   addQuestion: () => void
   duplicateQuestion: (fieldName: string) => void
   addOption: (fieldName: string) => void
@@ -160,7 +160,7 @@ export type FormHandlingHook = {
   deleteQuestion: (fieldName: string) => void
   editTitle: (fieldName: string, fieldTitle: string) => void
   editLabel: (fieldName: string, fieldLabel: string) => void
-  editList: (fieldName: string, fieldList: string[]) => void
+  editList: (fieldName: string, index: number, fieldList: string) => void
   editFieldType: (fieldName: string, newFieldType: string) => void
   handleSubmit: () => Promise<void>
 }
@@ -188,4 +188,17 @@ export type InfiniteCardProps = {
 }
 export type SidebarState = {
   isOpen: boolean
+}
+
+export type FormSettingData = {
+  title: string
+  text: string
+  name: string
+  date: string
+  id: number
+}
+
+export type FormSettingModalProps = {
+  data: FormSettingData
+  handleModal: () => void
 }

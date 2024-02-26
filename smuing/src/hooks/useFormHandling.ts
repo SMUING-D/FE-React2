@@ -16,7 +16,7 @@ const useFormHandling = (): FormHandlingHook => {
       formFields[fieldIndex] = nextFormField
       setFormContent(formFields)
     }
-    console.log(formFields[fieldIndex].list)
+    // console.log(formFields[fieldIndex].list)
   }
 
   const addQuestion = (): void => {

@@ -10,6 +10,7 @@ import {
   AllAnnounce,
   DetailAnnounce,
   FormPage,
+  FormSettingPage,
   LoginPage,
   MainPage,
   MemberActive,
@@ -39,7 +40,8 @@ function App() {
         <Route path="/projects/add" element={<AddProjectPage />} />
         <Route path="/announce/add" element={<AddAnnounce />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/Form" element={<FormPage />} />
+        <Route path="/form" element={<FormPage />} />
+        <Route path="/form/setting" element={<FormSettingPage />} />
         <Route path="/announce" element={<AllAnnounce />} />
         <Route path="/announce/:id" element={<DetailAnnounce />} />
       </Routes>
