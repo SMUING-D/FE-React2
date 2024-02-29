@@ -1,6 +1,6 @@
 import api from './index'
 
-export const postLogin = async (studentId: number, password: string) => {
+export const postLogin = async (studentId: number | string, password: string) => {
   const requestBody = {
     studentId: studentId,
     password: password,
