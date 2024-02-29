@@ -106,7 +106,7 @@ const Join: React.FC = () => {
 
   //   이메일 유효성 검사
   const validEmail = (email: string) => {
-    const emailRegex = /\S+@sangmyung\.co\.kr$/
+    const emailRegex = /\S+@sangmyung\.kr$/
     return emailRegex.test(email)
   }
 
