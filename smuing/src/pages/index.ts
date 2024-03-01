@@ -10,6 +10,7 @@ import MemberAll from '../pages/MemberAll'
 import MemberDetail from '../pages/MemberDetail'
 import ProjectsPage from '../pages/ProjectsPage'
 import FormSettingPage from './FormSettingPage'
+import MyPage from './MyPage'
 
 export {
   AddAnnounce,
@@ -24,4 +25,5 @@ export {
   MemberDetail,
   ProjectsPage,
   FormSettingPage,
+  MyPage,
 }

@@ -6,7 +6,7 @@ axios.defaults.headers.common['Accept'] = 'application/json'
 const accessToken = localStorage.getItem('accessToken')
 axios.defaults.headers.common['Authorization'] = `${accessToken}`
 const api = axios.create({
-  baseURL: 'http://13.124.8.163:3000',
+  baseURL: 'https://smuing.site',
   timeout: 10000,
 })
 

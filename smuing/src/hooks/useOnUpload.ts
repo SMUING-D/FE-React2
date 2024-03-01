@@ -1,19 +1,21 @@
 import { useState } from 'react'
 
 const useOnUpload = () => {
-  const [imageSrc, setImageSrc]: any = useState(null)
+  const [imageSrc, setImageSrc] = useState<string | null>(null)
 
-  const onUpload = (event: any) => {
-    const file = event.target.files[0]
-    const reader = new FileReader()
-    reader.readAsDataURL(file)
+  const onUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (file) {
+      const reader = new FileReader()
+      reader.readAsDataURL(file)
 
-    return new Promise<void>((resolve) => {
-      reader.onload = () => {
-        setImageSrc(reader.result || null)
-        resolve()
-      }
-    })
+      return new Promise<void>((resolve) => {
+        reader.onload = () => {
+          setImageSrc(reader.result as string)
+          resolve()
+        }
+      })
+    }
   }
   return {
     imageSrc,
