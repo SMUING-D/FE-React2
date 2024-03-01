@@ -1,6 +1,3 @@
-import axios from 'axios'
-import { useEffect } from 'react'
-
 import CountUpCard from '../components/countupCard/CountUpCard'
 import HeroBox from '../components/herobox/HeroBox'
 import InfiniteSlider from '../components/infiniteSlider.tsx/InfiniteSlider'
@@ -11,24 +8,6 @@ import COUNTUP_DATA from '../constants/COUNTUP_DATA'
 import useGetData from '../hooks/useGetData'
 
 const MainPage: React.FC = () => {
-  const receivedToken = localStorage.getItem('accessToken')
-  const getRole = async () => {
-    try {
-      const response = await axios.get(`/api/get/role`, {
-        headers: {
-          Authorization: `Bearer ${receivedToken}`,
-        },
-      })
-      console.log(response.data)
-      // return response.data
-    } catch (error) {
-      console.log('회원 권한 가져오기', error)
-      throw error
-    }
-  }
-  useEffect(() => {
-    getRole()
-  }, [])
   // const { isData, isLoading } = useGetData('/api/get/role')
 
   return (
