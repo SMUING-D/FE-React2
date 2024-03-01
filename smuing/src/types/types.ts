@@ -66,13 +66,13 @@ export type Member = {
 
 export type FormData = {
   name: string
-  studentId: string
+  studentId: number | undefined
   nickname: string
   email: string
   password: string
-  major: number
+  major: string
   privacyPolicy: boolean
-  sex: string
+  sex: number
   github: string
 }
 
@@ -81,7 +81,7 @@ export type InputProps = {
   name: string
   type: string
   placeholder: string
-  value?: string
+  value?: string | number
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
   isValid?: boolean
   errorMessage: string
@@ -127,6 +127,7 @@ export type FormContentItem = {
 export type FormOptionProps = {
   field: FormContentItem
   editLabel: (fieldName: string, fieldLabel: string) => void
+  editList: (fieldName: string, index: number, fieldList: string) => void
 }
 
 export type FormTitleBoxProps = {
@@ -145,12 +146,13 @@ export type FormContentsProps = {
   handleRequire: (fieldName: string) => void
   duplicateQuestion: (fieldName: string) => void
   editLabel: (fieldName: string, fieldLabel: string) => void
+  editList: (fieldName: string, index: number, fieldList: string) => void
 }
 
 export type FormHandlingHook = {
   isButton: boolean
   formContent: FormContentItem[]
-  updateFormContent: (fieldName: string, update: (field: FormContentItem) => void) => void
+  updateFormContent: (fieldName: string, update: (field: FormContentItem) => FormContentItem) => void
   addQuestion: () => void
   duplicateQuestion: (fieldName: string) => void
   addOption: (fieldName: string) => void
@@ -158,10 +160,24 @@ export type FormHandlingHook = {
   deleteQuestion: (fieldName: string) => void
   editTitle: (fieldName: string, fieldTitle: string) => void
   editLabel: (fieldName: string, fieldLabel: string) => void
+  editList: (fieldName: string, index: number, fieldList: string) => void
   editFieldType: (fieldName: string, newFieldType: string) => void
   handleSubmit: () => Promise<void>
 }
 
+export type textboxprops = {
+  title: string
+  writer: string
+  date: string
+  bodyText: string
+}
+
+export type detailAnnounce = {
+  title: string
+  writer: string
+  date: string
+  bodyText: string
+}
 export type InfiniteCardProps = {
   id: number
   img: string
@@ -172,4 +188,33 @@ export type InfiniteCardProps = {
 }
 export type SidebarState = {
   isOpen: boolean
+}
+
+export type FormSettingData = {
+  title: string
+  text: string
+  name: string
+  date: string
+  id: number
+}
+
+export type FormSettingModalProps = {
+  data: FormSettingData
+  handleModal: () => void
+}
+
+export type PaginationProps = {
+  totalItems: number
+  itemCountPerPage: number
+  pageCount: number
+  currentPage: number
+}
+
+export type MyPageInputProps = {
+  label: string
+  placeholder: string
+}
+
+export type MyPageState = {
+  index: number
 }

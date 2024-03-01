@@ -1,3 +1,5 @@
+import { ChangeEvent } from 'react'
+
 export const joinText: {
   title: string
   id: string
@@ -33,5 +35,37 @@ export const joinText: {
     placeholder: '닉네임을 입력해주세요',
     value: 'nickname',
     errorMessage: '',
+  },
+  {
+    title: '깃허브 주소',
+    id: 'github',
+    name: 'github',
+    type: 'text',
+    placeholder: '깃허브 주소를 입력해주세요',
+    value: 'github',
+    errorMessage: '',
+  },
+]
+
+export const selectType: {
+  title: string
+  id: string
+  name: string
+  value: string
+  type: string
+}[] = [
+  {
+    title: '전공',
+    id: 'major',
+    name: 'major',
+    value: 'major',
+    type: 'major',
+  },
+  {
+    title: '성별',
+    id: 'sex',
+    name: 'sex',
+    value: 'sex',
+    type: 'sex',
   },
 ]

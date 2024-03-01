@@ -15,6 +15,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   const handleMouseOut = () => {
     setIsHovering(false)
   }
+  console.log(project)
 
   return (
     <div

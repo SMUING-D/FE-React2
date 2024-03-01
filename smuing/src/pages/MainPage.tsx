@@ -1,12 +1,15 @@
-import CountUpCard from '../components/countupcard/CountUpCard'
+import CountUpCard from '../components/countupCard/CountUpCard'
 import HeroBox from '../components/herobox/HeroBox'
 import InfiniteSlider from '../components/infiniteSlider.tsx/InfiniteSlider'
 import IntroduceBox from '../components/introducebox/IntoroduceBox'
 import NewsBox from '../components/newsbox/NewsBox'
-import PartIntro from '../components/partintro/PartIntro'
+import PartIntro from '../components/partIntro/PartIntro'
 import COUNTUP_DATA from '../constants/COUNTUP_DATA'
+import useGetData from '../hooks/useGetData'
 
 const MainPage: React.FC = () => {
+  // const { isData, isLoading } = useGetData('/api/get/role')
+
   return (
     <div className="bg-black flex flex-col items-center justify-center gap-[150px]">
       <HeroBox />

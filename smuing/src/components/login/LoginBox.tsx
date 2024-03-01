@@ -1,9 +1,10 @@
 import { ChangeEvent, useState } from 'react'
 
+import { postLogin } from '../../api/login'
 import Input from '../input/Input'
 
 const LoginBox = () => {
-  const [schoolCode, setSchoolCode] = useState('')
+  const [schoolCode, setSchoolCode] = useState<number | string>('')
   const [password, setPassword] = useState('')
   const [isSchoolCodeValid, setIsSchoolCodeValid] = useState(true)
   const [passwordValid, setPasswordValid] = useState(true)
@@ -26,10 +27,12 @@ const LoginBox = () => {
   const handleSubmit = (event: React.FormEvent) => {
     // 로그인 api 연결
     event.preventDefault()
+    const response = postLogin(schoolCode, password)
+    console.log(response)
   }
 
   return (
-    <div className="w-[400px] border border-solid border-blue-500 rounded-[20px] p-4 sm:w-[300px]">
+    <div className="w-[400px] border border-solid border-blue-500 rounded-[20px] p-4">
       <div className="p-8">
         <h2 className="text-2xl font-semibold mb-4">로그인</h2>
         <form onSubmit={handleSubmit}>
