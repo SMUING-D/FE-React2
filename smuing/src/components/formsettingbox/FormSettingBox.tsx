@@ -26,7 +26,7 @@ const FormSettingBox: React.FC<{ data: FormSettingData }> = ({ data }) => {
           <p>{date}</p>
         </div>
       </button>
-      {isOpen && <FormSettingModal data={data} handleModal={handleModal} />}{' '}
+      {isOpen && <FormSettingModal data={data} handleModal={handleModal} />}
     </div>
   )
 }

@@ -1,12 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-type PaginationProps = {
-  totalItems: number
-  itemCountPerPage: number
-  pageCount: number
-  currentPage: number
-}
+import { PaginationProps } from '../../types/types'
 
 const Pagination: React.FC<PaginationProps> = ({ totalItems, itemCountPerPage, pageCount, currentPage }) => {
   const totalPages = Math.ceil(totalItems / itemCountPerPage) //

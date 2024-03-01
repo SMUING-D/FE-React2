@@ -16,6 +16,7 @@ import {
   MemberActive,
   MemberAll,
   MemberDetail,
+  MyPage,
   ProjectsPage,
 } from './pages'
 import { RootState } from './redux/store/store'
@@ -44,6 +45,7 @@ function App() {
         <Route path="/form/setting" element={<FormSettingPage />} />
         <Route path="/announce" element={<AllAnnounce />} />
         <Route path="/announce/:id" element={<DetailAnnounce />} />
+        <Route path="/mypage" element={<MyPage />} />
       </Routes>
 
       {/* 이것도 마찬가지로 특정경로에서는 푸터 없음  */}

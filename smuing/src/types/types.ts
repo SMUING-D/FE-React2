@@ -202,3 +202,19 @@ export type FormSettingModalProps = {
   data: FormSettingData
   handleModal: () => void
 }
+
+export type PaginationProps = {
+  totalItems: number
+  itemCountPerPage: number
+  pageCount: number
+  currentPage: number
+}
+
+export type MyPageInputProps = {
+  label: string
+  placeholder: string
+}
+
+export type MyPageState = {
+  index: number
+}
