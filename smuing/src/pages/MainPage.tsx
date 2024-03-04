@@ -5,8 +5,11 @@ import IntroduceBox from '../components/introducebox/IntoroduceBox'
 import NewsBox from '../components/newsbox/NewsBox'
 import PartIntro from '../components/partintro/PartIntro'
 import COUNTUP_DATA from '../constants/COUNTUP_DATA'
+import useGetData from '../hooks/useGetData'
 
 const MainPage: React.FC = () => {
+  const { isData, isLoading } = useGetData('/api/get/role')
+  console.log(isData, isLoading)
   return (
     <div className="bg-black flex flex-col items-center justify-center gap-[150px]">
       <HeroBox />

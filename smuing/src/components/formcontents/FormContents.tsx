@@ -1,5 +1,3 @@
-import { FaCopy } from 'react-icons/fa'
-
 import { FormContentsProps } from '../../types/types'
 import FormOption from '../formoption/FormOption'
 import FormTitleBox from '../formtitlebox/FormTitleBox'
@@ -45,16 +43,16 @@ const FormContents: React.FC<FormContentsProps> = ({
           <FormOption field={field} editLabel={editLabel} editList={editList} />
           <div className="flex gap-5 mb-4">
             <button
-              className={`sm:w-[100px] p-3 rounded-md ${field.required ? 'bg-red-500' : 'bg-gray-500'}`}
+              className={`sm:w-[100px] p-3 rounded-md ${field.required ? 'bg-red-500 border-2' : 'bg-white border-2 border-black'}`}
               onClick={() => handleRequire(name)}
             >
               필수
             </button>
             <button
-              className="flex items-center justify-center sm:w-[100px] p-3 bg-orange-500 rounded-md sm:text-lg"
+              className="flex items-center justify-center sm:w-[100px] p-3 bg-[#535C91] text-white rounded-md sm:text-lg"
               onClick={() => duplicateQuestion(name)}
             >
-              <FaCopy />
+              복사하기
             </button>
           </div>
         </div>
