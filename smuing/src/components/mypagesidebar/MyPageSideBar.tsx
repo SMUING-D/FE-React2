@@ -13,23 +13,25 @@ const MyPageSideBar: React.FC = () => {
     dispatch(setIndex(index))
   }
   return (
-    <div className=" w-[20%] h-full flex flex-col items-center justify-center font-semibold border-r-4 border-blue-100 text-white ">
-      <img
-        className="w-[30px] h-[30px] sm:w-[120px] sm:h-[120px] rounded-[50%]"
-        src={testImg}
-        alt="이건 테스트 이미지이다."
-      />
-      <div className="flex flex-col gap-3">
-        <div className="text-[10px] cursor-pointer sm:text-xl">지환</div>
-        {SIDE_BAR_DATA.map((data, index) => (
-          <div
-            key={index}
-            onClick={() => handleItemBackground(index)}
-            className={`text-[9px] sm:text-xl md:text-lg cursor-pointer rounded-lg p-2 ${selectedIndex === index && 'bg-slate-500'}`}
-          >
-            {data}
-          </div>
-        ))}
+    <div className="flex items-center justify-center w-full h-auto font-semibold text-white border-blue-100 lg:h-full lg:border-r-4 lg:flex-col lg:w-48 ">
+      <div className="flex flex-col items-center gap-4">
+        <img
+          className="lg:w-[130px] lg:h-[130px] md:w-[180px] md:h-[180px] w-[130px] h-[130px] rounded-[50%]"
+          src={testImg}
+          alt="이건 테스트 이미지이다."
+        />
+        <div className="flex w-auto gap-3 lg:w-auto lg:flex-col">
+          <div className="flex items-center text-[10px] cursor-pointer sm:text-xl">지환</div>
+          {SIDE_BAR_DATA.map((data, index) => (
+            <div
+              key={index}
+              onClick={() => handleItemBackground(index)}
+              className={`text-[9px] sm:text-xl md:text-lg cursor-pointer rounded-lg p-2 ${selectedIndex === index && 'bg-slate-500'}`}
+            >
+              {data}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )

@@ -1,16 +1,21 @@
 import { useSelector } from 'react-redux'
 
+import PROJECTS_DATA from '../../constants/PROJECTS_DATA'
 import useOnUpload from '../../hooks/useOnUpload'
 import { RootState } from '../../redux/store/store'
+import { Project } from '../../types/types'
 import MyPageInput from '../mypageinput/MyPageInput'
+import ProjectCard from '../projectcard/ProjectCard'
 
 const MyPageContents: React.FC = () => {
   const selectedIndex = useSelector((state: RootState) => state.myPage.index)
+  const data = PROJECTS_DATA
+
   const { imageSrc, onUpload } = useOnUpload()
 
   return (
     <div className="w-full h-full">
-      <div className="flex flex-col items-center h-full ">
+      <div className="flex flex-col items-center w-auto">
         {selectedIndex === 0 && (
           <div className="flex flex-col items-center w-4/5 h-full gap-8">
             <div className="flex flex-col items-center justify-center gap-3 mt-5 text-white">
@@ -59,7 +64,15 @@ const MyPageContents: React.FC = () => {
             </div>
           </div>
         )}
-        {selectedIndex === 2 && <div></div>}
+        {selectedIndex === 2 && (
+          <div className="flex h-auto lg:w-[650px] md:w-[500px] w-[400px] overflow-x-auto">
+            {data.map((project: Project) => (
+              <div>
+                <ProjectCard key={project.id} project={project} />
+              </div>
+            ))}
+          </div>
+        )}
         {selectedIndex === 3 && (
           <div className="flex flex-col items-center w-full h-full gap-3 text-white ">
             <div className="flex flex-col w-full gap-5">
