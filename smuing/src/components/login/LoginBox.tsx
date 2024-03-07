@@ -10,6 +10,7 @@ const LoginBox = () => {
   const [password, setPassword] = useState('')
   const [isSchoolCodeValid, setIsSchoolCodeValid] = useState(true)
   const [passwordValid, setPasswordValid] = useState(true)
+  const [loginMessage, setLoginMessage] = useState<string>('')
 
   const handleSchoolCodeChange = (event: ChangeEvent<HTMLInputElement>) => {
     const enterSchoolCode = event.target.value
@@ -31,10 +32,17 @@ const LoginBox = () => {
     event.preventDefault()
     try {
       const response = await postLogin(schoolCode, password)
-      localStorage.setItem('accessToken', response.access_token)
-      localStorage.setItem('refreshToken', response.refresh_token)
       console.log(response)
-      navigate('/')
+      const type = response.code
+      if (type == 'MEMBER4007') {
+        setLoginMessage(response.message)
+      } else if (type == 'MEMBER4001') {
+        setLoginMessage(response.message)
+      } else {
+        localStorage.setItem('accessToken', response.access_token)
+        localStorage.setItem('refreshToken', response.refresh_token)
+        navigate('/')
+      }
     } catch (error) {
       console.error('에러', error)
       // Handle the error appropriately
@@ -89,6 +97,7 @@ const LoginBox = () => {
             로그인
           </button>
         </form>
+        {loginMessage && <div>{loginMessage}</div>}
       </div>
     </div>
   )
