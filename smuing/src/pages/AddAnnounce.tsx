@@ -26,9 +26,10 @@ const AddAnnounce = () => {
     }))
   }
 
-  const handleAnnounceAdd = () => {
+  const handleAnnounceAdd = (imageFiles: File) => {
+    const formDataWithImages = { ...formData, images: imageFiles }
     console.log('공지사항 등록')
-    console.log('공지사항 정보:', formData)
+    console.log('공지사항 정보:', formDataWithImages)
   }
 
   const handleAddImage = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,12 +39,14 @@ const AddAnnounce = () => {
       const selectedFile = files[0]
       setImageFiles((prevFiles) => [...prevFiles, selectedFile])
     }
+    console.log(imageFiles)
   }
 
   const handleImageDelete = (index: number) => {
     const newImages = [...imageFiles]
     newImages.splice(index, 1)
     setImageFiles(newImages)
+    console.log(imageFiles)
   }
 
   return (
@@ -71,7 +74,7 @@ const AddAnnounce = () => {
         </div>
 
         <div>
-          <button className="bg-gray-600 w-[200px] h-[50px] ml-[20px] mb-[20px]" onClick={handleButtonClick}>
+          <button className="bg-gray-600 w-[200px] h-[50px] ml-[20px] mb-[20px] rounded-lg" onClick={handleButtonClick}>
             공지사항 이미지 추가하기
           </button>
           <input
@@ -109,7 +112,7 @@ const AddAnnounce = () => {
           <button
             type="button"
             className="sm:w-[200px] mt-4 sm:mt-[10px] py-2 border rounded-md focus:outline-none focus:border-blue-500 text-white"
-            onClick={handleAnnounceAdd}
+            onClick={() => handleAnnounceAdd}
           >
             공지사항 등록하기
           </button>
