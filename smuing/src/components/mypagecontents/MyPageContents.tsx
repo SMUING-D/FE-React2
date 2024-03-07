@@ -59,7 +59,36 @@ const MyPageContents: React.FC = () => {
             </div>
           </div>
         )}
-        {selectedIndex === 3 && <div></div>}
+        {selectedIndex === 2 && <div></div>}
+        {selectedIndex === 3 && (
+          <div className="flex flex-col items-center w-full h-full gap-3 text-white ">
+            <div className="flex flex-col w-full gap-5">
+              <p className="flex items-center h-10 p-3 ]">비밀번호 변경</p>
+              <input
+                className="flex items-center h-10 ml-3 rounded-lg bg-[#535C91] px-4 focus:outline-none placeholder:italic placeholder:text-white"
+                placeholder="현재 비밀번호를 입력해주세요"
+              />
+              <input
+                className="flex items-center h-10 ml-3 rounded-lg bg-[#535C91] px-4 focus:outline-none placeholder:italic placeholder:text-white"
+                placeholder="새로운 비밀번호를 입력해주세요"
+              />
+              <input
+                className="flex items-center h-10 ml-3 rounded-lg bg-[#535C91] px-4 focus:outline-none placeholder:italic placeholder:text-white"
+                placeholder="새로운 비밀번호를 다시 입력해주세요"
+              />
+            </div>
+            <div className="flex items-start w-full">
+              <button className="flex justify-center items-center ml-3 h-10 p-3 w-[100px] rounded-lg bg-[#9290C3] hover:bg-purple-300">
+                저장
+              </button>
+            </div>
+            <div className="flex gap-3 mt-16">
+              <button className="flex justify-center items-center h-10 p-3 w-[100px] rounded-lg bg-[#915353]">
+                회원 탈퇴
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )
