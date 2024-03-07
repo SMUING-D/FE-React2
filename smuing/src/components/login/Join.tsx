@@ -1,6 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import { postEmail } from '../../api/email'
+import { EmailVerification, postEmail } from '../../api/email'
 import { postJoin } from '../../api/join'
 import { joinText } from '../../constants/JOIN'
 import { selectType } from '../../constants/JOIN'
@@ -8,8 +9,13 @@ import { FormData } from '../../types/types'
 import Input from '../input/Input'
 
 const Join: React.FC = () => {
+  const navigate = useNavigate()
   const [emailValid, setEmailValid] = useState(false)
   const [verificationCode, setVerificationCode] = useState('')
+  const [userCode, setUserCode] = useState<string>('')
+  const [authCode, setAuthCode] = useState<string>('')
+  const [emailMesssage, setEmailMessage] = useState<string>('')
+  const [joinMessage, setJoinMessage] = useState<string>('')
   const [formData, setFormData] = useState<FormData>({
     name: '',
     studentId: undefined,
@@ -72,7 +78,7 @@ const Join: React.FC = () => {
       ...prevData,
       [name]: type === 'checkbox' ? checked : value,
     }))
-    console.log(formData)
+    // console.log(formData)
 
     switch (name) {
       case 'email':
@@ -83,22 +89,33 @@ const Join: React.FC = () => {
     }
   }
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     if (emailValid) {
-      console.log('폼:', formData)
-      const response = postJoin(
-        formData.studentId,
-        formData.name,
-        formData.password,
-        formData.email,
-        formData.nickname,
-        formData.major,
-        formData.github,
-        formData.sex - 1,
-      )
-      console.log(response)
+      try {
+        console.log('폼:', formData)
+        const response = await postJoin(
+          formData.studentId,
+          formData.name,
+          formData.password,
+          formData.email,
+          formData.nickname,
+          formData.major,
+          formData.github,
+          formData.sex - 1,
+        )
+        console.log(response)
+        const type = response.code
+        if (type == 'MEMBER4004') {
+          setJoinMessage(response.message)
+        } else if (type == '2000') {
+          navigate('/login')
+          console.log('회원가입 성공')
+        }
+      } catch (error) {
+        console.log(error)
+      }
     } else {
       console.log('이메일 에러')
     }
@@ -106,15 +123,21 @@ const Join: React.FC = () => {
 
   //   이메일 유효성 검사
   const validEmail = (email: string) => {
-    const emailRegex = /\S+@sangmyung\.kr$/
+    const emailRegex = /\S+@sangmyung\.co\.kr$/
     return emailRegex.test(email)
   }
 
   //이메일 인증코드 요청 보내기
-  const handleEmailSubmit = () => {
+  const handleEmailSubmit = async () => {
     console.log('formdata.email 이메일 인증 api로 보내기')
-    const response = postEmail(formData.studentId)
-    console.log(response)
+    try {
+      const response = await postEmail(formData.studentId)
+      console.log(response)
+      setUserCode(response.code)
+      setAuthCode(response.result.authCode)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   //인증번호 상태변경
@@ -123,12 +146,13 @@ const Join: React.FC = () => {
   }
 
   const handleVerificationSubmit = async () => {
-    // try {
-
-    // }
-    // catch(error){
-
-    // }
+    try {
+      const response = await EmailVerification(userCode, authCode)
+      console.log(response)
+      setEmailMessage(response.message)
+    } catch (error) {
+      console.log(error)
+    }
     console.log('formdata.email, verificationCode 인증요청 보내기')
     //200뜨면 상태값 하나 변경해서 마지막 회원가입 버튼에 활성화 조건 추가하기
   }
@@ -136,11 +160,11 @@ const Join: React.FC = () => {
   return (
     <div className="border border-solid border-blue-500 rounded-[20px] p-4 w-[400px]">
       <div className="p-8">
-        <h2 className="mb-4 text-2xl font-semibold">회원가입</h2>
+        <h2 className="text-2xl font-semibold mb-4">회원가입</h2>
         <form onSubmit={handleSubmit}>
           {joinText.map((join, index) => (
             <div key={index} className="mb-4">
-              <label className="block mb-2 text-sm font-medium text-gray-600">{join.title}</label>
+              <label className="block text-gray-600 text-sm font-medium mb-2">{join.title}</label>
               <Input
                 id={join.id}
                 name={join.name}
@@ -156,7 +180,7 @@ const Join: React.FC = () => {
 
           {/* 이메일 작성 및 인증 */}
           <div className="mb-4">
-            <label className="block mb-2 text-sm font-medium text-gray-600">이메일</label>
+            <label className="block text-gray-600 text-sm font-medium mb-2">이메일</label>
             <Input
               id="email"
               name="email"
@@ -173,12 +197,12 @@ const Join: React.FC = () => {
               <button
                 type="button"
                 onClick={handleEmailSubmit}
-                className="w-full py-2 text-blue-500 bg-white border border-blue-500 border-solid rounded-md hover:bg-blue-700 hover:text-white focus:outline-none"
+                className="w-full bg-white text-blue-500 py-2 rounded-md hover:bg-blue-700 hover:text-white border border-solid border-blue-500 focus:outline-none"
               >
                 이메일 인증하기
               </button>
-              <div className="mt-2 mb-4">
-                <label htmlFor="verificationCode" className="block mb-2 text-sm font-medium text-gray-600">
+              <div className="mb-4 mt-2">
+                <label htmlFor="verificationCode" className="block text-gray-600 text-sm font-medium mb-2">
                   인증번호
                 </label>
                 <Input
@@ -195,16 +219,18 @@ const Join: React.FC = () => {
               <button
                 type="button"
                 onClick={handleVerificationSubmit}
-                className="w-full py-2 text-blue-500 bg-white border border-blue-500 border-solid rounded-md hover:bg-blue-500 hover:text-white focus:outline-none"
+                className="w-full bg-white text-blue-500 py-2 rounded-md hover:bg-blue-500 hover:text-white border border-solid border-blue-500 focus:outline-none"
               >
                 인증번호 확인
               </button>
+              {/* 인증번호 확인 메세지 */}
+              {emailMesssage && <div>{emailMesssage}</div>}
             </>
           )}
 
           {/* 비밀번호 */}
-          <div className="mt-2 mb-4">
-            <label className="block mb-2 text-sm font-medium text-gray-600">비밀번호</label>
+          <div className="mb-4 mt-2">
+            <label className="block text-gray-600 text-sm font-medium mb-2">비밀번호</label>
             <Input
               id="password"
               name="password"
@@ -220,7 +246,7 @@ const Join: React.FC = () => {
           {/* 전공 및 성별 선택 */}
           {selectType.map((select, index) => (
             <div className="mb-4" key={index}>
-              <label className="block mb-2 text-sm font-medium text-gray-600">{select.title}</label>
+              <label className="block text-gray-600 text-sm font-medium mb-2">{select.title}</label>
               <select
                 id={select.id}
                 name={select.name}
@@ -256,7 +282,7 @@ const Join: React.FC = () => {
                 onChange={handleChange}
                 className="mr-2"
               />
-              <span className="text-sm font-medium text-gray-600">개인정보 처리방침에 동의합니다.</span>
+              <span className="text-gray-600 text-sm font-medium">개인정보 처리방침에 동의합니다.</span>
             </label>
           </div>
           <button
@@ -269,6 +295,7 @@ const Join: React.FC = () => {
             회원가입
           </button>
         </form>
+        {joinMessage && <div className="mt-[10px] text-red-500">{joinMessage}</div>}
       </div>
     </div>
   )

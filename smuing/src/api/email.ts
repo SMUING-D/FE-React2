@@ -15,3 +15,16 @@ export const postEmail = async (studentId: number | undefined) => {
     throw error
   }
 }
+
+export const EmailVerification = async (userCode: string | '', authCode: string | '') => {
+  const requestBody = {
+    userCode: userCode,
+    authCode: authCode,
+  }
+  try {
+    const response = await api.post('/auth/auth-email', requestBody)
+    return response.data
+  } catch (error) {
+    console.log(error)
+  }
+}

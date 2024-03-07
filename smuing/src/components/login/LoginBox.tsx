@@ -1,13 +1,16 @@
 import { ChangeEvent, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { postLogin } from '../../api/login'
 import Input from '../input/Input'
 
 const LoginBox = () => {
+  const navigate = useNavigate()
   const [schoolCode, setSchoolCode] = useState<number | string>('')
   const [password, setPassword] = useState('')
   const [isSchoolCodeValid, setIsSchoolCodeValid] = useState(true)
   const [passwordValid, setPasswordValid] = useState(true)
+  const [loginMessage, setLoginMessage] = useState<string>('')
 
   const handleSchoolCodeChange = (event: ChangeEvent<HTMLInputElement>) => {
     const enterSchoolCode = event.target.value
@@ -24,11 +27,26 @@ const LoginBox = () => {
     setPasswordValid(isValidPassword)
   }
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     // 로그인 api 연결
     event.preventDefault()
-    const response = postLogin(schoolCode, password)
-    console.log(response)
+    try {
+      const response = await postLogin(schoolCode, password)
+      console.log(response)
+      const type = response.code
+      if (type == 'MEMBER4007') {
+        setLoginMessage(response.message)
+      } else if (type == 'MEMBER4001') {
+        setLoginMessage(response.message)
+      } else {
+        localStorage.setItem('accessToken', response.access_token)
+        localStorage.setItem('refreshToken', response.refresh_token)
+        navigate('/')
+      }
+    } catch (error) {
+      console.error('에러', error)
+      // Handle the error appropriately
+    }
   }
 
   return (
@@ -79,6 +97,7 @@ const LoginBox = () => {
             로그인
           </button>
         </form>
+        {loginMessage && <div>{loginMessage}</div>}
       </div>
     </div>
   )
