@@ -9,6 +9,7 @@ import {
   AddProjectPage,
   AllAnnounce,
   DetailAnnounce,
+  FormMakePage,
   FormPage,
   FormSettingPage,
   LoginPage,
@@ -42,6 +43,7 @@ function App() {
         <Route path="/announce/add" element={<AddAnnounce />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/form" element={<FormPage />} />
+        <Route path="/form/make" element={<FormMakePage />} />
         <Route path="/form/setting" element={<FormSettingPage />} />
         <Route path="/announce" element={<AllAnnounce />} />
         <Route path="/announce/:id" element={<DetailAnnounce />} />
