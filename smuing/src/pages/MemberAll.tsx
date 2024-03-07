@@ -29,9 +29,11 @@ const MemberAll = () => {
 
   return (
     <>
+
       <div className="bg-rgb-35-39-49 pt-[100px] min-h-screen">
         <div className="max-w-md mx-auto p-6 bg-rgb-35-39-49 rounded-md shadow-md">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="member-year-select">
+
             Member Year:
           </label>
           <select
@@ -48,7 +50,7 @@ const MemberAll = () => {
           </select>
         </div>
 
-        <div className="bg-rgb-35-39-49 flex flex-wrap justify-center gap-8 p-8">
+        <div className="flex flex-wrap justify-center gap-8 p-8 bg-rgb-35-39-49">
           {currentMembers.map((member) => (
             <MemberCard
               key={member.id}
@@ -68,7 +70,7 @@ const MemberAll = () => {
         </div>
 
         {/* 페이지 네이션 부분 */}
-        <div className="flex flex-wrap gap-1 justify-center mt-4 pb-8">
+        <div className="flex flex-wrap justify-center gap-1 pb-8 mt-4">
           {Array.from({ length: Math.ceil(filteredMembers.length / membersPerPage) }).map((_, index) => (
             <button
               key={index}

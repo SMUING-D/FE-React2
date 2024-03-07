@@ -1,25 +1,29 @@
 import { useSelector } from 'react-redux'
 import { Route, Routes } from 'react-router-dom'
 
-import './App.css'
 import Footer from './components/footer/Footer'
 import Navbar from './components/navbar/Navbar'
 import Sidebar from './components/sidebar/Sidebar'
-import AddAnnounce from './pages/AddAnnounce'
-import AddProjectPage from './pages/AddProject'
-import AllAnnounce from './pages/AllAnnounce'
-import DetailAnnounce from './pages/DetailAnnounce'
-import FormPage from './pages/FormPage'
-import LoginPage from './pages/LoginPage'
-import MainPage from './pages/MainPage'
-import MemberActive from './pages/MemberActive'
-import MemberAll from './pages/MemberAll'
-import MemberDetail from './pages/MemberDetail'
-import ProjectsPage from './pages/ProjectsPage'
+import {
+  AddAnnounce,
+  AddProjectPage,
+  AllAnnounce,
+  DetailAnnounce,
+  FormPage,
+  FormSettingPage,
+  LoginPage,
+  MainPage,
+  MemberActive,
+  MemberAll,
+  MemberDetail,
+  MyPage,
+  ProjectsPage,
+} from './pages'
+import { RootState } from './redux/store/store'
 
 function App() {
   const currentPath = window.location.pathname
-  const { isOpen } = useSelector((state) => state.sidebar)
+  const { isOpen } = useSelector((state: RootState) => state.sidebar)
 
   return (
     <>
@@ -37,15 +41,16 @@ function App() {
         <Route path="/projects/add" element={<AddProjectPage />} />
         <Route path="/announce/add" element={<AddAnnounce />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/Form" element={<FormPage />} />
+        <Route path="/form" element={<FormPage />} />
+        <Route path="/form/setting" element={<FormSettingPage />} />
         <Route path="/announce" element={<AllAnnounce />} />
         <Route path="/announce/:id" element={<DetailAnnounce />} />
+        <Route path="/mypage" element={<MyPage />} />
       </Routes>
 
-      {/* 이것도 마찬가지로 특정경로에서는 푸터 없음 */}
+      {/* 이것도 마찬가지로 특정경로에서는 푸터 없음  */}
 
-      {/* {isOpen && <Sidebar />} */}
-      {/* {currentPath !== '/login' && currentPath !== '/projects/add' ? <Footer /> : null} */}
+      {isOpen && <Sidebar />}
 
       {currentPath !== '/login' && currentPath !== '/projects/add' && currentPath !== '/announce/add' ? (
         <Footer />

@@ -127,6 +127,7 @@ export type FormContentItem = {
 export type FormOptionProps = {
   field: FormContentItem
   editLabel: (fieldName: string, fieldLabel: string) => void
+  editList: (fieldName: string, index: number, fieldList: string) => void
 }
 
 export type FormTitleBoxProps = {
@@ -145,13 +146,13 @@ export type FormContentsProps = {
   handleRequire: (fieldName: string) => void
   duplicateQuestion: (fieldName: string) => void
   editLabel: (fieldName: string, fieldLabel: string) => void
+  editList: (fieldName: string, index: number, fieldList: string) => void
 }
 
 export type FormHandlingHook = {
   isButton: boolean
   formContent: FormContentItem[]
-  updateFormContent: (fieldName: string, update: (field: FormContentItem) => void) => void
-  resetFormContent: () => void
+  updateFormContent: (fieldName: string, update: (field: FormContentItem) => FormContentItem) => void
   addQuestion: () => void
   duplicateQuestion: (fieldName: string) => void
   addOption: (fieldName: string) => void
@@ -159,6 +160,7 @@ export type FormHandlingHook = {
   deleteQuestion: (fieldName: string) => void
   editTitle: (fieldName: string, fieldTitle: string) => void
   editLabel: (fieldName: string, fieldLabel: string) => void
+  editList: (fieldName: string, index: number, fieldList: string) => void
   editFieldType: (fieldName: string, newFieldType: string) => void
   handleSubmit: () => Promise<void>
 }
@@ -183,4 +185,36 @@ export type InfiniteCardProps = {
   description: string
   name: string
   member: string[]
+}
+export type SidebarState = {
+  isOpen: boolean
+}
+
+export type FormSettingData = {
+  title: string
+  text: string
+  name: string
+  date: string
+  id: number
+}
+
+export type FormSettingModalProps = {
+  data: FormSettingData
+  handleModal: () => void
+}
+
+export type PaginationProps = {
+  totalItems: number
+  itemCountPerPage: number
+  pageCount: number
+  currentPage: number
+}
+
+export type MyPageInputProps = {
+  label: string
+  placeholder: string
+}
+
+export type MyPageState = {
+  index: number
 }

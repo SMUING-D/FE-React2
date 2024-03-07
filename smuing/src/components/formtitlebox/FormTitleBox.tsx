@@ -9,7 +9,8 @@ const FormTitleBox: React.FC<FormTitleBoxProps> = ({ field, editTitle, editField
       <input
         className="w-full placeholder-black"
         type="text"
-        placeholder={title}
+        placeholder="제목을 입력해주세요"
+        value={title}
         onChange={(e) => editTitle(name, e.target.value)}
       />
       <div className="flex items-center">
