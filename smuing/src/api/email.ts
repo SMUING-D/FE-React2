@@ -1,6 +1,6 @@
 import api from './index'
 
-export const postEmail = async (studentId: number) => {
+export const postEmail = async (studentId: number | undefined) => {
   const requestBody = {
     studentId: studentId,
   }

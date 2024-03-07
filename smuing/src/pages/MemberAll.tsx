@@ -29,9 +29,11 @@ const MemberAll = () => {
 
   return (
     <>
-      <div className="bg-rgb-35-39-49 pt-[100px]">
-        <div className="max-w-md p-6 mx-auto rounded-md shadow-md bg-rgb-35-39-49">
-          <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="member-year-select">
+
+      <div className="bg-rgb-35-39-49 pt-[100px] min-h-screen">
+        <div className="max-w-md mx-auto p-6 bg-rgb-35-39-49 rounded-md shadow-md">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="member-year-select">
+
             Member Year:
           </label>
           <select
