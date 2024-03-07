@@ -52,10 +52,10 @@ const LoginBox = () => {
   return (
     <div className="w-[400px] border border-solid border-blue-500 rounded-[20px] p-4">
       <div className="p-8">
-        <h2 className="text-2xl font-semibold mb-4">로그인</h2>
+        <h2 className="mb-4 text-2xl font-semibold">로그인</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-8">
-            <label htmlFor="username" className="block text-gray-600 text-sm font-medium mb-2">
+            <label htmlFor="username" className="block mb-2 text-sm font-medium text-gray-600">
               학번
             </label>
             <Input
@@ -70,7 +70,7 @@ const LoginBox = () => {
             />
           </div>
           <div className="mb-8">
-            <label htmlFor="password" className="block text-gray-600 text-sm font-medium mb-2">
+            <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-600">
               비밀번호
             </label>
             <Input

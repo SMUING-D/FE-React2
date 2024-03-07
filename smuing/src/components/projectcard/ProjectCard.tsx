@@ -15,7 +15,6 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   const handleMouseOut = () => {
     setIsHovering(false)
   }
-  console.log(project)
 
   return (
     <div
@@ -38,7 +37,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
       </motion.div>
       {isHovering && (
         <motion.div
-          className=" absolute bg-stone-800 rounded-[3rem] opacity-100 z-10 w-[380px] h-[380px] flex flex-col justify-center items-center text-white gap-2.5"
+          className="absolute bg-stone-800 rounded-[3rem] opacity-100 z-10 w-[380px] h-[380px] flex flex-col justify-center items-center text-white gap-2.5"
           animate={{
             scale: [0.3, 1.03, 0.95],
             borderRadius: ['20%', '30%', '40%', '30%', '20%'],

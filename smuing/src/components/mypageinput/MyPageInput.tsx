@@ -14,7 +14,7 @@ const MyPageInput: React.FC<MyPageInputProps> = ({ label, placeholder }) => {
         placeholder={placeholder}
         onChange={handleData}
         value={data}
-        className="w-full h-[40px] border-4 rounded-xl border-black outline-none placeholder:p-3"
+        className="w-full h-[40px] border-4 px-4 rounded-xl border-black outline-none "
         type="text"
       />
     </div>

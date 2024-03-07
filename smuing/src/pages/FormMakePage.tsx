@@ -1,10 +1,11 @@
 import FormContents from '../components/formcontents/FormContents'
 import useFormHandling from '../hooks/useFormHandling'
 
-const FormPage: React.FC = () => {
+const FormMakePage: React.FC = () => {
   const {
     isButton,
     formContent,
+    addQuestion,
     duplicateQuestion,
     addOption,
     handleRequire,
@@ -18,8 +19,8 @@ const FormPage: React.FC = () => {
 
   return (
     <div className="flex flex-col min-h-screen px-4 pt-32 bg-rgb-35-39-49">
-      <div className="p-4 text-white bg-[#070F2B] rounded-md">
-        <h1 className="text-3xl font-semibold">제안서 제출</h1>
+      <div className="p-4 text-[#9290C3] bg-[#070F2B] rounded-md">
+        <h1 className="text-3xl font-semibold">제안서 생성 </h1>
       </div>
       <form
         method="post"
@@ -52,8 +53,15 @@ const FormPage: React.FC = () => {
           </button>
         )}
       </form>
+      <div className="fixed flex flex-col items-center bg-white rounded-md right-5 sm:right-20">
+        <button onClick={() => addQuestion()}>
+          <div className="flex items-center justify-center h-10 p-5 bg-[#535C91] hover:bg-[#9290C3] hover:scale-110 rounded-md">
+            질문 추가하기
+          </div>
+        </button>
+      </div>
     </div>
   )
 }
 
-export default FormPage
+export default FormMakePage

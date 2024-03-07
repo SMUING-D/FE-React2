@@ -1,16 +1,21 @@
 import { useSelector } from 'react-redux'
 
+import PROJECTS_DATA from '../../constants/PROJECTS_DATA'
 import useOnUpload from '../../hooks/useOnUpload'
 import { RootState } from '../../redux/store/store'
+import { Project } from '../../types/types'
 import MyPageInput from '../mypageinput/MyPageInput'
+import ProjectCard from '../projectcard/ProjectCard'
 
 const MyPageContents: React.FC = () => {
   const selectedIndex = useSelector((state: RootState) => state.myPage.index)
+  const data = PROJECTS_DATA
+
   const { imageSrc, onUpload } = useOnUpload()
 
   return (
     <div className="w-full h-full">
-      <div className="flex flex-col items-center h-full ">
+      <div className="flex flex-col items-center w-auto">
         {selectedIndex === 0 && (
           <div className="flex flex-col items-center w-4/5 h-full gap-8">
             <div className="flex flex-col items-center justify-center gap-3 mt-5 text-white">
@@ -18,6 +23,7 @@ const MyPageContents: React.FC = () => {
               <p className="text-[13px]">프로필 정보를 추가하거나 수정해보세요!</p>
             </div>
             <MyPageInput label="이름" placeholder="이름을 입력해주세요" />
+            <MyPageInput label="닉네임" placeholder="닉네임을 입력해주세요" />
             <MyPageInput label="소개" placeholder="소개를 입력해주세요" />
             <button
               type="submit"
@@ -59,7 +65,44 @@ const MyPageContents: React.FC = () => {
             </div>
           </div>
         )}
-        {selectedIndex === 3 && <div></div>}
+        {selectedIndex === 2 && (
+          <div className="flex h-auto lg:w-[650px] md:w-[500px] w-[400px] overflow-x-auto">
+            {data.map((project: Project) => (
+              <div>
+                <ProjectCard key={project.id} project={project} />
+              </div>
+            ))}
+          </div>
+        )}
+        {selectedIndex === 3 && (
+          <div className="flex flex-col items-center w-full h-full gap-3 text-white ">
+            <div className="flex flex-col w-full gap-5">
+              <p className="flex items-center h-10 p-3 ]">비밀번호 변경</p>
+              <input
+                className="flex items-center h-10 ml-3 rounded-lg bg-[#535C91] px-4 focus:outline-none placeholder:italic placeholder:text-white"
+                placeholder="현재 비밀번호를 입력해주세요"
+              />
+              <input
+                className="flex items-center h-10 ml-3 rounded-lg bg-[#535C91] px-4 focus:outline-none placeholder:italic placeholder:text-white"
+                placeholder="새로운 비밀번호를 입력해주세요"
+              />
+              <input
+                className="flex items-center h-10 ml-3 rounded-lg bg-[#535C91] px-4 focus:outline-none placeholder:italic placeholder:text-white"
+                placeholder="새로운 비밀번호를 다시 입력해주세요"
+              />
+            </div>
+            <div className="flex items-start w-full">
+              <button className="flex justify-center items-center ml-3 h-10 p-3 w-[100px] rounded-lg bg-[#9290C3] hover:bg-purple-300">
+                저장
+              </button>
+            </div>
+            <div className="flex gap-3 mt-16">
+              <button className="flex justify-center items-center h-10 p-3 w-[100px] rounded-lg bg-[#915353]">
+                회원 탈퇴
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )
