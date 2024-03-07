@@ -12,7 +12,7 @@ type OPTIONS_DATA_TYPE = {
 const FormTitleBox: React.FC<FormTitleBoxProps> = ({ field, editTitle, editFieldType, deleteQuestion }) => {
   const { name, title } = field
   const [view, setView] = useState(false)
-  const [selectedTOption, setSelectedOption] = useState('')
+  const [selectedTOption, setSelectedOption] = useState('짧은 질문')
   const onClickSelect = () => {
     setView(!view)
   }

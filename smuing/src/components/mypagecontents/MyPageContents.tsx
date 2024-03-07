@@ -23,6 +23,7 @@ const MyPageContents: React.FC = () => {
               <p className="text-[13px]">프로필 정보를 추가하거나 수정해보세요!</p>
             </div>
             <MyPageInput label="이름" placeholder="이름을 입력해주세요" />
+            <MyPageInput label="닉네임" placeholder="닉네임을 입력해주세요" />
             <MyPageInput label="소개" placeholder="소개를 입력해주세요" />
             <button
               type="submit"
