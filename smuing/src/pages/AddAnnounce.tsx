@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
+import Xbtn from '../assets/img/XBtn.svg'
 import LoginNav from '../components/login/LoginNav'
 import TextArea from '../components/textarea/TextArea'
 import { titleText } from '../constants/ADD_ANNOUNCE'
@@ -7,10 +8,17 @@ import { titleText } from '../constants/ADD_ANNOUNCE'
 // import { AddAnnounce } from '../../types/types'
 
 const AddAnnounce = () => {
+  const fileInputRef = useRef<HTMLInputElement>(null)
   const [formData, setFormData] = useState<{ [key: string]: string }>({})
+  const [imageFiles, setImageFiles] = useState<File[]>([])
 
   const getWindowWidth = () => window.innerWidth
 
+  const handleButtonClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click()
+    }
+  }
   const handleTextChange = (newValue: string, textTitle: string) => {
     setFormData((prevFormData) => ({
       ...prevFormData,
@@ -21,6 +29,21 @@ const AddAnnounce = () => {
   const handleAnnounceAdd = () => {
     console.log('공지사항 등록')
     console.log('공지사항 정보:', formData)
+  }
+
+  const handleAddImage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files
+
+    if (files && files.length > 0) {
+      const selectedFile = files[0]
+      setImageFiles((prevFiles) => [...prevFiles, selectedFile])
+    }
+  }
+
+  const handleImageDelete = (index: number) => {
+    const newImages = [...imageFiles]
+    newImages.splice(index, 1)
+    setImageFiles(newImages)
   }
 
   return (
@@ -44,6 +67,41 @@ const AddAnnounce = () => {
               maxChars={title.max}
               textTitle={title.text}
             />
+          ))}
+        </div>
+
+        <div>
+          <button className="bg-gray-600 w-[200px] h-[50px] ml-[20px] mb-[20px]" onClick={handleButtonClick}>
+            공지사항 이미지 추가하기
+          </button>
+          <input
+            ref={fileInputRef}
+            id="fileInput"
+            type="file"
+            accept="image/*"
+            onChange={handleAddImage}
+            style={{ display: 'none' }}
+          />
+        </div>
+        <div className="w-[100%] h-[300px] flex overflow-x-auto">
+          {imageFiles.map((file, index) => (
+            <div key={index} className="flex-shrink-0 w-[250px] h-[250px] bg-gray-600 ml-[20px] rounded-xl p-[5px]">
+              <img src={Xbtn} onClick={() => handleImageDelete(index)} className="float-right w-[30px] h-[30px]" />
+              <img
+                src={URL.createObjectURL(file)}
+                alt={`Selected Image ${index + 1}`}
+                style={{
+                  width: '200px',
+                  height: '200px',
+                  margin: '10px',
+                  textAlign: 'center',
+                  alignItems: 'center',
+                  marginLeft: '20px',
+                  borderRadius: '10px',
+                  paddingBottom: '10px',
+                }}
+              />
+            </div>
           ))}
         </div>
 

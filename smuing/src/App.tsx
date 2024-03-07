@@ -28,7 +28,7 @@ function App() {
   return (
     <>
       {/* 특정 경로에서는 Navbar를 렌더링하지 않음 */}
-      {currentPath !== '/login' && currentPath !== '/projects/add' && currentPath !== '/announce/add' ? (
+      {currentPath !== '/login' && currentPath !== '/projects/add' && currentPath !== '/notices/write' ? (
         <Navbar />
       ) : null}
 
@@ -39,12 +39,13 @@ function App() {
         <Route path="/members/:id" element={<MemberDetail />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/projects/add" element={<AddProjectPage />} />
-        <Route path="/announce/add" element={<AddAnnounce />} />
+
         <Route path="/login" element={<LoginPage />} />
         <Route path="/form" element={<FormPage />} />
         <Route path="/form/setting" element={<FormSettingPage />} />
-        <Route path="/announce" element={<AllAnnounce />} />
-        <Route path="/announce/:id" element={<DetailAnnounce />} />
+        <Route path="/notices" element={<AllAnnounce />} />
+        <Route path="/notices/:id" element={<DetailAnnounce />} />
+        <Route path="/notices/write" element={<AddAnnounce />} />
         <Route path="/mypage" element={<MyPage />} />
       </Routes>
 
@@ -52,7 +53,7 @@ function App() {
 
       {isOpen && <Sidebar />}
 
-      {currentPath !== '/login' && currentPath !== '/projects/add' && currentPath !== '/announce/add' ? (
+      {currentPath !== '/login' && currentPath !== '/projects/add' && currentPath !== '/notices/write' ? (
         <Footer />
       ) : null}
     </>
