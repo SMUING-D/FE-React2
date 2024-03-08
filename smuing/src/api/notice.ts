@@ -3,12 +3,16 @@ import api from './index'
 export const createNotice = async (formData: string) => {
   const accessToken = localStorage.getItem('accessToken')
 
+  const params = {
+    directory: 'notice',
+  }
   try {
     const response = await api.post('/notice/create', formData, {
       headers: {
         Authorization: accessToken,
-        'Content-Type': 'multipart/form-data', // Set the content type to multipart form data
+        'Content-Type': 'multipart/form-data',
       },
+      params: params,
     })
 
     return response.data
