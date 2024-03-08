@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 
+import { createNotice } from '../api/notice'
 import Xbtn from '../assets/img/XBtn.svg'
 import LoginNav from '../components/login/LoginNav'
 import TextArea from '../components/textarea/TextArea'
@@ -26,10 +27,27 @@ const AddAnnounce = () => {
     }))
   }
 
-  const handleAnnounceAdd = (imageFiles: File) => {
-    const formDataWithImages = { ...formData, images: imageFiles }
-    console.log('공지사항 등록')
-    console.log('공지사항 정보:', formDataWithImages)
+  const handleAnnounceAdd = async () => {
+    // const formDataWithImages = { ...formData, images: imageFiles }
+    // console.log('공지사항 등록')
+    // console.log('공지사항 정보:', formDataWithImages)
+
+    try {
+      const formData1 = new FormData()
+
+      formData1.append('title', formData.title)
+      formData1.append('content', formData.content)
+
+      // Append each image file to FormData
+      imageFiles.forEach((file) => {
+        formData1.append(`images`, file)
+      })
+
+      const response = await createNotice(formData1)
+      console.log(response)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   const handleAddImage = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -86,9 +104,12 @@ const AddAnnounce = () => {
             style={{ display: 'none' }}
           />
         </div>
-        <div className="w-[100%] h-[300px] flex overflow-x-auto">
+        <div className="flex overflow-x-auto">
           {imageFiles.map((file, index) => (
-            <div key={index} className="flex-shrink-0 w-[250px] h-[250px] bg-gray-600 ml-[20px] rounded-xl p-[5px]">
+            <div
+              key={index}
+              className="flex-shrink-0 w-[250px] h-[250px] bg-gray-600 ml-[20px] rounded-xl p-[5px] mb-[10px]"
+            >
               <img src={Xbtn} onClick={() => handleImageDelete(index)} className="float-right w-[30px] h-[30px]" />
               <img
                 src={URL.createObjectURL(file)}
@@ -108,11 +129,11 @@ const AddAnnounce = () => {
           ))}
         </div>
 
-        <div className="text-center pb-[20px]">
+        <div className="text-center pb-[40px] mt-[50px]">
           <button
             type="button"
             className="sm:w-[200px] mt-4 sm:mt-[10px] py-2 border rounded-md focus:outline-none focus:border-blue-500 text-white"
-            onClick={() => handleAnnounceAdd}
+            onClick={handleAnnounceAdd}
           >
             공지사항 등록하기
           </button>
