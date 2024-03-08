@@ -28,15 +28,13 @@ const AddAnnounce = () => {
   }
 
   const handleAnnounceAdd = async () => {
-    // const formDataWithImages = { ...formData, images: imageFiles }
-    // console.log('공지사항 등록')
-    // console.log('공지사항 정보:', formDataWithImages)
-
     try {
       const formData1 = new FormData()
 
-      formData1.append('title', formData.title)
-      formData1.append('content', formData.content)
+      Object.entries(formData).forEach(([key, value]) => {
+        formData1.append(`data[${key}]`, JSON.stringify(value))
+      })
+      //formData1.append('content', formData.content)
 
       // Append each image file to FormData
       imageFiles.forEach((file) => {
