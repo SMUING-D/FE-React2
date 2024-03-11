@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { createNotice } from '../api/notice'
 import Xbtn from '../assets/img/XBtn.svg'
@@ -9,6 +10,7 @@ import { titleText } from '../constants/ADD_ANNOUNCE'
 // import { AddAnnounce } from '../../types/types'
 
 const AddAnnounce = () => {
+  const navigate = useNavigate()
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [formData, setFormData] = useState<{ [key: string]: string }>({})
   const [imageFiles, setImageFiles] = useState<File[]>([])
@@ -43,6 +45,7 @@ const AddAnnounce = () => {
 
       const response = await createNotice(formData1)
       console.log(response)
+      navigate('/notices')
     } catch (error) {
       console.error(error)
     }

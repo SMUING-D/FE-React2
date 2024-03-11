@@ -109,10 +109,16 @@ const Join: React.FC = () => {
         const type = response.code
         if (type == 'MEMBER4004') {
           setJoinMessage(response.message)
-        } else if (type == '2000') {
+        } else if (type == '2002') {
           navigate('/login')
           console.log('회원가입 성공')
+        } else if (type == 'MEMBER4005') {
+          setJoinMessage(response.message)
+        } else {
+          setJoinMessage('통신 오류입니다')
         }
+
+        console.log(response)
       } catch (error) {
         console.log(error)
       }
