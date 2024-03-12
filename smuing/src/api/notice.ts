@@ -42,3 +42,22 @@ export const infinityScrollNotice = async (page: number, size: number) => {
     throw error
   }
 }
+
+//공지글 상세조회
+
+export const showNotice = async (id: string) => {
+  const accessToken = localStorage.getItem('accessToken')
+
+  try {
+    const response = await api.get(`/notice/show/${id}`, {
+      headers: {
+        Authorization: accessToken,
+      },
+    })
+    console.log(response)
+    return response.data
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}

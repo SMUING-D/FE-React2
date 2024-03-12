@@ -170,6 +170,7 @@ export type textboxprops = {
   writer: string
   date: string
   bodyText: string
+  imgUrl: []
 }
 
 export type detailAnnounce = {

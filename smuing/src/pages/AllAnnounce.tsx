@@ -65,13 +65,14 @@ const AllAnnounce = () => {
       {/* 바디 부분 */}
       <div className="flex flex-col items-center mt-[50px]">
         {noticeData.map((notice, index) => (
-          <Link key={index} to={`/announce/1`} className="no-underline">
+          <Link key={index} to={`/notices/1`} className="no-underline">
             <TextBox
               key={index}
               title={notice.title}
               writer="SMUMC 운영진"
               date={notice.createdAt}
               bodyText={notice.content}
+              imgUrl={notice.img}
             />
           </Link>
         ))}
